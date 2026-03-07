@@ -1,5 +1,5 @@
 description = "Fix a cherrypick-robot PR that needs manual intervention"
-prompt = """
+prompt = '''
 
 ## Name
 git:fix-cherrypick-robot-pr
@@ -261,4 +261,4 @@ Beyond what the robot can do:
 - Remote discovery uses `git remote -v` and `git config user.name` to identify fork vs upstream
 - Falls back to common names (`origin` for fork, `upstream` for main repo) if auto-discovery fails
 - Fix strategies will vary by repository - consult repository documentation for specific commands
-"""
+'''

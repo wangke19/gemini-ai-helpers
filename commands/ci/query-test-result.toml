@@ -1,5 +1,5 @@
 description = "Query test results from Sippy by version and test keywords"
-prompt = """
+prompt = '''
 
 ## Name
 ci:query-test-result
@@ -243,4 +243,4 @@ https://prow.ci.openshift.org/view/gs/test-platform-results/logs/periodic-ci-ope
 - Sippy UI (Production): https://sippy.dptools.openshift.org/sippy-ng/
 - Sippy UI (QE): https://qe-component-readiness.dptools.openshift.org
 - Sippy API Documentation: https://github.com/openshift/sippy
-"""
+'''

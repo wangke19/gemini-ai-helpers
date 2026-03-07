@@ -1,5 +1,5 @@
 description = "Automated pre-commit code quality review with language-aware analysis and project-specific profiles"
-prompt = """
+prompt = '''
 
 ## Name
 code-review:pre-commit-review
@@ -190,4 +190,4 @@ After all sub-agents and build verification complete, aggregate findings into a 
 - `--profile <name>`: Project profile skill to load. Loads `skills/profile-<name>/SKILL.md` for project-specific conventions. If omitted, no profile-specific checks are applied.
 - `--skip-build`: Skip the build verification step (Step 3). Useful for documentation-only changes or when build infrastructure is not available locally.
 - `--skip-tests`: Skip the unit test coverage review step (Unit Test Coverage sub-agent). Useful when changes do not affect testable code.
-"""
+'''

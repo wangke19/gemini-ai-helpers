@@ -1,5 +1,5 @@
 description = "Generate comprehensive YAML documentation from Go struct definitions with sensible default values"
-prompt = """
+prompt = '''
 
 ## Name
 yaml:docs
@@ -164,4 +164,4 @@ The command will generate YAML documentation from the selected struct.
 ## Arguments
 - $1: File path and struct name in format `file.go:StructName` (e.g., `pkg/api/types.go:MetricsConfig`), or selected code containing a Go struct definition
 - $2: (Optional) Output file path where the generated YAML will be written (e.g., `config/example.yaml`)
-"""
+'''

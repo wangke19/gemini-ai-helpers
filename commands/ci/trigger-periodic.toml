@@ -1,5 +1,5 @@
 description = "Trigger a periodic gangway job with optional environment variable overrides"
-prompt = """
+prompt = '''
 
 ## Name
 ci:trigger-periodic
@@ -132,4 +132,4 @@ The command performs the following steps:
 ## Arguments
 - **$1** (job-name): The name of the periodic job to trigger (required)
 - **$2-$N** (ENV_VAR=value): Optional environment variable overrides in KEY=VALUE format
-"""
+'''

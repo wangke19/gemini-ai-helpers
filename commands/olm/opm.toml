@@ -1,5 +1,5 @@
 description = "Execute opm (Operator Package Manager) commands for building and managing operator catalogs"
-prompt = """
+prompt = '''
 
 ## Name
 olm:opm
@@ -355,4 +355,4 @@ On failure, displays:
 - `/olm:install` - Install an operator using OLM
 - `/olm:catalog` - Manage catalog sources
 - `/olm:debug` - Debug OLM issues
-"""
+'''

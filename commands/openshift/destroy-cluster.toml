@@ -1,5 +1,5 @@
 description = "Destroy an OpenShift cluster created by create-cluster command"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:destroy-cluster
@@ -356,4 +356,4 @@ This command includes several safety measures:
 ## Arguments:
 
 - **$1** (install-dir): Path to the cluster installation directory created by create-cluster (optional, interactive if not provided)
-"""
+'''

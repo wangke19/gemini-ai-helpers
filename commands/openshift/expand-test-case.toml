@@ -1,5 +1,5 @@
 description = "Expand basic test ideas or existing oc commands into comprehensive test scenarios with edge cases in oc CLI or Ginkgo format"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:expand-test-case
@@ -75,4 +75,4 @@ The command generates comprehensive test scenarios following industry best pract
   - **File path**: Path to existing test file
   - **oc commands**: Set of oc CLI commands to analyze and expand
 - **$2** (format): Output format - "oc CLI" or "Ginkgo" (optional, will prompt if not provided)
-"""
+'''

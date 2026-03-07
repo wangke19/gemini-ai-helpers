@@ -1,5 +1,5 @@
 description = "Automate approving Konflux bot PRs for the given repository by adding /lgtm and /approve"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -139,4 +139,4 @@ gh pr view <PR_NUMBER> --repo <target-repository> --json statusCheckRollup,label
 - The command only processes open PRs authored by `app/red-hat-konflux`.
 - Compatible with repositories in which the user has write permission to post PR comments.
 - Designed to minimize manual PR review effort and maintain consistent approvals.
-"""
+'''

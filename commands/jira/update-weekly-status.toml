@@ -1,5 +1,5 @@
 description = "Update weekly status summaries for Jira issues with component and user filtering"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -543,4 +543,4 @@ See the Jira plugin's skills directory for examples of project-specific customiz
 - **Shared skill**: `plugins/jira/skills/status-analysis/SKILL.md`
 - **Data gatherer script**: `plugins/jira/skills/status-analysis/scripts/gather_status_data.py`
 - **Single-issue rollup**: `/jira:status-rollup` - Generate comprehensive status comment for one issue
-"""
+'''

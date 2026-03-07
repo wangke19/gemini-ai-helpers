@@ -1,5 +1,5 @@
 description = "Comprehensive LVMS troubleshooting - analyzes LVMCluster, volume groups, PVCs, and storage issues on live clusters or must-gather"
-prompt = """
+prompt = '''
 
 ## Name
 lvms:analyze
@@ -751,4 +751,4 @@ oc auth can-i debug node
 - [LVMS Troubleshooting Guide](https://github.com/openshift/lvm-operator/blob/main/docs/troubleshooting.md)
 - [TopoLVM Documentation](https://github.com/topolvm/topolvm)
 - [OpenShift Storage Documentation](https://docs.openshift.com/container-platform/latest/storage/index.html)
-"""
+'''

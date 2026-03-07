@@ -1,5 +1,5 @@
 description = "Generate comprehensive feature documentation from Jira feature and all related issues and PRs"
-prompt = """
+prompt = '''
 
 ## Name
 jira:generate-feature-doc
@@ -253,4 +253,4 @@ This ensures documentation reflects only shipped implementation.
 ├── pr-urls.txt              # All discovered PR URLs
 └── analysis-log.txt         # Analysis log (for debugging)
 ```
-"""
+'''

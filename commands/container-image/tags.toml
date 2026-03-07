@@ -1,5 +1,5 @@
 description = "List and analyze available tags for a container image repository"
-prompt = """
+prompt = '''
 
 ## Name
 container-image:tags
@@ -306,4 +306,4 @@ For repositories with many tags:
     - `registry.example.com/myorg/myapp`
 
 **Note**: Do NOT include the tag (`:tagname`) in the repository argument.
-"""
+'''

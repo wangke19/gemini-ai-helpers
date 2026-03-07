@@ -1,5 +1,5 @@
 description = "Clone GitHub issues to Jira with proper formatting and linking"
-prompt = """
+prompt = '''
 
 ## Name
 jira:clone-from-github
@@ -423,4 +423,4 @@ What would you like to do?
 - `/jira:create` - Create new Jira issues manually
 - `/jira:solve` - Analyze and solve Jira issues
 - [gh2jira README](https://github.com/oceanc80/gh2jira/blob/main/README.md)
-"""
+'''

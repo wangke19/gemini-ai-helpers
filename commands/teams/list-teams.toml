@@ -1,5 +1,5 @@
 description = "List all teams from the team component mapping"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -86,4 +86,4 @@ The team and component mapping data originates from:
 - Related Commands: `/teams:list-components`, `/teams:health-check`
 - Mapping File: `plugins/teams/team_component_map.json`
 - Generator Script: `plugins/teams/generate_team_component_map.py`
-"""
+'''

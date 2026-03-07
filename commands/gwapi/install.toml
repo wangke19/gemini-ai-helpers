@@ -1,5 +1,5 @@
 description = "Install Gateway API resources to a Kubernetes/OpenShift cluster"
-prompt = """
+prompt = '''
 
 ## Name
 gwapi:install
@@ -204,4 +204,4 @@ The command automatically retrieves the cluster's ingress domain and substitutes
   - If timeout is reached, the command exits with an error and displays the current resource status
 - The command blocks until all resources are ready or timeout occurs
 - Progress updates are displayed every 5 seconds during the wait
-"""
+'''

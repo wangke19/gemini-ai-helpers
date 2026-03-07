@@ -1,5 +1,5 @@
 description = "Compare two container images to identify differences"
-prompt = """
+prompt = '''
 
 ## Name
 container-image:compare
@@ -285,4 +285,4 @@ dive <image1> --compare <image2>
   - Format: `[registry/]repository[:tag|@digest]`
 
 **Note**: Images can be from the same or different registries.
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Generate and visualize OVN-Kubernetes network topology diagram"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -117,4 +117,4 @@ If you have cluster admin permissions, you'll receive a warning message before t
 - For KIND clusters created via `/openshift:create-cluster`, the kubeconfig is automatically detected
 - The diagram uses bottom-to-top layout (graph BT) following network topology conventions
 - All component placement is determined by UUID analysis, not hardcoded assumptions
-"""
+'''

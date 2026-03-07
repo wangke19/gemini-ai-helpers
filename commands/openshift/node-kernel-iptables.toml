@@ -1,5 +1,5 @@
 description = "Inspect IPv4 and IPv6 packet filter rules on Kubernetes node"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:node-kernel-iptables
@@ -227,4 +227,4 @@ In OVN-Kubernetes environments, you'll commonly see these custom chains:
 - `/openshift:node-kernel-nft` - Inspect nftables configuration
 - `/openshift:node-kernel-ip` - Inspect network interfaces and routing
 - [iptables man page](https://linux.die.net/man/8/iptables)
-"""
+'''

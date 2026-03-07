@@ -1,5 +1,5 @@
 description = "Perform comprehensive health check on HCP cluster and report issues"
-prompt = """
+prompt = '''
 
 ## Name
 hcp:cluster-health-check
@@ -701,4 +701,4 @@ oc describe pod <pod-name> -n <namespace>
 - For critical production issues, always follow your organization's incident response procedures
 - Regular health checks (daily or before changes) help catch issues early
 - Some checks may be skipped if user lacks sufficient permissions
-"""
+'''

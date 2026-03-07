@@ -1,5 +1,5 @@
-description = "Cherry-pick git commit into current branch by "patch" command"
-prompt = """
+description = "Cherry-pick git commit into current branch by \"patch\" command"
+prompt = '''
 
 ## Name
 git:cherry-pick-by-patch
@@ -46,4 +46,4 @@ and check if exit code is zero. Fail if exit code is not zero.
 ## Arguments
 
 - **$1** (required): Commit hash (e.g., `902409c0`) of commit to cherry-pick.
-"""
+'''

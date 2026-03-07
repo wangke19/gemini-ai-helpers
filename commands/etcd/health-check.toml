@@ -1,5 +1,5 @@
 description = "Check etcd cluster health, member status, and identify issues"
-prompt = """
+prompt = '''
 
 ## Name
 etcd:health-check
@@ -456,4 +456,4 @@ oc describe pod -n openshift-etcd <etcd-pod>
 - Some checks require etcd to be running
 - Performance may vary on large clusters with many keys
 - Database size recommendations are based on upstream etcd guidance
-"""
+'''

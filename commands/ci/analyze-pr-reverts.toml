@@ -1,5 +1,5 @@
 description = "Analyze recent PR reverts to identify patterns and recommend preventive measures"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -166,4 +166,4 @@ This command is intended to be run periodically (e.g., monthly) to track revert 
 - CodeRabbit Config: https://github.com/openshift/coderabbit
 - OpenShift Quick Revert Policy: https://github.com/openshift/enhancements/blob/master/enhancements/release/improving-ci-signal.md#quick-revert
 - Revertomatic: https://github.com/stbenjam/revertomatic
-"""
+'''

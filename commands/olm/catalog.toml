@@ -1,5 +1,5 @@
 description = "Manage catalog sources for discovering and installing operators"
-prompt = """
+prompt = '''
 
 ## Name
 olm:catalog
@@ -427,4 +427,4 @@ No arguments required.
 ## Additional Resources
 - [Building Catalog Images with opm](https://olm.operatorframework.io/docs/tasks/creating-catalog-from-index/)
 - [Operator Lifecycle Manager Documentation](https://olm.operatorframework.io/)
-"""
+'''

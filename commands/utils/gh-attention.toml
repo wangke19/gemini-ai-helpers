@@ -1,5 +1,5 @@
 description = "List PRs and issues requiring your attention"
-prompt = """
+prompt = '''
 
 ## Name
 utils:gh-attention
@@ -415,4 +415,4 @@ Output:
 
 ## Arguments:
 - `--repo <org/repo>`: (Optional) Limit check to a specific repository. If omitted, checks all repositories with your open PRs or assigned issues.
-"""
+'''

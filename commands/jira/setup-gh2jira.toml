@@ -1,5 +1,5 @@
 description = "Install and configure the gh2jira utility with all required tools and credentials"
-prompt = """
+prompt = '''
 
 ## Name
 jira:setup-gh2jira
@@ -782,4 +782,4 @@ echo $PATH | grep gh2jira
 1. Check `workflows.yaml` exists and has valid YAML syntax
 2. Verify state names match your Jira workflow states exactly
 3. Test with `gh2jira reconcile --profile-name <profile>`
-"""
+'''

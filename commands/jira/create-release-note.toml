@@ -1,5 +1,5 @@
 description = "Generate bug fix release notes from Jira tickets and linked GitHub PRs"
-prompt = """
+prompt = '''
 
 ## Name
 jira:create-release-note
@@ -560,4 +560,4 @@ The release note follows this structure:
 - **Workaround**: Temporary solution (from PRs, optional)
 
 This format is standard for Red Hat bug fix release notes.
-"""
+'''

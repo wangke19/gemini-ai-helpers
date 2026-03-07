@@ -1,5 +1,5 @@
 description = "Analyze etcd performance metrics, latency, and identify bottlenecks"
-prompt = """
+prompt = '''
 
 ## Name
 etcd:analyze-performance
@@ -598,4 +598,4 @@ oc logs -n openshift-etcd <pod> -c etcd | grep compaction
 - Log analysis window can be adjusted with `--duration` parameter
 - For production clusters, consider running during low-traffic periods
 - Health check latency is measured by actual proposal commits to the cluster
-"""
+'''

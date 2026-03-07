@@ -1,5 +1,5 @@
 description = "Create a new OpenShift Enhancement Proposal"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:add-enhancement
@@ -138,4 +138,4 @@ After creating the enhancement file, provide:
 - A list of sections that need further attention (marked with TODO comments)
 
 Begin by analyzing the inputs and asking any necessary clarifying questions before generating the enhancement proposal.
-"""
+'''

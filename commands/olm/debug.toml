@@ -1,5 +1,5 @@
 description = "Debug OLM issues using must-gather logs and source code analysis"
-prompt = """
+prompt = '''
 
 ## Name
 olm:debug
@@ -213,4 +213,4 @@ The command generates the following outputs in `.work/olm-debug/<timestamp>/`:
 - Must-gather documentation: https://docs.openshift.com/container-platform/latest/support/gathering-cluster-data.html
 - OCPBUGS Jira Project: https://issues.redhat.com/projects/OCPBUGS/
 - Jira REST API: https://docs.atlassian.com/jira-software/REST/latest/
-"""
+'''

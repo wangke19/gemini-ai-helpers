@@ -1,5 +1,5 @@
 description = "Save current conversation session to markdown file for future continuation"
-prompt = """
+prompt = '''
 
 ## Name
 session:save-session
@@ -134,4 +134,4 @@ Please read `/path/to/session-2025-10-16-parallel-test-fixes.md` and continue fr
 If no description is provided, timestamp alone is used: `session-YYYY-MM-DD-HHMM.md`
 
 **Note**: You can use spaces and special characters in your description - they will be automatically sanitized. For example, "investigating OCPBUGS-12345 regarding routes" becomes "investigating-ocpbugs-12345-regarding-routes".
-"""
+'''

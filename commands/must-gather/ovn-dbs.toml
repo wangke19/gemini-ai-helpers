@@ -1,5 +1,5 @@
 description = "Analyze OVN databases from a must-gather using ovsdb-tool"
-prompt = """
+prompt = '''
 
 ## Name
 must-gather:ovn-dbs
@@ -262,4 +262,4 @@ Solution: Use one of the listed node names or a partial match.
 - **$1** (must-gather-path): Optional. Path to the must-gather directory containing network_logs/. If not provided, user will be prompted.
 - **--node, -n** (node-name): Optional. Filter analysis to a specific node. Supports partial name matching (e.g., "master-0", "ip-10-0-26-145"). If no match is found, displays list of available nodes.
 - **--query, -q** (json-query): Optional. Run a raw OVSDB JSON query instead of standard analysis. Gemini can construct the JSON query based on OVSDB transaction format. When provided, outputs raw JSON results instead of formatted analysis.
-"""
+'''

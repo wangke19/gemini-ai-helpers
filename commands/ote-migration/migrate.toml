@@ -1,5 +1,5 @@
 description = "Automate OpenShift Tests Extension (OTE) migration for component repositories"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -144,4 +144,4 @@ This command takes no arguments. All configuration is collected interactively du
 - Plugin README: `plugins/ote-migration/README.md`
 - Implementation skill: `plugins/ote-migration/skills/ote-migration-workflow/SKILL.md`
 - OTE Framework: <https://github.com/openshift-eng/openshift-tests-extension>
-"""
+'''

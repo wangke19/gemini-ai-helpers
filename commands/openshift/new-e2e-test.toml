@@ -1,5 +1,5 @@
 description = "Write and validate new OpenShift E2E tests using Ginkgo framework"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:new-e2e-test
@@ -100,4 +100,4 @@ The command performs the following steps:
   - What feature/behavior to test
   - Expected outcomes
   - Any specific conditions or configurations
-"""
+'''

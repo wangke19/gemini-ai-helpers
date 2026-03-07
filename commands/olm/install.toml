@@ -1,5 +1,5 @@
 description = "Install a day-2 operator using Operator Lifecycle Manager"
-prompt = """
+prompt = '''
 
 ## Name
 olm:install
@@ -267,4 +267,4 @@ The command performs the following steps:
   ```bash
   oc logs -n {namespace} deployment/{operator-deployment}
   ```
-"""
+'''

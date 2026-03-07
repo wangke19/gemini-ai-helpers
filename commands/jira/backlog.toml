@@ -1,5 +1,5 @@
 description = "Find suitable JIRA tickets from the backlog to work on based on priority and activity"
-prompt = """
+prompt = '''
 
 ## Name
 jira:backlog
@@ -595,4 +595,4 @@ The command executes the following workflow:
   - Default: 28 days
   - Lower values find more recently inactive tickets
   - Example: `--days-inactive 14` finds tickets with 14+ days of no activity
-"""
+'''

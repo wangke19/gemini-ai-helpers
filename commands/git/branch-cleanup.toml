@@ -1,5 +1,5 @@
 description = "Clean up old and defunct branches that are no longer needed"
-prompt = """
+prompt = '''
 
 ## Name
 git:branch-cleanup
@@ -274,4 +274,4 @@ git remote prune origin
 - **Preserve unmerged work**: By default, only delete merged branches unless `--force` is used
 - **Backup suggestion**: Recommend creating a backup of unmerged branches before deletion
 - **Remote deletion**: Only delete remote branches if user explicitly requests with `--remote` flag
-"""
+'''

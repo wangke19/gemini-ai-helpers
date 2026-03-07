@@ -1,5 +1,5 @@
 description = "Revert a merged PR that is breaking CI or nightly payloads"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -124,4 +124,4 @@ This command is useful when:
 - Related Skill: `revert-pr` - Detailed git revert workflow and PR template (`plugins/ci/skills/revert-pr/SKILL.md`)
 - OpenShift Quick Revert Policy: https://github.com/openshift/enhancements/blob/master/enhancements/release/improving-ci-signal.md#quick-revert
 - Revertomatic: https://github.com/stbenjam/revertomatic
-"""
+'''

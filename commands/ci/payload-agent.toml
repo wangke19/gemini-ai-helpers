@@ -1,5 +1,5 @@
 description = "Autonomous agent that analyzes a rejected payload, determines root causes, and takes action based on confidence scoring"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -81,4 +81,4 @@ Load the `payload-agent` skill and follow its implementation steps. The skill or
 - `prow-job-analyze-install-failure`: Analyzes install failures (used by subagents)
 - `prow-job-analyze-test-failure`: Analyzes test failures (used by subagents)
 - `revert-pr`: Git revert workflow for creating revert PRs
-"""
+'''

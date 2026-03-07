@@ -1,5 +1,5 @@
 description = "Fetch and address all PR review comments"
-prompt = """
+prompt = '''
 
 ## Name
 utils:address-reviews
@@ -228,4 +228,4 @@ Where `<type>` is one of: `issue_comment`, `review_thread`, or `review_comment`
 
 ## Arguments:
 - $1: [PR number to address reviews (optional - uses current branch if omitted)]
-"""
+'''

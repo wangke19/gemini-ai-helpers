@@ -1,5 +1,5 @@
 description = "Placeholder command for the utils plugin"
-prompt = """
+prompt = '''
 
 ## Name
 utils:placeholder
@@ -23,4 +23,4 @@ The utils plugin provides a home for:
 
 ## Arguments:
 None
-"""
+'''

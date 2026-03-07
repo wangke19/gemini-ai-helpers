@@ -1,5 +1,5 @@
 description = "Analyze test code structure without running tests to identify coverage gaps"
-prompt = """
+prompt = '''
 
 ## Name
 test-coverage:analyze
@@ -354,4 +354,4 @@ The command will automatically check for Python 3.8+ and provide installation in
 ## See Also
 
 - `/test-coverage:gaps` - Identify untested code paths with priority-based analysis
-"""
+'''

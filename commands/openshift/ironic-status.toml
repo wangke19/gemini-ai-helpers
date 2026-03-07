@@ -1,5 +1,5 @@
 description = "Check status of Ironic baremetal nodes in OpenShift cluster"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:ironic-status
@@ -304,4 +304,4 @@ oc logs -n openshift-machine-api <metal3-pod-name> -c metal3-ironic
 - This command is specific to OpenShift clusters deployed on baremetal infrastructure
 - The Ironic service endpoint and pod names may vary depending on the OpenShift version
 - Ensure you have network connectivity to the cluster
-"""
+'''

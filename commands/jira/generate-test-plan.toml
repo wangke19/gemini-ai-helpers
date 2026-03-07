@@ -1,5 +1,5 @@
 description = "Generate test steps for a JIRA issue"
-prompt = """
+prompt = '''
 
 ## Name
 jira:generate-test-plan
@@ -182,4 +182,4 @@ The 'jira:generate-test-plan' command takes a JIRA issue key and optionally a li
 ```
 
 The command will provide a comprehensive manual testing guide that QE or developers can use to thoroughly test the JIRA issue implementation.
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Get detailed status and health information for an operator"
-prompt = """
+prompt = '''
 
 ## Name
 olm:status
@@ -346,4 +346,4 @@ The command performs the following steps:
 - [Viewing Operator Status](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-status-viewing-operator-status)
 - [Updating Installed Operators](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-updating-operators)
 - [Troubleshooting Operator Issues](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-troubleshooting-operator-issues)
-"""
+'''

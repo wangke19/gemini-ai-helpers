@@ -1,5 +1,5 @@
 description = "List and analyze JIRA issues organized by component with flexible filtering"
-prompt = """
+prompt = '''
 
 ## Name
 jira:issues-by-component
@@ -593,4 +593,4 @@ source ~/.jira-credentials
 - `/jira:backlog` - Find suitable backlog tickets to work on
 - `/jira:grooming` - Generate grooming meeting agendas
 - `/jira:solve` - Start working on a specific issue
-"""
+'''

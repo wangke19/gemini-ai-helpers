@@ -1,5 +1,5 @@
 description = "Report on CodeRabbit adoption across OpenShift org PRs"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -142,4 +142,4 @@ If a repo has **some PRs with CodeRabbit comments and some without**, the repo i
 
 - Related Command: `/teams:coderabbit-inheritance-scanner` - Scan repos for CodeRabbit config inheritance
 - Global CodeRabbit config: https://github.com/openshift/coderabbit
-"""
+'''

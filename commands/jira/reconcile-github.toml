@@ -1,5 +1,5 @@
 description = "Reconcile state mismatches between GitHub and Jira issues"
-prompt = """
+prompt = '''
 
 ## Name
 jira:reconcile-github
@@ -293,4 +293,4 @@ EOF
 - `/jira:solve` - Analyze and solve Jira issues
 - `/jira:status-rollup` - Create status rollup reports
 - [gh2jira README](https://github.com/oceanc80/gh2jira/blob/main/README.md)
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Process Renovate dependency PR(s) to meet repository contribution standards"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -205,4 +205,4 @@ The command handles common error cases:
 - Indirect dependencies focus on dependency chain documentation
 - Testing instructions are tailored to dependency type (tooling vs runtime)
 - All Jira tickets are labeled with "ai-generated" for tracking
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Fetch recent release payloads from the OpenShift release controller"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -68,4 +68,4 @@ The `ci:fetch-payloads` command fetches recent release payloads from the OpenShi
 ## Skills Used
 
 - `fetch-payloads`: Queries the release controller API for payload tags and release details. When no version is specified, `fetch_payloads.py` obtains the latest version directly from the Sippy API.
-"""
+'''

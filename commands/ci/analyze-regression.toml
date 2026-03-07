@@ -1,5 +1,5 @@
 description = "Analyze details about a Component Readiness regression and suggest next steps"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -1144,4 +1144,4 @@ Uses the `triage-regression` skill with authentication via the `oc-auth` skill (
 - Related Command: `/component-health:analyze-regressions` (for overall component health)
 - Component Readiness: https://sippy-auth.dptools.openshift.org/sippy-ng/component_readiness/main
 - TRT Documentation: https://docs.ci.openshift.org/docs/release-oversight/troubleshooting-failures/
-"""
+'''

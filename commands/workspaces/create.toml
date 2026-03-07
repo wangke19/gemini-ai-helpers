@@ -1,5 +1,5 @@
 description = "Create a workspace with git worktrees for multi-repository development"
-prompt = """
+prompt = '''
 
 ## Name
 workspaces:create
@@ -104,4 +104,4 @@ ${GEMINI_EXTENSION_ROOT}/commands/create/execute.sh {WORKSPACE_NAME} {BRANCH} re
 The script will create the workspace with worktrees for each repository. If any issues are found, the script will abort with an error message.
 
 Report the workspace location and worktrees created to the user.
-"""
+'''

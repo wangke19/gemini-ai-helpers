@@ -1,5 +1,5 @@
 description = "Analyze sosreport archive for system diagnostics and issues"
-prompt = """
+prompt = '''
 
 ## Name
 sosreport:analyze
@@ -344,4 +344,4 @@ Perform system configuration analysis including:
 ### External Resources
 - Sosreport documentation: <https://github.com/sosreport/sos>
 - Red Hat sosreport guide: <https://access.redhat.com/solutions/3592>
-"""
+'''

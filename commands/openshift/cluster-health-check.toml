@@ -1,5 +1,5 @@
 description = "Perform comprehensive health check on OpenShift cluster and report issues"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:cluster-health-check
@@ -538,4 +538,4 @@ oc describe pod <pod-name> -n <namespace>
 - For vanilla Kubernetes, cluster operator checks are skipped
 - Resource utilization checks require metrics-server to be installed
 - Some checks may be skipped if user lacks sufficient permissions
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Check Gateway API resources status in the cluster"
-prompt = """
+prompt = '''
 
 ## Name
 gwapi:check
@@ -143,4 +143,4 @@ Summary:
 - The command is read-only and makes no modifications to the cluster
 - Useful for verifying successful installation after running /gwapi:install
 - Can be run repeatedly to monitor Gateway API resource health
-"""
+'''

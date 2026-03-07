@@ -1,5 +1,5 @@
 description = "Watch open Enhancement PRs from other teams that may impact OLM"
-prompt = """
+prompt = '''
 
 ## Name
 olm-team:ep-watch
@@ -357,4 +357,4 @@ See ALL relevant PRs (including OLM team):
 - [Enhancement Proposal Process](https://github.com/openshift/enhancements/blob/master/README.md)
 - GitHub CLI: `gh pr list`
 - `/olm-team:ep-search` - Search existing Enhancement Proposals
-"""
+'''

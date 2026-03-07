@@ -1,5 +1,5 @@
 description = "Analyze kernel/sysctl tuning from a live node or sosreport snapshot and propose NTO recommendations"
-prompt = """
+prompt = '''
 
 ## Name
 node-tuning:analyze-node-tuning
@@ -111,4 +111,4 @@ Use this command when you need to:
 - **--toolbox-image**: Override the container image that toolbox pulls when collecting sosreport (defaults to `registry.redhat.io/rhel9/support-tools:latest` or `TOOLBOX_IMAGE` env).
 - **--sosreport-arg**: Append an additional argument to the sosreport command (repeatable).
 - **--skip-default-sosreport-flags**: Do not include the default OpenShift-focused sosreport plugins/collectors; only use values supplied via `--sosreport-arg`.
-"""
+'''

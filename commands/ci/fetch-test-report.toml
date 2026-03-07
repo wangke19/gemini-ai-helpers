@@ -1,5 +1,5 @@
 description = "Fetch a test report from Sippy showing pass rates, test ID, and Jira component"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -63,4 +63,4 @@ The `ci:fetch-test-report` command fetches a report for an OpenShift CI test by 
 
 - `fetch-releases`: Determines the latest OCP release when not specified by the user
 - `fetch-test-report`: Queries the Sippy tests API for the test report
-"""
+'''

@@ -1,5 +1,5 @@
 description = "List all OCPBUGS components, optionally filtered by team"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -87,4 +87,4 @@ The team and component mapping data originates from:
 - Related Command: `/teams:list-teams`
 - Mapping File: `plugins/teams/team_component_map.json`
 - Generator Script: `plugins/teams/generate_team_component_map.py`
-"""
+'''

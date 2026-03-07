@@ -1,5 +1,5 @@
 description = "Extract and decompress must-gather archives from Prow job artifacts"
-prompt = """
+prompt = '''
 
 ## Name
 ci:extract-prow-job-must-gather
@@ -21,4 +21,4 @@ Pass the user's request to the skill, which will:
 - Generate an interactive HTML file browser with filters
 
 The skill handles all the implementation details including URL parsing, artifact downloading, archive extraction, and HTML report generation.
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Scan openshift org repos for .coderabbit.yaml/.coderabbit.yml files missing inheritance"
-prompt = """
+prompt = '''
 
 ## Name
 teams:coderabbit-inheritance-scanner
@@ -108,4 +108,4 @@ This command delegates to the following skills:
 ## See Also
 - Global CodeRabbit config: https://github.com/openshift/coderabbit
 - Related Command: `ci:analyze-pr-reverts` - Analyzes PR reverts and recommends CodeRabbit rules
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Review potential overlaps with existing ai-helpers (Gemini CLI Extensions, Commands, Skills, Sub-agents, or Hooks) and open PRs"
-prompt = """
+prompt = '''
 
 ## Name
 utils:review-ai-helpers-overlap
@@ -176,4 +176,4 @@ Optionally saves report to `.work/review-ai-helpers-overlap/report-{timestamp}.m
 - `--idea "TEXT"`: Check if your idea exists before coding (activates idea validation mode)
 - `--pr <NUMBER>`: Check if specific PR overlaps with others (reviewer mode)
 - `--verbose`: Show detailed side-by-side comparisons (Layer 3 output)
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Approve pending InstallPlans for operator installations and upgrades"
-prompt = """
+prompt = '''
 
 ## Name
 olm:approve
@@ -299,4 +299,4 @@ The command performs the following steps:
 - [Red Hat OpenShift: Approving Operator Upgrades](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-approving-operator-upgrades_olm-updating-operators)
 - [Red Hat OpenShift: Updating Installed Operators](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-updating-operators)
 - [Operator Lifecycle Manager Documentation](https://olm.operatorframework.io/)
-"""
+'''

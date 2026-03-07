@@ -1,5 +1,5 @@
 description = "Inspect routing, network devices, and interfaces on Kubernetes node"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:node-kernel-ip
@@ -346,4 +346,4 @@ Use `--options "-n <namespace>"` to query specific namespace.
 - `/openshift:node-kernel-nft` - Inspect nftables configuration
 - [ip command manual](https://man7.org/linux/man-pages/man8/ip.8.html)
 - [iproute2 documentation](https://wiki.linuxfoundation.org/networking/iproute2)
-"""
+'''

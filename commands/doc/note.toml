@@ -1,5 +1,5 @@
 description = "Generate professional engineering notes and append them to a log file"
-prompt = """
+prompt = '''
 
 ## Name
 doc:note
@@ -67,4 +67,4 @@ If the task description argument is omitted, the command will attempt to discove
 
 ## Arguments
 - `[task description]`: Optional description of the completed task. If omitted, the command attempts to discover context automatically.
-"""
+'''

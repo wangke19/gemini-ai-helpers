@@ -1,5 +1,5 @@
 description = "Review test cases for completeness, quality, and best practices - accepts file path or direct oc commands/test code"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:review-test-cases
@@ -65,4 +65,4 @@ The review follows established testing best practices from:
   - **File path**: Path to test file (shell script or Go test file)
   - **oc commands**: Set of oc CLI commands to review
   - **Test code**: Pasted test code (Ginkgo or shell script)
-"""
+'''

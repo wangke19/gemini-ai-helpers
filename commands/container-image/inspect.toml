@@ -1,5 +1,5 @@
 description = "Inspect and provide detailed breakdown of a container image"
-prompt = """
+prompt = '''
 
 ## Name
 container-image:inspect
@@ -311,4 +311,4 @@ LAYER DETAILS (amd64):
     - `quay.io/openshift/origin-node:latest`
     - `docker.io/library/alpine:3.18`
     - `registry.redhat.io/ubi9/ubi@sha256:abc123...`
-"""
+'''

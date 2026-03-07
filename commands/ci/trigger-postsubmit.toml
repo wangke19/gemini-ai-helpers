@@ -1,5 +1,5 @@
 description = "Trigger a postsubmit gangway job with repository refs"
-prompt = """
+prompt = '''
 
 ## Name
 ci:trigger-postsubmit
@@ -160,4 +160,4 @@ The command performs the following steps:
 - **$4** (base-ref): Base branch/ref (e.g., "release-4.12", "master") (required)
 - **$5** (base-sha): Base commit SHA hash (required)
 - **$6-$N** (ENV_VAR=value): Optional environment variable overrides in KEY=VALUE format
-"""
+'''

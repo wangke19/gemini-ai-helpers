@@ -1,5 +1,5 @@
 description = "Query and summarize JIRA bugs for a specific project with counts by component"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -332,4 +332,4 @@ For each component:
 - Script: `plugins/teams/skills/summarize-jiras/summarize_jiras.py`
 - Related Command: `/teams:list-jiras` (for raw JIRA data)
 - Related Command: `/teams:health-check` (for combined health analysis)
-"""
+'''

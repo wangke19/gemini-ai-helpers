@@ -1,5 +1,5 @@
 description = "Review Kubernetes CRDs against Kubernetes and OpenShift API conventions"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:crd-review
@@ -274,4 +274,4 @@ type MySpec struct {
 - [OpenShift API Conventions](https://github.com/openshift/enhancements/blob/master/dev-guide/api-conventions.md)
 - [Kubebuilder Documentation](https://book.kubebuilder.io/)
 - [Controller Runtime API](https://pkg.go.dev/sigs.k8s.io/controller-runtime)
-"""
+'''

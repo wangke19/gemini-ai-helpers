@@ -1,5 +1,5 @@
 description = "Analyzes test errors from console logs and Prow CI job artifacts"
-prompt = """
+prompt = '''
 
 ## Name
 ci:analyze-prow-job-test-failure
@@ -87,4 +87,4 @@ The skill handles all the implementation details including:
 - $2: Test name (required)
 - $3: Optional flags:
   - `--fast` - Skip must-gather extraction and analysis for faster results
-"""
+'''

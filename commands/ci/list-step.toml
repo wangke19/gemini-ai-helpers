@@ -1,5 +1,5 @@
 description = "List the step for the given workflow or chain name"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -119,4 +119,4 @@ testing, and complete infrastructure lifecycle management.
 
 ## Arguments
 - $1 (workflow-or-chain-name): The name of the OpenShift CI workflow or chain to analyze (required)
-"""
+'''

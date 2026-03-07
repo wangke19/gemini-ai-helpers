@@ -1,5 +1,5 @@
 description = "Suggest appropriate reviewers for a PR based on git blame and OWNERS files"
-prompt = """
+prompt = '''
 
 ## Name
 git:suggest-reviewers
@@ -352,4 +352,4 @@ python3 ${GEMINI_EXTENSION_ROOT}/skills/suggest-reviewers/analyze_blame.py \
 - OWNERS membership provides a bonus but is not the primary ranking factor
 - If no reviewers are found via git blame, OWNERS members will be suggested as fallback
 - If you're on the base branch with no uncommitted changes, the command will display an error
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Analyze a JIRA issue and create a pull request to solve it."
-prompt = """
+prompt = '''
 
 ## Name
 jira:solve
@@ -143,4 +143,4 @@ This command takes a JIRA URL, fetches the issue description and requirements, a
 - $3: Optional `--ci` flag for non-interactive CI automation mode. When set, skips all user prompts and proceeds automatically.
 
 The command will provide progress updates and create a comprehensive solution addressing all requirements from the JIRA issue.
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Query the status of a gangway job execution by ID"
-prompt = """
+prompt = '''
 
 ## Name
 ci:query-job-status
@@ -98,4 +98,4 @@ The command performs the following steps:
 
 ## Arguments
 - **$1** (execution-id): The UUID execution ID returned when a job was triggered (required)
-"""
+'''

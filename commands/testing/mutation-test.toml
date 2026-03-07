@@ -1,5 +1,5 @@
 description = "Test operator controller quality through mutation testing - validates test suite catches code mutations"
-prompt = """
+prompt = '''
 
 ## Name
 testing:mutation-test
@@ -685,4 +685,4 @@ Test operator in different directory:
 - [Mutation Testing: A Comprehensive Survey](https://ieeexplore.ieee.org/document/5487526)
 - [controller-runtime Testing Guide](https://book.kubebuilder.io/cronjob-tutorial/writing-tests.html)
 - [Google Testing Blog: Mutation Testing](https://testing.googleblog.com/2021/04/mutation-testing.html)
-"""
+'''

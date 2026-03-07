@@ -1,5 +1,5 @@
 description = "Show current branch, git status, and recent commits for quick context"
-prompt = """
+prompt = '''
 
 ## Name
 git:summary
@@ -98,4 +98,4 @@ git diff --stat
 
 ## Arguments:
 - None
-"""
+'''

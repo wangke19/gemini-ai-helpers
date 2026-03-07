@@ -1,5 +1,5 @@
 description = "Identify E2E test scenario gaps in OpenShift/Kubernetes tests (component-agnostic)"
-prompt = """
+prompt = '''
 
 ## Name
 test-coverage:gaps
@@ -276,4 +276,4 @@ The command will check for required tools and suggest installation if missing.
 ## See Also
 
 - `/test-coverage:analyze` - Analyze test structure and organization
-"""
+'''

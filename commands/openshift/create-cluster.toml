@@ -1,5 +1,5 @@
 description = "Extract OpenShift installer from release image and create an OCP cluster"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:create-cluster
@@ -576,4 +576,4 @@ cd $INSTALL_DIR
 
 - **$1** (release-image): OpenShift release image to extract the installer from (e.g., `quay.io/openshift-release-dev/ocp-release:4.21.0-ec.2-x86_64`)
 - **$2** (platform): Target cloud platform for cluster deployment (aws, azure, gcp, vsphere, openstack, none)
-"""
+'''

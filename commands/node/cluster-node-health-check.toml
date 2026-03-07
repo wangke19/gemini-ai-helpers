@@ -1,5 +1,5 @@
 description = "Perform comprehensive health check on cluster nodes and report kubelet, CRI-O, and node-level issues"
-prompt = """
+prompt = '''
 
 ## Name
 node:cluster-node-health-check
@@ -756,4 +756,4 @@ kubectl debug node/<node-name> -- chroot /host openssl x509 -in /var/lib/kubelet
 - The command provides diagnostic guidance but does not automatically remediate issues
 - Regular health checks help catch node issues before they impact workloads
 - Node-level issues can cascade to affect pod scheduling and cluster capacity
-"""
+'''

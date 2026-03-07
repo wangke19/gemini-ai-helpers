@@ -1,5 +1,5 @@
 description = "List installed operators in the cluster"
-prompt = """
+prompt = '''
 
 ## Name
 olm:list
@@ -169,4 +169,4 @@ The command performs the following steps:
 
 ## Additional Resources
 - [Operator Lifecycle Manager Documentation](https://olm.operatorframework.io/)
-"""
+'''

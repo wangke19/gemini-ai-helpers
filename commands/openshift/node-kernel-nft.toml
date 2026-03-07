@@ -1,5 +1,5 @@
 description = "Inspect nftables packet filtering and classification rules on Kubernetes node"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:node-kernel-nft
@@ -321,4 +321,4 @@ Nftables offers better performance than iptables:
 - `/openshift:node-kernel-ip` - Inspect network interfaces and routing
 - [nftables wiki](https://wiki.nftables.org/)
 - [nftables manual](https://www.netfilter.org/projects/nftables/manpage.html)
-"""
+'''

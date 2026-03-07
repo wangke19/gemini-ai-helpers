@@ -1,5 +1,5 @@
 description = "Categorize JIRA tickets into activity types using AI"
-prompt = """
+prompt = '''
 
 ## Name
 jira:categorize-activity-type
@@ -216,4 +216,4 @@ mcp__atlassian__jira_update_issue(
 - **Read and write permissions**: User must have permission to view and edit the specified JIRA issue
 - **AI-powered**: Categorization uses LLM reasoning, not simple rule matching
 - **Confidence scoring**: High confidence triggers auto-apply (with flag), Medium/Low always prompts
-"""
+'''

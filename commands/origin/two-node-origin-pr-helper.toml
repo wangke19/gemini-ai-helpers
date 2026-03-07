@@ -1,5 +1,5 @@
 description = "Expert review tool for PRs that add or modify Two Node (Fencing or Arbiter) tests under test/extended/two_node/ in openshift/origin."
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -170,4 +170,4 @@ Respect --depth only:
 ## Example 2 — Two Node Arbiter recovery tests
 
 /origin:two-node-origin-pr-helper --url <https://github.com/openshift/origin/pull/XXXXX> --depth quick
-"""
+'''

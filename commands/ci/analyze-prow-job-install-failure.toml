@@ -1,5 +1,5 @@
 description = "Analyze OpenShift installation failures in Prow CI jobs"
-prompt = """
+prompt = '''
 
 ## Name
 ci:analyze-prow-job-install-failure
@@ -141,4 +141,4 @@ The skill handles all the implementation details including URL parsing, artifact
 
 ## Arguments
 - **$1** (prowjob-url): The Prow job URL from prow.ci.openshift.org (required)
-"""
+'''

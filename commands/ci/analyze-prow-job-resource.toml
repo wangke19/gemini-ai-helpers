@@ -1,5 +1,5 @@
 description = "Analyze Kubernetes resource lifecycle in Prow job artifacts"
-prompt = """
+prompt = '''
 
 ## Name
 ci:analyze-prow-job-resource
@@ -24,4 +24,4 @@ Pass the user's request to the skill, which will:
 - Generate an interactive HTML report with timeline visualization
 
 The skill handles all the implementation details including URL parsing, artifact downloading, log parsing, and HTML report generation.
-"""
+'''

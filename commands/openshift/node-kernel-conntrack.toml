@@ -1,5 +1,5 @@
 description = "Get connection tracking entries from Kubernetes node"
-prompt = """
+prompt = '''
 
 ## Name
 openshift:node-kernel-conntrack
@@ -167,4 +167,4 @@ The debug pod might not have sufficient privileges.
 - `/openshift:node-kernel-nft` - Inspect nftables configuration
 - `/openshift:node-kernel-ip` - Inspect network interfaces and routing
 - [Netfilter conntrack documentation](https://www.netfilter.org/documentation/)
-"""
+'''

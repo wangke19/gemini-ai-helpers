@@ -1,5 +1,5 @@
 description = "List unstable tests with pass rate below 95%"
-prompt = """
+prompt = '''
 
 ## Name
 ci:list-unstable-tests
@@ -186,4 +186,4 @@ Tests Below 95% Pass Rate (sorted by worst first):
 - Sippy UI (Production): https://sippy.dptools.openshift.org/sippy-ng/
 - Sippy UI (QE): https://qe-component-readiness.dptools.openshift.org
 - Sippy API Documentation: https://github.com/openshift/sippy
-"""
+'''

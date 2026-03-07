@@ -1,5 +1,5 @@
 description = "Generate a status rollup comment for any JIRA issue based on all child issues and a given date range"
-prompt = """
+prompt = '''
 
 ## Name
 jira:status-rollup
@@ -232,4 +232,4 @@ _Generated with [Gemini CLI|https://gemini.google.com] via {{/jira:status-rollup
 
 - **Shared skill**: `plugins/jira/skills/status-analysis/SKILL.md`
 - **Batch updates**: `/jira:update-weekly-status` - Update Status Summary field for multiple issues
-"""
+'''

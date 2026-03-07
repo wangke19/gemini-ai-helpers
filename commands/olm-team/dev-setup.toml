@@ -1,5 +1,5 @@
 description = "Set up OLM development repositories and onboard to the team"
-prompt = """
+prompt = '''
 
 ## Name
 olm-team:dev-setup
@@ -320,4 +320,4 @@ Creates standard Go workspace layout:
 5. **Keeping Forks Updated**: The command sets up remotes but doesn't automatically sync forks. Use the provided git commands in the summary to keep your forks up to date with upstream.
 
 6. **Build Requirements**: Each repository may have specific build requirements (Go version, dependencies, etc.). Check each repository's README.md for detailed build instructions.
-"""
+'''

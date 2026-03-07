@@ -1,5 +1,5 @@
 description = "Delete Gateway API resources from a Kubernetes/OpenShift cluster"
-prompt = """
+prompt = '''
 
 ## Name
 gwapi:delete
@@ -144,4 +144,4 @@ The command uses `oc` (preferred) or `kubectl` to delete the resources safely. I
 - Provides clear error messages for troubleshooting
 - Verifies deletion was successful
 - Warns about attached routes that may be impacted
-"""
+'''

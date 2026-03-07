@@ -1,5 +1,5 @@
 description = "Bootstrap OpenShift Manager (OM) integration for OpenShift operators with automated resource discovery"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -459,4 +459,4 @@ Before considering OM integration complete:
 4. **Validate Early** - Build and test after each command stub/fill-in to catch issues immediately.
 
 The command should autonomously complete all steps from resource discovery through test infrastructure setup (if build-machinery-go is available), creating focused, logical commits that are easy to review.
-"""
+'''

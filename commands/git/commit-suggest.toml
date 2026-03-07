@@ -1,5 +1,5 @@
 description = "Generate Conventional Commits style commit messages or summarize existing commits"
-prompt = """
+prompt = '''
 
 ## Name
 git:commit-suggest
@@ -136,4 +136,4 @@ type(scope): description
 ## See Also
 - **`/git:summary`** – Display repository status and recent commits (read-only)
 - [Conventional Commits Specification](https://www.conventionalcommits.org/)
-"""
+'''

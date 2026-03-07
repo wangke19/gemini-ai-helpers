@@ -1,5 +1,5 @@
 description = "Analyze OVS data from sosreport (text files or database)"
-prompt = """
+prompt = '''
 
 ## Name
 sosreport:ovs-db
@@ -387,4 +387,4 @@ Tip: Run without --db to analyze text files only
 - **OVN Database Analysis**: `/must-gather:ovn-dbs` - For analyzing OVN Northbound/Southbound databases
 - **Sosreport Analysis**: `/sosreport:analyze` - Comprehensive sosreport analysis
 - **Network Analysis**: `/sosreport:analyze --only network` - Network-focused analysis
-"""
+'''

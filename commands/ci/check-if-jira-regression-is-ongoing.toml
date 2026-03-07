@@ -1,5 +1,5 @@
 description = "Check if the regression described in a Jira bug is still ongoing or has resolved"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -327,4 +327,4 @@ This command is useful for:
 - Related Skill: `fetch-test-runs` (`plugins/ci/skills/fetch-test-runs/SKILL.md`)
 - Related Skill: `fetch-releases` (`plugins/ci/skills/fetch-releases/SKILL.md`)
 - Related Skill: `list-regressions` (`plugins/teams/skills/list-regressions/SKILL.md`)
-"""
+'''

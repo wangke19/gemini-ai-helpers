@@ -1,5 +1,5 @@
 description = "Quick analysis of must-gather data - runs all analysis scripts and provides comprehensive cluster diagnostics"
-prompt = """
+prompt = '''
 
 ## Name
 must-gather:analyze
@@ -263,4 +263,4 @@ Logs to Review:
 
 - **$1** (must-gather-path): Optional. Path to the must-gather directory (the subdirectory with the hash name). If not provided, the user will be asked.
 - **$2+** (component): Optional. If keywords for a specific component are detected, only that component's analysis script will run. Otherwise, all scripts run.
-"""
+'''

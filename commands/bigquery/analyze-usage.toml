@@ -1,5 +1,5 @@
 description = "Analyze BigQuery usage and costs for a project"
-prompt = """
+prompt = '''
 
 ## Name
 bigquery:analyze-usage
@@ -214,4 +214,4 @@ Prioritized list of actions:
 - Verify queries have run in the specified timeframe
 - Check the region (try `region-us`, `US`, `EU`, etc.)
 - Ensure you're querying the right project
-"""
+'''

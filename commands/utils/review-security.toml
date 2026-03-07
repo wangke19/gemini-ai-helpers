@@ -1,5 +1,5 @@
 description = "Orchestrate security scanners and provide contextual triage of findings"
-prompt = """
+prompt = '''
 
 ## Name
 utils:review-security
@@ -337,4 +337,4 @@ The command provides platform-aware installation suggestions when tools are miss
 - Review AI triage reasoning - it may miss edge cases
 - Use in combination with peer code review, not as replacement
 - For compliance/audit needs, rely on deterministic tool output in CI/CD
-"""
+'''

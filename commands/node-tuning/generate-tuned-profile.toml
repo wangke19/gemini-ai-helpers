@@ -1,5 +1,5 @@
 description = "Generate a Tuned (tuned.openshift.io/v1) profile manifest for the Node Tuning Operator"
-prompt = """
+prompt = '''
 
 ## Name
 node-tuning:generate-tuned-profile
@@ -195,4 +195,4 @@ Use this workflow when enabling huge pages or other kernel boot parameters that 
 - **--label-node**: Apply labels to nodes using `NODE:KEY[=VALUE]` notation; repeatable.
 - **--overwrite-labels**: Allow overwriting existing labels when labeling nodes.
 - **--oc-binary**: Path to the `oc` executable (defaults to `$OC_BIN` or `oc`).
-"""
+'''

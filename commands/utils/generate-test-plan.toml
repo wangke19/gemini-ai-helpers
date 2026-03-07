@@ -1,5 +1,5 @@
 description = "Generate test steps for one or more related PRs"
-prompt = """
+prompt = '''
 
 ## Name
 utils:generate-test-plan
@@ -110,4 +110,4 @@ The 'utils:generate-test-plan' command takes one or more GitHub PR URLs, fetches
   - Multiple PRs: `/utils:generate-test-plan https://github.com/openshift/hypershift/pull/6888 https://github.com/openshift/hypershift/pull/6889`
 
 The command will provide a comprehensive manual testing guide that can be used by QE or developers to thoroughly test the PR changes. When multiple PRs are provided, the guide will include integrated test scenarios that verify the PRs work correctly together.
-"""
+'''

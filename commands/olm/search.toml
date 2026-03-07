@@ -1,5 +1,5 @@
 description = "Search for available operators in catalog sources"
-prompt = """
+prompt = '''
 
 ## Name
 olm:search
@@ -242,4 +242,4 @@ The command performs the following steps:
 
 - [OperatorHub.io](https://operatorhub.io/) - Browse operators online
 - [Operator Lifecycle Manager Documentation](https://olm.operatorframework.io/)
-"""
+'''

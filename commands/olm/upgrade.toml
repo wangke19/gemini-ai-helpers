@@ -1,5 +1,5 @@
 description = "Update an operator to the latest version or switch channels"
-prompt = """
+prompt = '''
 
 ## Name
 olm:upgrade
@@ -343,4 +343,4 @@ The command performs the following steps:
 - [Red Hat OpenShift: Updating Installed Operators](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-updating-operators)
 - [Red Hat OpenShift: Approving Operator Upgrades](https://docs.redhat.com/en/documentation/openshift_container_platform/4.20/html/operators/administrator-tasks#olm-approving-operator-upgrades_olm-updating-operators)
 - [Operator Lifecycle Manager Documentation](https://olm.operatorframework.io/)
-"""
+'''

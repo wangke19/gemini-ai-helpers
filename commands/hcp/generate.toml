@@ -1,5 +1,5 @@
 description = "Generate ready-to-execute hypershift cluster creation commands from natural language descriptions"
-prompt = """
+prompt = '''
 
 ## Name
 hcp:generate
@@ -353,4 +353,4 @@ cat plugins/hypershift/skills/hcp-create-aws/SKILL.md
 cat plugins/hypershift/skills/hcp-create-kubevirt/SKILL.md
 # ... etc for other providers
 ```
-"""
+'''

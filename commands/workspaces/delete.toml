@@ -1,5 +1,5 @@
 description = "Delete a workspace and its git worktrees"
-prompt = """
+prompt = '''
 
 ## Name
 workspaces:delete
@@ -110,4 +110,4 @@ ${GEMINI_EXTENSION_ROOT}/commands/delete/execute.sh {WORKSPACE_NAME} --delete-br
 **Case C: Exit code 1** (error)
 
 An error occurred (e.g., workspace not found, configuration issue). Report the error to the user.
-"""
+'''

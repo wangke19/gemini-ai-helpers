@@ -1,5 +1,5 @@
 description = "Analyze technical debt indicators in the repository"
-prompt = """
+prompt = '''
 
 ## Name
 git:debt-scan
@@ -201,4 +201,4 @@ echo -e "\n=== Commit Activity ===" && echo "Commits in last week: $(git log --s
 
 ## Arguments:
 - None
-"""
+'''

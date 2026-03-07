@@ -1,5 +1,5 @@
 description = "Rebase OpenShift fork of an upstream repository to a new upstream release."
-prompt = """
+prompt = '''
 
 ## Name
 openshift:rebase
@@ -142,4 +142,4 @@ Fail, if there is no `upstream`, `origin` or `openshift` remote.
     Previous rebase: <link to the previous rebase PR on github>
     ```
     When opening the PR, ALWAYS use `gh pr create --web --repo openshift/<repo-name>` to allow user edit the PR before creation.
-"""
+'''

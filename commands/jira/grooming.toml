@@ -1,5 +1,5 @@
 description = "Analyze new bugs and cards added over a time period and generate grooming meeting agenda"
-prompt = """
+prompt = '''
 
 ## Name
 jira:grooming
@@ -260,4 +260,4 @@ The command outputs a ready-to-use Markdown document that can be copied into Con
 ## See Also
 - `jira:status-rollup` - Status rollup reports
 - `jira:solve` - Issue solution generation
-"""
+'''

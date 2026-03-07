@@ -1,5 +1,5 @@
 description = "Hello world plugin implementation"
-prompt = """
+prompt = '''
 
 ## Name
 hello-world:echo
@@ -71,4 +71,4 @@ fi
 
 ## Arguments:
 - `$1`: The name to be printed "Hello ${1}"
-"""
+'''

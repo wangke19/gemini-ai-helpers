@@ -1,5 +1,5 @@
 description = "Query and summarize regression data for OpenShift releases with counts and metrics"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -318,4 +318,4 @@ For each component (from `components.*.summary`):
 - Related Command: `/teams:list-regressions` (for raw regression data)
 - Related Command: `/teams:health-check` (for health grading and analysis)
 - Related Skill: `get-release-dates` (for fetching development window dates)
-"""
+'''

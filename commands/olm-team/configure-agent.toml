@@ -1,5 +1,5 @@
 description = "Configure the k8s-ocp-olm-expert agent with local repository paths"
-prompt = """
+prompt = '''
 
 ## Name
 olm-team:configure-agent
@@ -477,4 +477,4 @@ None. The command is interactive and will prompt for any needed information.
 - `/olm-team:dev-setup` - Automated repository setup and configuration
 - `plugins/olm-team/skills/k8s-ocp-olm-expert/README.md` - Agent documentation
 - `plugins/olm-team/skills/k8s-ocp-olm-expert/config-example.json` - Example configuration file
-"""
+'''

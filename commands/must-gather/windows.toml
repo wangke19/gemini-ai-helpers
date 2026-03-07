@@ -1,5 +1,5 @@
 description = "Analyze Windows node logs and issues in must-gather data"
-prompt = """
+prompt = '''
 
 ## Name
 must-gather:windows
@@ -248,4 +248,4 @@ CONTAINERD ERRORS (6):
 - **--component COMPONENT**: Optional. Analyze only a specific component (kubelet, containerd, hybrid-overlay, kube-proxy, wicd, csi-proxy).
 - **--errors-only**: Optional. Show summary and detected issues only, skip detailed error listings.
 - **--max-errors N**: Optional. Maximum number of errors to collect per log file (default: 50).
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Analyze and grade component health based on regression and JIRA bug metrics"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -419,4 +419,4 @@ If HTML report is generated:
 - Skill Documentation: `plugins/teams/skills/analyze-regressions/SKILL.md`
 - Script: `plugins/teams/skills/list-regressions/list_regressions.py`
 - Script: `plugins/teams/skills/summarize-jiras/summarize_jiras.py`
-"""
+'''

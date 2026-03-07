@@ -1,5 +1,5 @@
 description = "Run golangci-lint tool and fix all reported issues"
-prompt = """
+prompt = '''
 
 ## Name
 golang:lint-fix
@@ -102,4 +102,4 @@ Run the "Go Lint" skill one last time to confirm all issues are resolved (0 issu
 
 - **$1** (flags): Optional. Arbitrary flags to be passed to the golangci-lint utility.
   - These flags are passed through to the "Go Lint" skill and chained onto the `golangci-lint` invocation.
-"""
+'''

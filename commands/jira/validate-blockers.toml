@@ -1,5 +1,5 @@
 description = "Validate proposed release blockers using Red Hat OpenShift release blocker criteria"
-prompt = """
+prompt = '''
 
 ## Name
 jira:validate-blockers
@@ -193,4 +193,4 @@ Bugs with severity below Important are never blockers. This is a cosmetic issue 
 - No JIRA credentials required for read operations (public Red Hat JIRA issues)
 - Access to JIRA projects (OCPBUGS)
 - Permission to search and view issues in target projects
-"""
+'''

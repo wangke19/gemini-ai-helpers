@@ -1,5 +1,5 @@
 description = "Backport commits to multiple branches"
-prompt = """
+prompt = '''
 
 ## Name
 git:backport
@@ -111,4 +111,4 @@ The command is interactive and waits for user input when conflicts occur and **R
 - $1: Commit hash or reference to backport (required)
 - $2+: Target branch names to backport to (space-separated, at least one required)
 - `--new-branch` or `-b`: Create a new branch from each target branch before cherry-picking (optional flag)
-"""
+'''

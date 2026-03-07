@@ -1,5 +1,5 @@
 description = "Query and list raw JIRA bug data for a specific project"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -331,4 +331,4 @@ The command outputs **raw JIRA issue data** in JSON format with the following st
 - Script: `plugins/component-health/skills/list-jiras/list_jiras.py`
 - Related Command: `/teams:summarize-jiras` (for summary statistics)
 - Related Command: `/teams:analyze`
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Ask the Sippy AI agent questions about OpenShift CI payloads, jobs, and test results"
-prompt = """
+prompt = '''
 
 ## Name
 ci:ask-sippy
@@ -121,4 +121,4 @@ Sippy can query and analyze:
 
 ## Arguments
 - **$1** (question): The question to ask the Sippy AI agent. Should be a clear, specific question about OpenShift CI infrastructure, payloads, jobs, or test results.
-"""
+'''

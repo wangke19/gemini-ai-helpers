@@ -1,5 +1,5 @@
 description = "Interactive git bisect assistant with pattern detection and automation"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -509,4 +509,4 @@ If user requests abort at any point:
 - If no arguments are provided, the command will show recent history and ask you to select commits
 - If only one argument is provided, the command will ask which one it represents (good or bad)
 - Commit references can be: hashes, tags, branch names, HEAD, HEAD~N, etc.
-"""
+'''

@@ -1,5 +1,5 @@
 description = "Analyze Go codebase for CVE vulnerabilities and suggest fixes"
-prompt = """
+prompt = '''
 
 ## Name
 compliance:analyze-cve
@@ -175,4 +175,4 @@ go install golang.org/x/tools/cmd/digraph@latest
 - Falls back to user-provided information if internet access fails
 - Does NOT make changes without explicit user approval
 - Reports are saved locally and not committed to git
-"""
+'''

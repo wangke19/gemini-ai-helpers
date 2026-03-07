@@ -1,5 +1,5 @@
 description = "Trigger a presubmit gangway job (typically use GitHub Prow commands instead)"
-prompt = """
+prompt = '''
 
 ## Name
 ci:trigger-presubmit
@@ -180,4 +180,4 @@ The command performs the following steps:
 - **$6** (pr-number): Pull request number (required)
 - **$7** (pr-sha): Pull request head commit SHA (required)
 - **$8-$N** (ENV_VAR=value): Optional environment variable overrides in KEY=VALUE format
-"""
+'''

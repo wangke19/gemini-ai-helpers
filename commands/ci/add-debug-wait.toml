@@ -1,5 +1,5 @@
 description = "Add a wait step to a CI workflow for debugging test failures"
-prompt = """
+prompt = '''
 
 ## Name
 ci:add-debug-wait
@@ -619,4 +619,4 @@ Consider adding companion commands:
 - `/ci:close-debug-pr` - Lists open debug PRs, prompts for findings, closes PR
 - `/ci:list-debug-prs` - Show all open debug PRs
 - `/ci:revert-debug-pr` - Revert a debug PR that was merged by mistake
-"""
+'''

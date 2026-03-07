@@ -1,5 +1,5 @@
 description = "Adapt and correct a PR description to match its code diffs and commit messages"
-prompt = """
+prompt = '''
 
 ## Name
 git:redescribe
@@ -123,4 +123,4 @@ Output:
 
 ## Arguments
 - **[pr-url]** (optional): The full URL of the Pull Request to analyze. If omitted, attempts to use the PR for the current checked-out branch.
-"""
+'''

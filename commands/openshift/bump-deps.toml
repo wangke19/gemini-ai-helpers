@@ -1,5 +1,5 @@
 description = "Bump dependencies in OpenShift projects with automated analysis and PR creation"
-prompt = """
+prompt = '''
 
 ## Name
 
@@ -418,4 +418,4 @@ The command handles common error cases:
 - `utils:process-renovate-pr` - Process existing Renovate dependency PRs
 - `git:create-pr` - General PR creation command
 - `jira:create` - Manual Jira ticket creation
-"""
+'''
