@@ -4,55 +4,27 @@ A collection of Gemini CLI extensions to automate and assist with various develo
 
 ## Installation
 
-### From the Gemini CLI Extension Marketplace
+### Install the entire collection
 
-1. **Add the marketplace:**
-   ```bash
-   /extension marketplace add wangke19/gemini-ai-helpers
-   ```
+Run the following command in your terminal:
 
-2. **Install an extension:**
-   ```bash
-   /extension install jira@gemini-ai-helpers
-   ```
+```bash
+gemini extensions install https://github.com/wangke19/gemini-ai-helpers
+```
 
-3. **Use the commands:**
-   ```bash
-   /jira:solve OCPBUGS-12345 origin
-   ```
+### Use the commands
+
+```bash
+/jira:solve OCPBUGS-12345 origin
+```
 
 ## Updating Extensions
 
-To get the latest extension versions:
+To get the latest extension versions, reinstall from the repository:
 
-1. **Update the marketplace** (fetches latest extension catalog):
-   ```bash
-   /extension marketplace update gemini-ai-helpers
-   ```
-
-2. **Reinstall the extension** (downloads new version):
-   ```bash
-   /extension install <extension>@gemini-ai-helpers
-   ```
-
-### Automatic Catalog Sync
-
-Add a SessionStart hook to automatically sync the marketplace catalog on each session. In your project's `.gemini/settings.json`:
-
-```json
-{
-  "hooks": {
-    "SessionStart": [
-      {
-        "command": "gemini extension marketplace update gemini-ai-helpers",
-        "timeout": 30000
-      }
-    ]
-  }
-}
+```bash
+gemini extensions install https://github.com/wangke19/gemini-ai-helpers
 ```
-
-**Note:** This only refreshes the catalog (what's available). To actually update an installed extension to a newer version, you still need to reinstall it with `/extension install <extension>@gemini-ai-helpers`.
 
 ### Using Cursor
 
