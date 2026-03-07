@@ -1,0 +1,25 @@
+{
+  "description": "Native macOS/Linux Notifications",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v osascript &>/dev/null; then osascript -e 'display notification \"Gemini needs your input\" with title \"🔔 Gemini CLI\"'; elif command -v notify-send &>/dev/null; then notify-send '🔔 Gemini CLI' 'Gemini needs your input'; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v osascript &>/dev/null; then osascript -e 'display notification \"Gemini finished your task\" with title \"✅ Gemini CLI\"'; elif command -v notify-send &>/dev/null; then notify-send '✅ Gemini CLI' 'Gemini finished your task'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
