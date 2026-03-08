@@ -68,6 +68,18 @@ When analyzing failures in "metal-ipi-ovn-ipv6" jobs:
    - The `test-platform-results` bucket is publicly accessible
    - No authentication is required for read access
 
+## File Download Policy
+
+All file downloads MUST follow this pattern — no exceptions:
+
+1. **First attempt**: `gsutil cp <src> <dst>`
+2. **Second attempt** (only if first fails): `gsutil cp <src> <dst>`
+3. **Fallback** (only if both gsutil attempts fail): `gcloud storage cp <src> <dst> --no-user-output-enabled`
+
+**STOP using `gsutil` after 2 failures for that file. Switch to `gcloud storage cp` immediately.**
+
+Apply this to every download: single files, recursive copies, and glob patterns. For listing operations, always use `gcloud storage ls -r` directly.
+
 ## Input Format
 
 The user will provide:
