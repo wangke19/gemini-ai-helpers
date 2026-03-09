@@ -6,35 +6,30 @@ A collection of Gemini CLI extensions to automate and assist with various develo
 
 ### Install the entire collection
 
-Run the following command in your terminal:
+Run the following command inside your Gemini CLI session:
 
-```bash
+```
 gemini extensions install https://github.com/wangke19/gemini-ai-helpers
+```
+
+Or using SSH:
+
+```
+gemini extensions install git@github.com:wangke19/gemini-ai-helpers
 ```
 
 ### Use the commands
 
-```bash
+```
 /jira:solve OCPBUGS-12345 origin
 ```
 
 ## Updating Extensions
 
-To get the latest extension versions, reinstall from the repository:
-
-```bash
-gemini extensions install https://github.com/wangke19/gemini-ai-helpers
-```
-
-### Using Cursor
-
-Cursor is able to find the various commands defined in this repo by
-making it available inside your `~/.cursor/commands` directory.
+To get the latest extension versions:
 
 ```
-$ mkdir -p ~/.cursor/commands
-$ git clone git@github.com:wangke19/gemini-ai-helpers.git
-$ ln -s gemini-ai-helpers ~/.cursor/commands/gemini-ai-helpers
+gemini extensions update gemini-ai-helpers
 ```
 
 ## Available Extensions
