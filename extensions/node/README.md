@@ -145,13 +145,13 @@ The plugin can detect and report:
 # Clone the repository
 git clone https://github.com/openshift-eng/ai-helpers.git
 
-# Link to Gemini CLI extensions directory
-ln -s $(pwd)/gemini-ai-helpers/extensions/node ~/.gemini/extensions/node
+# Link to Gemini CLI plugins directory
+ln -s $(pwd)/ai-helpers/extensions/node ~/.claude/extensions/node
 ```
 
 ## Contributing
 
-Contributions are welcome! Please see the main [GEMINI.md](../../GEMINI.md) for plugin development guidelines.
+Contributions are welcome! Please see the main [CLAUDE.md](../../CLAUDE.md) for plugin development guidelines.
 
 ## License
 
