@@ -96,7 +96,7 @@ See [commands/tags.md](commands/tags.md) for full documentation.
 
 ## Installation
 
-### From the Gemini CLI Extension Marketplace
+### From the Gemini CLI Plugin Marketplace
 
 1. **Add the marketplace** (if not already added):
    ```bash
@@ -282,9 +282,9 @@ Authentication is typically stored at `~/.docker/config.json` or `${XDG_RUNTIME_
 ## Plugin Structure
 
 ```
-plugins/container-image/
-├── .gemini-extension/
-│   └── plugin.json          # Plugin metadata
+extensions/container-image/
+├── .claude-plugin/
+│   └── extension.json          # Plugin metadata
 ├── commands/
 │   ├── inspect.md           # Image inspection command
 │   ├── compare.md           # Image comparison command
@@ -300,7 +300,7 @@ To add a new command to this plugin:
 
 1. Create a new markdown file in `commands/`:
    ```bash
-   touch plugins/container-image/commands/your-command.md
+   touch extensions/container-image/commands/your-command.md
    ```
 
 2. Follow the structure from existing commands (see `commands/inspect.md`)
