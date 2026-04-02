@@ -45,7 +45,7 @@ This command uses the `ote-migration-workflow` skill which provides detailed ste
 To execute this command:
 
 1. **Invoke the skill** to get detailed implementation instructions:
-   - The skill is located at: `plugins/ote-migration/skills/ote-migration-workflow/SKILL.md`
+   - The skill is located at: `extensions/ote-migration/skills/ote-migration-workflow/SKILL.md`
    - Follow the skill's 8-phase workflow exactly as documented
 
 2. **The workflow phases are:**
@@ -143,6 +143,6 @@ This command takes no arguments. All configuration is collected interactively du
 
 ## See Also
 
-- Plugin README: `plugins/ote-migration/README.md`
-- Implementation skill: `plugins/ote-migration/skills/ote-migration-workflow/SKILL.md`
+- Plugin README: `extensions/ote-migration/README.md`
+- Implementation skill: `extensions/ote-migration/skills/ote-migration-workflow/SKILL.md`
 - OTE Framework: <https://github.com/openshift-eng/openshift-tests-extension>
