@@ -12,7 +12,7 @@ This helps maintainers understand usage patterns and make data-driven decisions 
 
 ## How It Works
 
-The plugin uses Gemini CLI's hook system to automatically track usage:
+The plugin uses Gemini CLI's [hook system](https://docs.claude.com/en/docs/claude-code/hooks) to automatically track usage:
 
 ### Event Tracking (Slash Commands & Skills)
 
@@ -33,7 +33,7 @@ The plugin uses Gemini CLI's hook system to automatically track usage:
 
 ### Hook Configuration
 
-The plugin is defined in `plugins/metrics/hooks/hooks.json`:
+The plugin is defined in `extensions/metrics/hooks/hooks.json`:
 
 ```json
 {
@@ -91,7 +91,7 @@ Collected when you use a slash command or invoke a skill:
 |-------|-------------|---------|
 | `type` | Metric type | `"slash_command"` or `"skill"` |
 | `name` | The command or skill name | `"jira:solve"` or `"ci:prow-job-analyze-install-failure"` |
-| `engine` | Always "gemini" | `"gemini"` |
+| `engine` | Always "claude" | `"claude"` |
 | `version` | Plugin version | `"1.0"` |
 | `timestamp` | UTC timestamp | `"2025-10-30T12:34:56Z"` |
 | `session_id` | Gemini session identifier | `"abc123..."` |
@@ -116,7 +116,7 @@ Slash command:
 {
   "type": "slash_command",
   "name": "jira:solve",
-  "engine": "gemini",
+  "engine": "claude",
   "version": "1.0",
   "timestamp": "2025-10-30T12:34:56Z",
   "session_id": "abc123...",
@@ -132,7 +132,7 @@ Skill invocation:
 {
   "type": "skill",
   "name": "ci:prow-job-analyze-install-failure",
-  "engine": "gemini",
+  "engine": "claude",
   "version": "1.0",
   "timestamp": "2025-10-30T12:34:56Z",
   "session_id": "abc123...",
@@ -152,7 +152,7 @@ Collected when your Gemini CLI session ends:
 | `session_id` | Session identifier | `"abc123..."` |
 | `user_id` | Persistent anonymous UUID | `"550e8400-e29b-41d4-a716-446655440000"` |
 | `os` | Operating system | `"darwin"`, `"linux"`, `"windows"` |
-| `engine` | Always "gemini" | `"gemini"` |
+| `engine` | Always "claude" | `"claude"` |
 | `start_timestamp` | Session start time (UTC) | `"2025-10-30T12:00:00Z"` |
 | `end_timestamp` | Session end time (UTC) | `"2025-10-30T14:30:00Z"` |
 | `session_duration` | Duration in seconds | `9000` |
@@ -188,7 +188,7 @@ Collected when your Gemini CLI session ends:
   "session_id": "abc123...",
   "user_id": "550e8400-e29b-41d4-a716-446655440000",
   "os": "darwin",
-  "engine": "gemini",
+  "engine": "claude",
   "start_timestamp": "2025-10-30T12:00:00Z",
   "end_timestamp": "2025-10-30T14:30:00Z",
   "session_duration": 9000,
@@ -238,28 +238,28 @@ If you wish to opt out of metrics collection:
 
 The plugin can be configured using environment variables:
 
-### `GEMINI_METRICS_URL`
+### `CLAUDE_METRICS_URL`
 
 Override the metrics endpoint URL (useful for testing or custom deployments):
 
 ```bash
-export GEMINI_METRICS_URL=https://localhost:8080/metrics
+export CLAUDE_METRICS_URL=https://localhost:8080/metrics
 ```
 
 The plugin will automatically append `/events` for event metrics and `/sessions` for session metrics.
 
 **Default**: `https://us-central1-openshift-ci-data-analysis.cloudfunctions.net/metrics-upload`
 
-### `GEMINI_METRICS_VERBOSE`
+### `CLAUDE_METRICS_VERBOSE`
 
 Enable verbose logging to see all metrics activity in the log file:
 
 ```bash
-export GEMINI_METRICS_VERBOSE=1
+export CLAUDE_METRICS_VERBOSE=1
 # or
-export GEMINI_METRICS_VERBOSE=true
+export CLAUDE_METRICS_VERBOSE=true
 # or
-export GEMINI_METRICS_VERBOSE=yes
+export CLAUDE_METRICS_VERBOSE=yes
 ```
 
 **Logging behavior:**
@@ -302,10 +302,10 @@ Data sent: {
 
 All metrics collection logic is open source and available in this repository:
 
-- **Hook definition**: `plugins/metrics/hooks/hooks.json`
-- **Event collection script**: `plugins/metrics/scripts/send_metrics.py`
-- **Session collection script**: `plugins/metrics/scripts/send_session_metrics.py`
-- **Plugin metadata**: `extensions/metrics/.gemini-extension/extension.json`
+- **Hook definition**: `extensions/metrics/hooks/hooks.json`
+- **Event collection script**: `extensions/metrics/scripts/send_metrics.py`
+- **Session collection script**: `extensions/metrics/scripts/send_session_metrics.py`
+- **Plugin metadata**: `extensions/metrics/.claude-plugin/extension.json`
 
 ## Data Usage
 

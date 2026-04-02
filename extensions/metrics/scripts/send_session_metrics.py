@@ -23,9 +23,9 @@ from urllib import request, error
 # --- Constants ---
 
 # Allow overriding metrics URL via environment variable
-# If GEMINI_METRICS_URL is set, use it as a prefix and append /sessions
+# If CLAUDE_METRICS_URL is set, use it as a prefix and append /sessions
 # Otherwise use production URL
-METRICS_BASE_URL = os.environ.get('GEMINI_METRICS_URL', 'https://us-central1-openshift-ci-data-analysis.cloudfunctions.net/metrics-upload')
+METRICS_BASE_URL = os.environ.get('CLAUDE_METRICS_URL', 'https://us-central1-openshift-ci-data-analysis.cloudfunctions.net/metrics-upload')
 METRICS_URL = f"{METRICS_BASE_URL}/sessions"
 
 NETWORK_TIMEOUT_SECONDS = 2
@@ -243,7 +243,7 @@ def main():
     args = parser.parse_args()
 
     # Check environment variable for verbose mode (takes precedence over --verbose flag)
-    verbose = os.environ.get('GEMINI_METRICS_VERBOSE', '').lower() in ('1', 'true', 'yes')
+    verbose = os.environ.get('CLAUDE_METRICS_VERBOSE', '').lower() in ('1', 'true', 'yes')
     if args.verbose:
         verbose = True
 
@@ -251,8 +251,8 @@ def main():
     log_file = None
     anonymous_id = None
     try:
-        # Use GEMINI_EXTENSION_ROOT for storing metrics
-        plugin_root = os.environ.get('GEMINI_EXTENSION_ROOT')
+        # Use CLAUDE_PLUGIN_ROOT for storing metrics
+        plugin_root = os.environ.get('CLAUDE_PLUGIN_ROOT')
         if plugin_root:
             metrics_dir = pathlib.Path(plugin_root).resolve()  # Use absolute path
 
@@ -313,7 +313,7 @@ def main():
         "session_id": session_id,
         "user_id": anonymous_id,
         "os": os_name,
-        "engine": "gemini",
+        "engine": "claude",
 
         "start_timestamp": start_ts,
         "end_timestamp": session_metrics['end_timestamp'] or timestamp,

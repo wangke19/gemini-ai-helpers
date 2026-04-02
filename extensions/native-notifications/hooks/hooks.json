@@ -1,0 +1,25 @@
+{
+  "description": "Cross-platform desktop notifications (macOS, Linux desktop, Linux headless)",
+  "hooks": {
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v osascript >/dev/null 2>&1; then osascript -e 'display notification \"Gemini needs your input\" with title \"🔔 Gemini CLI\"'; elif command -v notify-send >/dev/null 2>&1 && [ -n \"${DISPLAY:-}${WAYLAND_DISPLAY:-}\" ]; then notify-send '🔔 Gemini CLI' 'Gemini needs your input'; else printf '\\a'; fi"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if command -v osascript >/dev/null 2>&1; then osascript -e 'display notification \"Gemini finished your task\" with title \"✅ Gemini CLI\"'; elif command -v notify-send >/dev/null 2>&1 && [ -n \"${DISPLAY:-}${WAYLAND_DISPLAY:-}\" ]; then notify-send '✅ Gemini CLI' 'Gemini finished your task'; else printf '\\a'; fi"
+          }
+        ]
+      }
+    ]
+  }
+}
