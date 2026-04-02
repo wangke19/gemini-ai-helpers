@@ -2,6 +2,8 @@
 
 A collection of Gemini CLI extensions to automate and assist with various development tasks.
 
+> **Note:** This library was migrated from [openshift-eng/ai-helpers](https://github.com/openshift-eng/ai-helpers). The migration is synchronized approximately every two weeks. We cannot guarantee that all extensions will be fully compatible or available at any given time. If you encounter any issues or have suggestions, please feel free to submit a PR.
+
 ## Installation
 
 ### Install the entire collection
