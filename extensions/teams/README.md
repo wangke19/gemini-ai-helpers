@@ -192,7 +192,7 @@ The plugin maintains a committed mapping file (`team_component_map.json`) that c
 
 **To update the mapping**:
 1. Submit PRs to the org repository to correct team/component assignments
-2. After merge, regenerate: `python3 plugins/teams/generate_team_component_map.py`
+2. After merge, regenerate: `python3 extensions/teams/generate_team_component_map.py`
 3. Commit the updated mapping file
 
 ## Installation
@@ -226,7 +226,8 @@ ln -s ai-helpers ~/.cursor/commands/ai-helpers
 2. **Network Access**: Required to reach component health API and JIRA
 3. **JIRA Authentication** (for bug analysis):
    - `JIRA_URL`: Your JIRA instance URL
-   - `JIRA_PERSONAL_TOKEN`: Your JIRA bearer token
+   - `JIRA_API_TOKEN`: Your Jira API token
+   - `JIRA_USERNAME`: Your Jira email address
 
 ## Use Cases
 

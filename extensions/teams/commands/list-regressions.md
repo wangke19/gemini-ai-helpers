@@ -46,7 +46,7 @@ This command is useful for:
 
    - Run list_components.py to get all available components:
      ```bash
-     python3 plugins/component-health/skills/list-components/list_components.py --release <release>
+     python3 extensions/component-health/skills/list-components/list_components.py --release <release>
      ```
    - If `--components` was provided:
      - For each search string, find all components containing that string (case-insensitive)
@@ -59,14 +59,14 @@ This command is useful for:
 
 4. **Fetch Release Dates** (if date filtering needed): Run the get_release_dates.py script
 
-   - Script location: `plugins/component-health/skills/get-release-dates/get_release_dates.py`
+   - Script location: `extensions/component-health/skills/get-release-dates/get_release_dates.py`
    - Pass release as `--release` argument
    - Extract `development_start` and `ga` dates from JSON output
    - Use these dates for `--start` and `--end` parameters if not explicitly provided
 
 5. **Execute Python Script**: Run the list_regressions.py script
 
-   - Script location: `plugins/component-health/skills/list-regressions/list_regressions.py`
+   - Script location: `extensions/component-health/skills/list-regressions/list_regressions.py`
    - Pass release as `--release` argument
    - Pass resolved component names as `--components` argument
    - Pass `--start` date if filtering by start date
@@ -113,8 +113,8 @@ The command outputs **raw regression data** in JSON format with the following st
 - `summary.filtered_suspected_infra_regressions`: Count of infrastructure regressions filtered
 - `summary.time_to_triage_hrs_avg`: Average hours from opened to first triage
 - `summary.time_to_triage_hrs_max`: Maximum hours from opened to first triage
-- `summary.time_to_close_hrs_avg`: Average hours from opened to closed (closed only)
-- `summary.time_to_close_hrs_max`: Maximum hours from opened to closed (closed only)
+- `summary.time_to_resolve_hrs_avg`: Average hours from opened to triage resolved (closed triaged regressions only)
+- `summary.time_to_resolve_hrs_max`: Maximum hours from opened to triage resolved (closed triaged regressions only)
 - `summary.open`: Summary statistics for open regressions
   - `total`: Number of open regressions
   - `triaged`: Number of open regressions triaged
@@ -126,8 +126,7 @@ The command outputs **raw regression data** in JSON format with the following st
   - `triaged`: Number of closed regressions triaged
   - `triage_percentage`: Percentage of closed regressions triaged
   - `time_to_triage_hrs_avg`, `time_to_triage_hrs_max`: Triage timing metrics
-  - `time_to_close_hrs_avg`, `time_to_close_hrs_max`: Time to close metrics
-  - `time_triaged_closed_hrs_avg`, `time_triaged_closed_hrs_max`: Time from triage to close
+  - `time_to_resolve_hrs_avg`, `time_to_resolve_hrs_max`: Time to resolve metrics (regression opened to triage resolved)
 
 ### Per-Component Data
 
@@ -166,8 +165,8 @@ Each regression object (in `components.*.open` or `components.*.closed` arrays) 
     "filtered_suspected_infra_regressions": 8,
     "time_to_triage_hrs_avg": 68,
     "time_to_triage_hrs_max": 240,
-    "time_to_close_hrs_avg": 168,
-    "time_to_close_hrs_max": 480,
+    "time_to_resolve_hrs_avg": 168,
+    "time_to_resolve_hrs_max": 480,
     "open": { "total": 2, "triaged": 1, ... },
     "closed": { "total": 60, "triaged": 58, ... }
   },
@@ -317,7 +316,7 @@ Each regression object (in `components.*.open` or `components.*.closed` arrays) 
    - Check firewall and VPN settings if needed
 
 3. **API Configuration**: The API endpoint must be configured in the script
-   - Location: `plugins/component-health/skills/list-regressions/list_regressions.py`
+   - Location: `extensions/component-health/skills/list-regressions/list_regressions.py`
    - The script should have the correct API base URL
 
 ## Notes
@@ -335,8 +334,8 @@ Each regression object (in `components.*.open` or `components.*.closed` arrays) 
 
 ## See Also
 
-- Skill Documentation: `plugins/component-health/skills/list-regressions/SKILL.md`
-- Script: `plugins/component-health/skills/list-regressions/list_regressions.py`
+- Skill Documentation: `extensions/component-health/skills/list-regressions/SKILL.md`
+- Script: `extensions/component-health/skills/list-regressions/list_regressions.py`
 - Related Command: `/teams:summarize-regressions` (for summary statistics)
 - Related Command: `/teams:analyze` (for health grading and analysis)
 - Related Skill: `get-release-dates` (for fetching development window dates)

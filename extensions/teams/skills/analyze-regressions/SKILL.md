@@ -34,10 +34,10 @@ Use this skill when you need to:
 
 3. **Required Scripts**
 
-   - `plugins/teams/skills/get-release-dates/get_release_dates.py`
-   - `plugins/teams/skills/list-regressions/list_regressions.py`
-   - `plugins/teams/skills/analyze-regressions/generate_html_report.py` (for HTML reports)
-   - `plugins/teams/skills/analyze-regressions/report_template.html` (for HTML reports)
+   - `extensions/teams/skills/get-release-dates/get_release_dates.py`
+   - `extensions/teams/skills/list-regressions/list_regressions.py`
+   - `extensions/teams/skills/analyze-regressions/generate_html_report.py` (for HTML reports)
+   - `extensions/teams/skills/analyze-regressions/report_template.html` (for HTML reports)
 
 ## Implementation Steps
 
@@ -60,7 +60,7 @@ Extract the release version and optional component filter from the command argum
 Run the `get_release_dates.py` script to determine the development window for the release:
 
 ```bash
-python3 plugins/teams/skills/get-release-dates/get_release_dates.py \
+python3 extensions/teams/skills/get-release-dates/get_release_dates.py \
   --release 4.17
 ```
 
@@ -97,7 +97,7 @@ null → do not use this parameter
 Run the `list_regressions.py` script with the appropriate arguments:
 
 ```bash
-python3 plugins/teams/skills/list-regressions/list_regressions.py \
+python3 extensions/teams/skills/list-regressions/list_regressions.py \
   --release 4.17 \
   --start 2024-05-17 \
   --end 2024-10-29 \
@@ -123,7 +123,7 @@ python3 plugins/teams/skills/list-regressions/list_regressions.py \
 **Example for GA'd release** (4.17):
 
 ```bash
-python3 plugins/teams/skills/list-regressions/list_regressions.py \
+python3 extensions/teams/skills/list-regressions/list_regressions.py \
   --release 4.17 \
   --start 2024-05-17 \
   --end 2024-10-29 \
@@ -133,7 +133,7 @@ python3 plugins/teams/skills/list-regressions/list_regressions.py \
 **Example for in-development release** (4.21 with null GA):
 
 ```bash
-python3 plugins/teams/skills/list-regressions/list_regressions.py \
+python3 extensions/teams/skills/list-regressions/list_regressions.py \
   --release 4.21 \
   --start 2025-09-02 \
   --short
@@ -142,7 +142,7 @@ python3 plugins/teams/skills/list-regressions/list_regressions.py \
 **Example with component filter**:
 
 ```bash
-python3 plugins/teams/skills/list-regressions/list_regressions.py \
+python3 extensions/teams/skills/list-regressions/list_regressions.py \
   --release 4.21 \
   --components Monitoring etcd \
   --start 2025-09-02 \
@@ -162,8 +162,8 @@ The script outputs JSON to stdout with the following structure:
     "filtered_suspected_infra_regressions": 8,
     "time_to_triage_hrs_avg": 68,
     "time_to_triage_hrs_max": 240,
-    "time_to_close_hrs_avg": 168,
-    "time_to_close_hrs_max": 480,
+    "time_to_resolve_hrs_avg": 168,
+    "time_to_resolve_hrs_max": 480,
     "open": {
       "total": 2,
       "triaged": 1,
@@ -179,10 +179,8 @@ The script outputs JSON to stdout with the following structure:
       "triage_percentage": 96.7,
       "time_to_triage_hrs_avg": 72,
       "time_to_triage_hrs_max": 240,
-      "time_to_close_hrs_avg": 168,
-      "time_to_close_hrs_max": 480,
-      "time_triaged_closed_hrs_avg": 96,
-      "time_triaged_closed_hrs_max": 240
+      "time_to_resolve_hrs_avg": 168,
+      "time_to_resolve_hrs_max": 480
     }
   },
   "components": {
@@ -194,8 +192,8 @@ The script outputs JSON to stdout with the following structure:
         "filtered_suspected_infra_regressions": 0,
         "time_to_triage_hrs_avg": 68,
         "time_to_triage_hrs_max": 180,
-        "time_to_close_hrs_avg": 156,
-        "time_to_close_hrs_max": 360,
+        "time_to_resolve_hrs_avg": 156,
+        "time_to_resolve_hrs_max": 360,
         "open": {
           "total": 1,
           "triaged": 0,
@@ -211,10 +209,8 @@ The script outputs JSON to stdout with the following structure:
           "triage_percentage": 92.9,
           "time_to_triage_hrs_avg": 68,
           "time_to_triage_hrs_max": 180,
-          "time_to_close_hrs_avg": 156,
-          "time_to_close_hrs_max": 360,
-          "time_triaged_closed_hrs_avg": 88,
-          "time_triaged_closed_hrs_max": 180
+          "time_to_resolve_hrs_avg": 156,
+          "time_to_resolve_hrs_max": 360
         }
       }
     }
@@ -239,8 +235,8 @@ From `summary` object:
 - `summary.filtered_suspected_infra_regressions` - Count of filtered infrastructure regressions
 - `summary.time_to_triage_hrs_avg` - **KEY HEALTH METRIC**: Average hours to triage
 - `summary.time_to_triage_hrs_max` - Maximum hours to triage
-- `summary.time_to_close_hrs_avg` - **KEY HEALTH METRIC**: Average hours to close
-- `summary.time_to_close_hrs_max` - Maximum hours to close
+- `summary.time_to_resolve_hrs_avg` - **KEY HEALTH METRIC**: Average hours to resolve (regression opened to triage resolved)
+- `summary.time_to_resolve_hrs_max` - Maximum hours to resolve
 - `summary.open.total` - Open regressions count
 - `summary.open.triaged` - Open triaged count
 - `summary.open.triage_percentage` - Open triage percentage
@@ -279,7 +275,7 @@ Calculate grades based on three key metrics:
 - 72-168 hours (1 week): Needs Improvement ⚠️
 - > 168 hours: Poor ❌
 
-**3. Resolution Speed** (`summary.time_to_close_hrs_avg`):
+**3. Resolution Speed** (`summary.time_to_resolve_hrs_avg`):
 
 - <168 hours (1 week): Excellent ✅
 - 168-336 hours (1-2 weeks): Good ⚠️
@@ -392,7 +388,7 @@ for component_name, component_obj in components.items():
         'triaged': summary['triaged'],
         'triage_percentage': summary['triage_percentage'],
         'time_to_triage_hrs_avg': summary.get('time_to_triage_hrs_avg'),
-        'time_to_close_hrs_avg': summary.get('time_to_close_hrs_avg'),
+        'time_to_resolve_hrs_avg': summary.get('time_to_resolve_hrs_avg'),
         'health_grade': calculate_health_grade(summary)  # Calculate combined grade
     })
 ```
@@ -402,7 +398,7 @@ for component_name, component_obj in components.items():
 Use the `generate_html_report.py` script (or inline Python code):
 
 ```bash
-python3 plugins/teams/skills/analyze-regressions/generate_html_report.py \
+python3 extensions/teams/skills/analyze-regressions/generate_html_report.py \
   --release 4.17 \
   --data regression_data.json \
   --output .work/teams-4.17/report.html
@@ -415,7 +411,7 @@ import json
 from datetime import datetime
 
 # Load template
-with open('plugins/teams/skills/analyze-regressions/report_template.html', 'r') as f:
+with open('extensions/teams/skills/analyze-regressions/report_template.html', 'r') as f:
     template = f.read()
 
 # Replace placeholders
@@ -495,7 +491,7 @@ Opening in your default browser...
 
 6. **HTML Template Not Found**
    - **Symptom**: FileNotFoundError when generating HTML report
-   - **Solution**: Verify template exists at `plugins/teams/skills/analyze-regressions/report_template.html`
+   - **Solution**: Verify template exists at `extensions/teams/skills/analyze-regressions/report_template.html`
    - **Fallback**: Offer text report only
 
 ### Debugging
@@ -503,7 +499,7 @@ Opening in your default browser...
 Enable verbose output by examining stderr:
 
 ```bash
-python3 plugins/teams/skills/list-regressions/list_regressions.py \
+python3 extensions/teams/skills/list-regressions/list_regressions.py \
   --release 4.17 \
   --short 2>&1 | tee debug.log
 ```
@@ -622,7 +618,7 @@ def calculate_health_grade(summary):
     """Calculate combined health grade based on three key metrics."""
     triage_coverage = summary['triage_percentage']
     triage_time = summary.get('time_to_triage_hrs_avg')
-    resolution_time = summary.get('time_to_close_hrs_avg')
+    resolution_time = summary.get('time_to_resolve_hrs_avg')
 
     # Score each metric (0-3)
     coverage_score = (

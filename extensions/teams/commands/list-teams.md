@@ -31,7 +31,7 @@ This command is useful for:
    - Ensure you are in the repository root directory
 
 2. **Run the list-teams Script**
-   - `python3 plugins/teams/skills/list-teams/list_teams.py`
+   - `python3 extensions/teams/skills/list-teams/list_teams.py`
 
 3. **Parse and Display Results**
    - Script outputs JSON with `total_teams` and `teams` object/array
@@ -78,13 +78,13 @@ The team and component mapping data originates from:
 1. Submit a PR to https://gitlab.cee.redhat.com/hybrid-platforms/org to correct the source data
 2. After the PR merges, regenerate the mapping file in this repository:
    ```
-   python3 plugins/teams/generate_team_component_map.py
+   python3 extensions/teams/generate_team_component_map.py
    ```
 3. Commit the updated `team_component_map.json` file
 
 ## See Also
 
-- Skill: `plugins/teams/skills/list-teams/SKILL.md`
+- Skill: `extensions/teams/skills/list-teams/SKILL.md`
 - Related Commands: `/teams:list-components`, `/teams:health-check`
-- Mapping File: `plugins/teams/team_component_map.json`
-- Generator Script: `plugins/teams/generate_team_component_map.py`
+- Mapping File: `extensions/teams/team_component_map.json`
+- Generator Script: `extensions/teams/generate_team_component_map.py`

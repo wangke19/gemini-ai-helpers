@@ -72,7 +72,7 @@ Grading is subjective and not meant to be a critique of team performance. This i
    - Else if `--components` was provided:
      - Run list_components.py to get all available components:
        ```bash
-       python3 plugins/teams/skills/list-components/list_components.py
+       python3 extensions/teams/skills/list-components/list_components.py
        ```
      - For each search string, find all components containing that string (case-insensitive)
      - Combine all matches into a single list
@@ -128,7 +128,7 @@ Grading is subjective and not meant to be a critique of team performance. This i
         - 24-72 hours: Good ⚠️
         - 72-168 hours (1 week): Needs Improvement ⚠️
         - >168 hours: Poor ❌
-      - Resolution Speed: Average hours to close
+      - Resolution Speed: Average hours to resolve
         - <168 hours (1 week): Excellent ✅
         - 168-336 hours (1-2 weeks): Good ⚠️
         - 336-720 hours (2-4 weeks): Needs Improvement ⚠️
@@ -194,7 +194,7 @@ Grading is subjective and not meant to be a critique of team performance. This i
 7. **Offer HTML Report Generation** (AFTER displaying the text report):
    - Ask the user if they would like an interactive HTML report
    - If yes, generate an HTML report combining both data sources
-   - Use template from: `plugins/teams/skills/analyze-regressions/report_template.html`
+   - Use template from: `extensions/teams/skills/analyze-regressions/report_template.html`
    - Enhance template to include bug backlog metrics
    - **Add clickable JIRA links throughout the report:**
      - In the component table, make all bug counts clickable with JIRA queries
@@ -385,7 +385,8 @@ If HTML report is generated:
 2. **JIRA Authentication**: Environment variables must be configured for bug data
 
    - `JIRA_URL`: Your JIRA instance URL
-   - `JIRA_PERSONAL_TOKEN`: Your JIRA bearer token or personal access token
+   - `JIRA_API_TOKEN`: Your Jira API token
+   - `JIRA_USERNAME`: Your Jira email address
    - See `/teams:health-check-jiras` for setup instructions
 
 3. **Network Access**: Must be able to reach both component health API and JIRA
@@ -416,7 +417,7 @@ If HTML report is generated:
 - Related Command: `/teams:health-check-jiras` (bug backlog metrics)
 - Related Command: `/teams:list-regressions` (raw regression data)
 - Related Command: `/teams:list-jiras` (raw JIRA data)
-- Skill Documentation: `plugins/teams/skills/analyze-regressions/SKILL.md`
-- Script: `plugins/teams/skills/list-regressions/list_regressions.py`
-- Script: `plugins/teams/skills/summarize-jiras/summarize_jiras.py`
+- Skill Documentation: `extensions/teams/skills/analyze-regressions/SKILL.md`
+- Script: `extensions/teams/skills/list-regressions/list_regressions.py`
+- Script: `extensions/teams/skills/summarize-jiras/summarize_jiras.py`
 '''

@@ -28,11 +28,12 @@ Use this skill when you need to:
 
 2. **JIRA Authentication**
    - Requires environment variables to be set:
-     - `JIRA_URL`: Base URL for JIRA instance (e.g., "https://issues.redhat.com")
-     - `JIRA_PERSONAL_TOKEN`: Your JIRA bearer token or personal access token
-   - How to get a JIRA token:
-     - Navigate to JIRA → Profile → Personal Access Tokens
-     - Generate a new token with appropriate permissions
+     - `JIRA_URL`: Base URL for JIRA instance (e.g., "https://redhat.atlassian.net")
+     - `JIRA_USERNAME`: Your JIRA username (email address) for Basic auth
+     - `JIRA_API_TOKEN`: Your JIRA API token
+   - How to get a JIRA API token:
+     - Navigate to https://id.atlassian.com/manage-profile/security/api-tokens
+     - Generate a new API token
      - Export it as an environment variable
 
 3. **Network Access**
@@ -58,14 +59,16 @@ Check that required environment variables are set:
 ```bash
 # Verify JIRA credentials are configured
 echo "JIRA_URL: ${JIRA_URL}"
-echo "JIRA_PERSONAL_TOKEN: ${JIRA_PERSONAL_TOKEN:+***set***}"
+echo "JIRA_USERNAME: ${JIRA_USERNAME}"
+echo "JIRA_API_TOKEN: ${JIRA_API_TOKEN:+***set***}"
 ```
 
 If any are missing, guide the user to set them:
 
 ```bash
-export JIRA_URL="https://issues.redhat.com"
-export JIRA_PERSONAL_TOKEN="your-token-here"
+export JIRA_URL="https://redhat.atlassian.net"
+export JIRA_USERNAME="your-email@redhat.com"
+export JIRA_API_TOKEN="your-api-token-here"
 ```
 
 ### Step 3: Locate the Script
@@ -73,7 +76,7 @@ export JIRA_PERSONAL_TOKEN="your-token-here"
 The script is located at:
 
 ```
-plugins/teams/skills/summarize-jiras/summarize_jiras.py
+extensions/teams/skills/summarize-jiras/summarize_jiras.py
 ```
 
 ### Step 4: Run the Script
@@ -82,36 +85,36 @@ Execute the script with appropriate arguments:
 
 ```bash
 # Basic usage - summarize all open bugs in a project
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS
 
 # Filter by component
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver"
 
 # Filter by multiple components
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver" "Management Console"
 
 # Filter by team
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --team "API Server"
 
 # Include closed bugs
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --include-closed
 
 # Filter by status
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --status New "In Progress"
 
 # Set maximum results limit (default 100)
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --limit 500
 ```
@@ -269,7 +272,7 @@ Based on the summary data:
 
 1. **Authentication Errors**
    - **Symptom**: HTTP 401 Unauthorized
-   - **Solution**: Verify JIRA_URL and JIRA_PERSONAL_TOKEN are correct
+   - **Solution**: Verify JIRA_URL, JIRA_USERNAME, and JIRA_API_TOKEN are correct
    - **Check**: Ensure token has not expired
 
 2. **Network Errors**
@@ -283,7 +286,7 @@ Based on the summary data:
 
 4. **Missing Environment Variables**
    - **Symptom**: Error message about missing credentials
-   - **Solution**: Set required environment variables (JIRA_URL, JIRA_PERSONAL_TOKEN)
+   - **Solution**: Set required environment variables (JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN)
 
 5. **Rate Limiting**
    - **Symptom**: HTTP 429 Too Many Requests
@@ -294,7 +297,7 @@ Based on the summary data:
 Enable verbose output by examining stderr:
 
 ```bash
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS 2>&1 | tee debug.log
 ```
 
@@ -381,7 +384,7 @@ The script outputs JSON with summary statistics and per-component breakdowns:
 ### Example 1: Summarize All Open Bugs
 
 ```bash
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS
 ```
 
@@ -390,7 +393,7 @@ python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
 ### Example 2: Filter by Component
 
 ```bash
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver"
 ```
@@ -400,7 +403,7 @@ python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
 ### Example 3: Include Closed Bugs
 
 ```bash
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --include-closed \
   --limit 500
@@ -411,7 +414,7 @@ python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
 ### Example 4: Filter by Multiple Components
 
 ```bash
-python3 plugins/teams/skills/summarize-jiras/summarize_jiras.py \
+python3 extensions/teams/skills/summarize-jiras/summarize_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver" "etcd" "Networking"
 ```

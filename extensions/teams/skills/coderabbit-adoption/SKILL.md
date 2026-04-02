@@ -40,22 +40,22 @@ python3 --version
 The script is located at:
 
 ```
-plugins/teams/skills/coderabbit-adoption/coderabbit_adoption.py
+extensions/teams/skills/coderabbit-adoption/coderabbit_adoption.py
 ```
 
 Execute with appropriate arguments:
 
 ```bash
 # Default: last 30 days, org-wide summary only (2 API calls)
-python3 plugins/teams/skills/coderabbit-adoption/coderabbit_adoption.py
+python3 extensions/teams/skills/coderabbit-adoption/coderabbit_adoption.py
 
 # Specific date range
-python3 plugins/teams/skills/coderabbit-adoption/coderabbit_adoption.py \
+python3 extensions/teams/skills/coderabbit-adoption/coderabbit_adoption.py \
   --start-date 2026-02-01 --end-date 2026-02-28
 
 # Detailed mode: per-repo breakdowns (~50 API calls, prone to rate limiting)
 # ONLY use when user explicitly requests --detailed
-python3 plugins/teams/skills/coderabbit-adoption/coderabbit_adoption.py --detailed
+python3 extensions/teams/skills/coderabbit-adoption/coderabbit_adoption.py --detailed
 ```
 
 ### Step 3: Parse the Output

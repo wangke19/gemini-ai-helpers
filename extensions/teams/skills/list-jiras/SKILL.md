@@ -28,11 +28,12 @@ Use this skill when you need to:
 2. **JIRA Authentication**
 
    - Requires environment variables to be set:
-     - `JIRA_URL`: Base URL for JIRA instance (e.g., "https://issues.redhat.com")
-     - `JIRA_PERSONAL_TOKEN`: Your JIRA bearer token or personal access token
-   - How to get a JIRA token:
-     - Navigate to JIRA → Profile → Personal Access Tokens
-     - Generate a new token with appropriate permissions
+     - `JIRA_URL`: Base URL for JIRA instance (e.g., "https://redhat.atlassian.net")
+     - `JIRA_USERNAME`: Your JIRA username (email address) for Basic auth
+     - `JIRA_API_TOKEN`: Your JIRA API token
+   - How to get a JIRA API token:
+     - Navigate to https://id.atlassian.com/manage-profile/security/api-tokens
+     - Generate a new API token
      - Export it as an environment variable
 
 3. **Network Access**
@@ -58,14 +59,16 @@ Check that required environment variables are set:
 ```bash
 # Verify JIRA credentials are configured
 echo "JIRA_URL: ${JIRA_URL}"
-echo "JIRA_PERSONAL_TOKEN: ${JIRA_PERSONAL_TOKEN:+***set***}"
+echo "JIRA_USERNAME: ${JIRA_USERNAME}"
+echo "JIRA_API_TOKEN: ${JIRA_API_TOKEN:+***set***}"
 ```
 
 If any are missing, guide the user to set them:
 
 ```bash
-export JIRA_URL="https://issues.redhat.com"
-export JIRA_PERSONAL_TOKEN="your-token-here"
+export JIRA_URL="https://redhat.atlassian.net"
+export JIRA_USERNAME="your-email@redhat.com"
+export JIRA_API_TOKEN="your-api-token-here"
 ```
 
 ### Step 3: Locate the Script
@@ -73,7 +76,7 @@ export JIRA_PERSONAL_TOKEN="your-token-here"
 The script is located at:
 
 ```
-plugins/teams/skills/list-jiras/list_jiras.py
+extensions/teams/skills/list-jiras/list_jiras.py
 ```
 
 ### Step 4: Run the Script
@@ -82,31 +85,31 @@ Execute the script with appropriate arguments:
 
 ```bash
 # Basic usage - all open bugs in a project
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS
 
 # Filter by component
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver"
 
 # Filter by multiple components
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver" "Management Console"
 
 # Include closed bugs
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --include-closed
 
 # Filter by status
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --status New "In Progress"
 
 # Set maximum results limit (default 100)
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --limit 500
 ```
@@ -156,7 +159,7 @@ The script outputs JSON data with the following structure:
         "fixVersions": [
           {"name": "4.22"}
         ],
-        "customfield_12319940": "4.22.0"
+        "customfield_10855": "4.22.0"
       }
     },
     ...more issues...
@@ -185,7 +188,7 @@ The script outputs JSON data with the following structure:
     - `resolutiondate`: Resolution timestamp (null if not closed)
     - `versions`: Affects Version/s array
     - `fixVersions`: Fix Version/s array
-    - `customfield_12319940`: Target Version (custom field)
+    - `customfield_10855`: Target Version (custom field)
     - And many other JIRA fields as applicable
 - `note`: Informational message if results are truncated
 
@@ -217,7 +220,7 @@ Based on the raw JIRA data:
 1. **Authentication Errors**
 
    - **Symptom**: HTTP 401 Unauthorized
-   - **Solution**: Verify JIRA_PERSONAL_TOKEN is correct
+   - **Solution**: Verify JIRA_USERNAME and JIRA_API_TOKEN are correct
    - **Check**: Ensure token has not expired
 
 2. **Network Errors**
@@ -234,7 +237,8 @@ Based on the raw JIRA data:
 4. **Missing Environment Variables**
 
    - **Symptom**: Error message about missing credentials
-   - **Solution**: Set required environment variables (JIRA_URL, JIRA_USERNAME, JIRA_PERSONAL_TOKEN)
+   - **Solution**: Set required environment variables (JIRA_URL, JIRA_USERNAME, JIRA_API_TOKEN)
+
 
 5. **Rate Limiting**
    - **Symptom**: HTTP 429 Too Many Requests
@@ -245,7 +249,7 @@ Based on the raw JIRA data:
 Enable verbose output by examining stderr:
 
 ```bash
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS 2>&1 | tee debug.log
 ```
 
@@ -321,7 +325,7 @@ The script outputs JSON with metadata and raw issue data:
 ### Example 1: List All Open Bugs
 
 ```bash
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS
 ```
 
@@ -330,7 +334,7 @@ python3 plugins/teams/skills/list-jiras/list_jiras.py \
 ### Example 2: Filter by Component
 
 ```bash
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver"
 ```
@@ -340,7 +344,7 @@ python3 plugins/teams/skills/list-jiras/list_jiras.py \
 ### Example 3: Include Closed Bugs
 
 ```bash
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --include-closed \
   --limit 500
@@ -351,7 +355,7 @@ python3 plugins/teams/skills/list-jiras/list_jiras.py \
 ### Example 4: Filter by Multiple Components
 
 ```bash
-python3 plugins/teams/skills/list-jiras/list_jiras.py \
+python3 extensions/teams/skills/list-jiras/list_jiras.py \
   --project OCPBUGS \
   --component "kube-apiserver" "etcd" "Networking"
 ```
