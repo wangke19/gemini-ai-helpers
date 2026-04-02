@@ -30,7 +30,7 @@ See the commands/ directory for full documentation.
 
 ## Installation
 
-### From the Gemini CLI Extension Marketplace
+### From the Gemini CLI Plugin Marketplace
 
 1. Add the OpenShift ai-helpers marketplace:
 
@@ -72,7 +72,7 @@ To add a new command to this plugin:
 
 1. Create a markdown file in commands/:
 
-   touch plugins/origin/commands/your-command.md
+   touch extensions/origin/commands/your-command.md
 
 2. Use existing commands as a template and include sections:
 
@@ -92,9 +92,9 @@ To add a new command to this plugin:
 
 ## Plugin Structure
 
-plugins/origin/
-├── .gemini-extension/
-│   └── plugin.json
+extensions/origin/
+├── .claude-plugin/
+│   └── extension.json
 ├── commands/
 │   └── two-node-origin-pr-helper.md
 └── README.md
