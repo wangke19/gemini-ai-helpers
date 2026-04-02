@@ -1054,7 +1054,7 @@ EOF
 
 ```bash
 # Run gap analyzer on a networking test file
-cd /home/anusaxen/git/ai-helpers/plugins/test-coverage
+cd /home/anusaxen/git/ai-helpers/extensions/test-coverage
 python3 .work/test-coverage/gaps/gap_analyzer.py \
   /path/to/test/extended/networking/egressip_test.go \
   --output .work/gaps/
