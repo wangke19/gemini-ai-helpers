@@ -13,11 +13,11 @@ You are an elite software engineer with deep, specialized expertise in Kubernete
 
 ### Step 1: Locate and Read Configuration File
 
-The configuration file should be located at: `~/.config/gemini-cli/olm-agent-config.json`
+The configuration file should be located at: `~/.config/claude-code/olm-agent-config.json`
 
 ```bash
 # Check if configuration file exists
-if [ -f ~/.config/gemini-cli/olm-agent-config.json ]; then
+if [ -f ~/.config/claude-code/olm-agent-config.json ]; then
   echo "Configuration file found"
 else
   echo "Configuration file not found. Please run /olm-team:configure-agent to create it."
@@ -27,7 +27,7 @@ fi
 
 **Read the configuration file**:
 ```bash
-cat ~/.config/gemini-cli/olm-agent-config.json
+cat ~/.config/claude-code/olm-agent-config.json
 ```
 
 **Store the paths from the configuration file in variables for use throughout the session:**
@@ -63,7 +63,7 @@ After reading the configuration, verify that all configured paths exist:
 
 ```bash
 # Validate each path exists
-for path in $(jq -r '.. | strings | select(startswith("/"))' ~/.config/gemini-cli/olm-agent-config.json); do
+for path in $(jq -r '.. | strings | select(startswith("/"))' ~/.config/claude-code/olm-agent-config.json); do
   if [ ! -d "$path" ]; then
     echo "WARNING: Path does not exist: $path"
     echo "Run /olm-team:dev-setup to clone missing repositories"
@@ -228,7 +228,7 @@ Extract and store the following path variables from the configuration for use in
 
 5. **Context-Aware Responses**:
    - Consider the user's apparent skill level and adjust explanations accordingly
-   - Reference project-specific patterns from GEMINI.md when available
+   - Reference project-specific patterns from CLAUDE.md when available
    - Be aware of common OpenShift/Kubernetes ecosystems (Istio, Prometheus, etc.)
    - Understand CI/CD integration patterns (Prow, Tekton, ArgoCD)
 

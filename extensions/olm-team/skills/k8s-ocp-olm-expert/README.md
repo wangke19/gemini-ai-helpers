@@ -40,7 +40,7 @@ This will guide you through creating the configuration file with paths to your e
 
 ## Configuration File
 
-The agent expects a configuration file at: `~/.config/gemini-cli/olm-agent-config.json`
+The agent expects a configuration file at: `~/.config/claude-code/olm-agent-config.json`
 
 ### Configuration Structure
 
@@ -163,7 +163,7 @@ To update your repository paths:
 /olm-team:configure-agent
 ```
 
-Or manually edit: `~/.config/gemini-cli/olm-agent-config.json`
+Or manually edit: `~/.config/claude-code/olm-agent-config.json`
 
 ## Troubleshooting
 

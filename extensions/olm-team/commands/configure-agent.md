@@ -30,7 +30,7 @@ If you don't have these repositories cloned yet, the command will recommend usin
 First, check if a configuration file already exists:
 
 ```bash
-CONFIG_FILE="$HOME/.config/gemini-cli/olm-agent-config.json"
+CONFIG_FILE="$HOME/.config/claude-code/olm-agent-config.json"
 
 if [ -f "$CONFIG_FILE" ]; then
   echo "Existing configuration found at: $CONFIG_FILE"
@@ -300,7 +300,7 @@ Show the user a summary and what to do next:
 Configuration Complete
 ======================
 
-✓ Configuration file created: ~/.config/gemini-cli/olm-agent-config.json
+✓ Configuration file created: ~/.config/claude-code/olm-agent-config.json
 
 Repository Paths Configured:
   ✓ openshift-docs
@@ -331,7 +331,7 @@ Next Steps:
    /olm-team:configure-agent
 
 4. View agent documentation:
-   cat ~/path/to/ai-helpers/plugins/olm-team/skills/k8s-ocp-olm-expert/README.md
+   cat ~/path/to/ai-helpers/extensions/olm-team/skills/k8s-ocp-olm-expert/README.md
 ```
 
 If there are missing repositories:
@@ -427,7 +427,7 @@ Repository Detection Results
 ✓ Found all 9 repositories
 
 Creating configuration...
-✓ Configuration saved: ~/.config/gemini-cli/olm-agent-config.json
+✓ Configuration saved: ~/.config/claude-code/olm-agent-config.json
 ✓ All paths validated successfully
 
 The k8s-ocp-olm-expert agent is ready to use!
@@ -441,7 +441,7 @@ The k8s-ocp-olm-expert agent is ready to use!
 
 Output:
 ```
-Existing configuration found at: ~/.config/gemini-cli/olm-agent-config.json
+Existing configuration found at: ~/.config/claude-code/olm-agent-config.json
 Current paths:
   - openshift-docs: /Users/user/go/src/github.com/user/openshift-docs
   ...
@@ -462,7 +462,7 @@ None. The command is interactive and will prompt for any needed information.
 
 1. **Automatic Repository Detection**: The command searches common directories (`~/go/src/github.com`, `~/src`, `~/code`) for OLM repositories. This works best if you follow standard directory conventions.
 
-2. **Configuration Location**: The configuration file is stored at `~/.config/gemini-cli/olm-agent-config.json`. This location is standard for Gemini CLI user configurations.
+2. **Configuration Location**: The configuration file is stored at `~/.config/claude-code/olm-agent-config.json`. This location is standard for Gemini CLI user configurations.
 
 3. **dev-setup Integration**: This command is designed to work alongside `/olm-team:dev-setup`. If you're missing repositories, dev-setup is the recommended approach as it handles forking, cloning, and configuration automatically.
 
@@ -470,12 +470,12 @@ None. The command is interactive and will prompt for any needed information.
 
 5. **Path Validation**: The command validates that paths exist and are git repositories, but doesn't verify they're the correct repositories. Make sure you're pointing to the actual OLM repositories, not other projects with similar names.
 
-6. **Manual Editing**: You can always manually edit `~/.config/gemini-cli/olm-agent-config.json` if you need to update paths later. Just ensure the JSON syntax remains valid.
+6. **Manual Editing**: You can always manually edit `~/.config/claude-code/olm-agent-config.json` if you need to update paths later. Just ensure the JSON syntax remains valid.
 
 7. **Multiple GitHub Accounts**: If you have repositories from multiple GitHub accounts or organizations, you can configure paths to any of them. The agent doesn't care about git remotes, only that the code is present locally.
 
 ## See Also
 
 - `/olm-team:dev-setup` - Automated repository setup and configuration
-- `plugins/olm-team/skills/k8s-ocp-olm-expert/README.md` - Agent documentation
-- `plugins/olm-team/skills/k8s-ocp-olm-expert/config-example.json` - Example configuration file
+- `extensions/olm-team/skills/k8s-ocp-olm-expert/README.md` - Agent documentation
+- `extensions/olm-team/skills/k8s-ocp-olm-expert/config-example.json` - Example configuration file

@@ -146,7 +146,7 @@ Documentation Repository
 Execute the automated repository setup script to fork, clone, and configure all OLM repositories:
 
 ```bash
-bash plugins/olm-team/scripts/setup-repos.sh "$target_directory" "$github_username"
+bash extensions/olm-team/scripts/setup-repos.sh "$target_directory" "$github_username"
 ```
 
 The script automates the following for each repository:

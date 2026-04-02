@@ -28,7 +28,7 @@ Creates or updates the configuration file for the k8s-ocp-olm-expert agent with 
 - Searches for OLM repositories in common locations
 - Detects which repositories you have cloned locally
 - Recommends running `/olm-team:dev-setup` if repositories are missing
-- Helps you create a configuration file at `~/.config/gemini-cli/olm-agent-config.json`
+- Helps you create a configuration file at `~/.config/claude-code/olm-agent-config.json`
 - Validates all configured paths
 - Enables the k8s-ocp-olm-expert agent to provide code-aware responses
 
@@ -46,7 +46,7 @@ Creates or updates the configuration file for the k8s-ocp-olm-expert agent with 
 6. Displays summary and next steps
 
 **Configuration file created:**
-`~/.config/gemini-cli/olm-agent-config.json` with paths to:
+`~/.config/claude-code/olm-agent-config.json` with paths to:
 - openshift-docs
 - operator-lifecycle-manager, operator-registry, api (OLM v0 upstream)
 - operator-framework-olm, operator-marketplace (OLM v0 downstream)
@@ -336,7 +336,7 @@ If a repository is already cloned in the target directory, the command will ask 
 
 To add new commands to this plugin:
 
-1. Create a new `.md` file in `plugins/olm-team/commands/`
+1. Create a new `.md` file in `extensions/olm-team/commands/`
 2. Follow the command definition format (see existing commands)
 3. Update this README with the new command documentation
 4. Run `make lint` to validate the plugin structure
