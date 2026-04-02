@@ -37,7 +37,7 @@ Advanced mutation testing for Kubernetes operator controllers. Validates test su
 
 ## Installation
 
-### From Gemini CLI Extension Marketplace
+### From Gemini CLI Plugin Marketplace
 
 ```bash
 # Add the marketplace (if not already added)
@@ -293,18 +293,18 @@ jobs:
           # Install your mutation testing script/binary
           # Example: go install github.com/your-org/mutation-tester@latest
           # Or use the Python scripts from this plugin
-          pip install -r plugins/testing/skills/mutation-generator/requirements.txt
+          pip install -r extensions/testing/skills/mutation-generator/requirements.txt
       
       - name: Run Mutation Testing
         run: |
           # Run the actual mutation testing script
-          python3 plugins/testing/skills/mutation-generator/generate_mutations_efficient.py \
+          python3 extensions/testing/skills/mutation-generator/generate_mutations_efficient.py \
             --operator-path . \
             --mutation-types error-handling,conditionals \
             --output .work/mutations.json
           
           # Execute tests for each mutation
-          bash plugins/testing/skills/mutation-tester/run_mutations.sh \
+          bash extensions/testing/skills/mutation-tester/run_mutations.sh \
             --mutations .work/mutations.json \
             --report-format markdown > mutation-report.md
       
