@@ -1,6 +1,6 @@
 # Golang Plugin
 
-A Gemini CLI extension for running [golangci-lint](https://golangci-lint.run/) to check and fix code quality issues in Go projects.
+A Gemini CLI plugin for running [golangci-lint](https://golangci-lint.run/) to check and fix code quality issues in Go projects.
 
 
 ## Installation
@@ -29,7 +29,7 @@ A Gemini CLI extension for running [golangci-lint](https://golangci-lint.run/) t
 
 ## Recommended Permissions
 
-To allow Gemini CLI to run the linter commands without prompting for approval, add the following to your project's `.gemini/settings.json`:
+To allow Gemini CLI to run the linter commands without prompting for approval, add the following to your project's `.claude/settings.json`:
 
 ```json
 {

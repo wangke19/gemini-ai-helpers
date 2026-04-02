@@ -25,7 +25,7 @@ Use this skill when:
 
 Try the following approaches in order. Proceed to Step 2 once any approach succeeds:
 
-1. **Check project documentation first** - Read `AGENTS.md` or `GEMINI.md` in the repository root (if they exist) and look for linting instructions (e.g., `make lint`, `make verify`, specific golangci-lint commands, or other linter commands). If found, use those instructions.
+1. **Check project documentation first** - Read `AGENTS.md` or `CLAUDE.md` in the repository root (if they exist) and look for linting instructions (e.g., `make lint`, `make verify`, specific golangci-lint commands, or other linter commands). If found, use those instructions.
 
 2. **Check for lint scripts** - Many repositories (especially OpenShift projects) have scripts that run golangci-lint in a containerized way with repo-specific configuration. Check for these patterns and run if found:
    - `hack/go-lint.sh`
