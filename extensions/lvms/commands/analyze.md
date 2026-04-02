@@ -56,7 +56,7 @@ Common issues detected:
 - Both namespaces are supported for backward compatibility
 
 **Analysis Script:**
-- Python 3 script at: `plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
+- Python 3 script at: `extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
 - If script is missing, command will use built-in analysis logic
 
 ## Implementation
@@ -153,7 +153,7 @@ The command performs the following steps:
    **Must-Gather Collection:**
    Use Python script if available (automatically detects namespace):
    ```bash
-   python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py {must-gather-path}
+   python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py {must-gather-path}
    ```
 
    The script automatically detects and uses the correct namespace (openshift-lvm-storage or openshift-storage).
@@ -739,7 +739,7 @@ oc auth can-i debug node
 **Python script not found:**
 - Command will fall back to built-in analysis
 - For better performance, ensure script exists at:
-  `plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
+  `extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
 
 ## Related Commands
 

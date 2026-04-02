@@ -112,12 +112,12 @@ fi
 Use the Python analysis script for structured analysis:
 
 ```bash
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     {must-gather-path}
 ```
 
 **Script Location:**
-- Always use: `plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
+- Always use: `extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py`
 - Use relative path from repository root
 - Script is part of the LVMS plugin
 
@@ -127,19 +127,19 @@ For focused analysis on specific components:
 
 ```bash
 # Analyze only storage/PVC issues
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     {must-gather-path} --component storage
 
 # Analyze only operator health
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     {must-gather-path} --component operator
 
 # Analyze only volume groups
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     {must-gather-path} --component volumes
 
 # Analyze only pod logs
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     {must-gather-path} --component logs
 ```
 
@@ -393,10 +393,10 @@ Always provide clear next steps:
 **Script not found:**
 ```bash
 # Verify script exists
-ls plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
+ls extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
 
 # Ensure it's executable
-chmod +x plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
+chmod +x extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
 ```
 
 **Python dependencies missing:**
@@ -430,7 +430,7 @@ pip3 install pyyaml
 
 ```bash
 # Run comprehensive analysis
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     ./must-gather/registry-ci-openshift-org-origin-4-18.../
 ```
 
@@ -459,7 +459,7 @@ LVMS ANALYSIS SUMMARY
 
 ```bash
 # Focus on PVC issues
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     ./must-gather/... --component storage
 ```
 
@@ -472,7 +472,7 @@ Analyzes only:
 
 ```bash
 # Check operator components
-python3 plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
+python3 extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py \
     ./must-gather/... --component operator
 ```
 

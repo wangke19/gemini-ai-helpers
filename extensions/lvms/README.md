@@ -127,8 +127,8 @@ The command will:
 # Clone the repository
 git clone https://github.com/openshift-eng/ai-helpers.git
 
-# Link to Gemini CLI extensions directory
-ln -s $(pwd)/gemini-ai-helpers/extensions/lvms ~/.gemini/extensions/lvms
+# Link to Gemini CLI plugins directory
+ln -s $(pwd)/ai-helpers/extensions/lvms ~/.claude/extensions/lvms
 ```
 
 ## Prerequisites
@@ -205,10 +205,10 @@ Reports include:
 **Script not found:**
 ```bash
 # Verify script exists
-ls plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
+ls extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
 
 # Make executable
-chmod +x plugins/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
+chmod +x extensions/lvms/skills/lvms-analyzer/scripts/analyze_lvms.py
 ```
 
 **Cannot connect to cluster:**
@@ -238,7 +238,7 @@ ls must-gather/registry-ci-*/namespaces/openshift-lvm-storage
 
 ## Contributing
 
-Contributions are welcome! Please see the main repository's [GEMINI.md](../../GEMINI.md) for guidelines on:
+Contributions are welcome! Please see the main repository's [CLAUDE.md](../../CLAUDE.md) for guidelines on:
 - Adding new commands
 - Extending analysis capabilities
 - Improving diagnostic checks
