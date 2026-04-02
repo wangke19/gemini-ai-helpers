@@ -1,6 +1,6 @@
 # Hello World Plugin
 
-A reference implementation extension demonstrating Gemini CLI extension structure and conventions.
+A reference implementation plugin demonstrating Gemini CLI plugin structure and conventions.
 
 ## Commands
 

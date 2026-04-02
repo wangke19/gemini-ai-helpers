@@ -12,7 +12,7 @@ hello-world:echo
 ```
 
 ## Description
-The `hello-world:echo` command prints a greeting message to the console. By default, it prints "Hello world", but when provided with a name argument `hello-world:echo $1`, it prints "Hello ${1}". This command serves as a basic example of a Gemini CLI extension implementation, demonstrating the minimal structure required for a functional plugin command.
+The `hello-world:echo` command prints a greeting message to the console. By default, it prints "Hello world", but when provided with a name argument `hello-world:echo $1`, it prints "Hello ${1}". This command serves as a basic example of a Gemini CLI plugin implementation, demonstrating the minimal structure required for a functional plugin command.
 
 It provides a reference implementation for plugin developers. It demonstrates:
 - Basic command structure
