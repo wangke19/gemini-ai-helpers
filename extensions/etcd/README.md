@@ -1,6 +1,6 @@
 # Etcd Plugin
 
-A Gemini CLI extension for monitoring etcd cluster health and analyzing performance in OpenShift environments.
+A Gemini CLI plugin for monitoring etcd cluster health and analyzing performance in OpenShift environments.
 
 ## Overview
 
@@ -78,8 +78,8 @@ All commands require:
 # Clone the repository
 git clone https://github.com/openshift-eng/ai-helpers.git
 
-# Link to your Gemini CLI extensions directory
-ln -s $(pwd)/gemini-ai-helpers/extensions/etcd ~/.gemini/extensions/etcd
+# Link to your Gemini CLI plugins directory
+ln -s $(pwd)/ai-helpers/extensions/etcd ~/.claude/extensions/etcd
 ```
 
 ## Use Cases
