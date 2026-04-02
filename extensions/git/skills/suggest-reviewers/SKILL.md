@@ -342,6 +342,6 @@ $ python3 analyze_blame.py --mode committed --base-branch release-4.15 \
 
 ## See Also
 
-- Main command: `/git:suggest-reviewers` in `plugins/git/commands/suggest-reviewers.md`
+- Main command: `/git:suggest-reviewers` in `extensions/git/commands/suggest-reviewers.md`
 - Git blame documentation: https://git-scm.com/docs/git-blame
 - Git diff documentation: https://git-scm.com/docs/git-diff

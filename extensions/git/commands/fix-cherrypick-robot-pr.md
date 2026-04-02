@@ -153,9 +153,9 @@ Cherry-pick of <original-commits> to <base-branch> with manual fixes.
 - Original PR: #<robot-pr-number>
 - JIRA: <bug-id>
 
-🤖 Generated with [Gemini CLI](https://gemini.google.com)
+🤖 Generated with [Gemini CLI](https://claude.com/claude-code)
 
-Co-Authored-By: Gemini <noreply@google.com>
+Co-Authored-By: Gemini <noreply@anthropic.com>
 EOF
 )"
 ```
