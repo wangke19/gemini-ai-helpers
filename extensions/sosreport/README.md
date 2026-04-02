@@ -298,7 +298,7 @@ When you know what you're looking for:
 
 ## Contributing
 
-See the main [GEMINI.md](../../GEMINI.md) guide for information on contributing to this plugin.
+See the main [CLAUDE.md](../../CLAUDE.md) guide for information on contributing to this plugin.
 
 ## Resources
 

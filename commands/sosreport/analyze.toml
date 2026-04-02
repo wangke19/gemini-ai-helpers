@@ -104,7 +104,7 @@ The sosreport analysis is organized into several specialized phases, each with d
 ### 3. Analyze System Logs
 
 **Run condition**: Only if `logs` area is selected (or no filters specified)
-**Detailed implementation**: See `plugins/sosreport/skills/logs-analysis/SKILL.md`
+**Detailed implementation**: See `extensions/sosreport/skills/logs-analysis/SKILL.md`
 
 Perform comprehensive log analysis including:
 - Journald logs (journalctl output)
@@ -123,7 +123,7 @@ Perform comprehensive log analysis including:
 ### 4. Analyze Resource Usage
 
 **Run condition**: Only if `resources` area is selected (or no filters specified)
-**Detailed implementation**: See `plugins/sosreport/skills/resource-analysis/SKILL.md`
+**Detailed implementation**: See `extensions/sosreport/skills/resource-analysis/SKILL.md`
 
 Perform resource analysis including:
 - Memory usage and pressure indicators
@@ -142,7 +142,7 @@ Perform resource analysis including:
 ### 5. Analyze Network Configuration
 
 **Run condition**: Only if `network` area is selected (or no filters specified)
-**Detailed implementation**: See `plugins/sosreport/skills/network-analysis/SKILL.md`
+**Detailed implementation**: See `extensions/sosreport/skills/network-analysis/SKILL.md`
 
 Perform network analysis including:
 - Network interface configuration and status
@@ -163,7 +163,7 @@ Perform network analysis including:
 ### 6. Analyze Installed Packages and System Configuration
 
 **Run condition**: Only if `system-config` area is selected (or no filters specified)
-**Detailed implementation**: See `plugins/sosreport/skills/system-config-analysis/SKILL.md`
+**Detailed implementation**: See `extensions/sosreport/skills/system-config-analysis/SKILL.md`
 
 Perform system configuration analysis including:
 - OS version and kernel information
@@ -336,10 +336,10 @@ Perform system configuration analysis including:
 ## See Also
 
 ### Analysis Skills
-- **Logs Analysis**: `plugins/sosreport/skills/logs-analysis/SKILL.md` - Detailed guidance for analyzing system and application logs
-- **Resource Analysis**: `plugins/sosreport/skills/resource-analysis/SKILL.md` - Detailed guidance for analyzing memory, CPU, disk, and processes
-- **Network Analysis**: `plugins/sosreport/skills/network-analysis/SKILL.md` - Detailed guidance for analyzing network configuration and connectivity
-- **System Configuration Analysis**: `plugins/sosreport/skills/system-config-analysis/SKILL.md` - Detailed guidance for analyzing packages, services, and security settings
+- **Logs Analysis**: `extensions/sosreport/skills/logs-analysis/SKILL.md` - Detailed guidance for analyzing system and application logs
+- **Resource Analysis**: `extensions/sosreport/skills/resource-analysis/SKILL.md` - Detailed guidance for analyzing memory, CPU, disk, and processes
+- **Network Analysis**: `extensions/sosreport/skills/network-analysis/SKILL.md` - Detailed guidance for analyzing network configuration and connectivity
+- **System Configuration Analysis**: `extensions/sosreport/skills/system-config-analysis/SKILL.md` - Detailed guidance for analyzing packages, services, and security settings
 
 ### External Resources
 - Sosreport documentation: <https://github.com/sosreport/sos>

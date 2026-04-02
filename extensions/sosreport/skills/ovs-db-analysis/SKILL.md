@@ -302,4 +302,4 @@ DATAPATH FLOW TABLE HEALTH
 ## See Also
 
 - [OVN Database Analysis](../../must-gather/skills/must-gather-analyzer/scripts/analyze_ovn_dbs.py) - For OVN NB/SB databases
-- [sosreport openvswitch plugin](https://github.com/sosreport/sos/blob/main/sos/report/plugins/openvswitch.py) - What sosreport collects
+- [sosreport openvswitch plugin](https://github.com/sosreport/sos/blob/main/sos/report/extensions/openvswitch.py) - What sosreport collects
