@@ -70,7 +70,7 @@ Skip if `--skip-tests` is specified.
 #### Sub-agent: Idiomatic Code
 - **If a language skill is loaded**, apply its idiomatic code guidance to the changed files.
 - **If no language skill is loaded**, perform a general review: error handling, naming, clarity, complexity.
-- **If a profile is loaded**, follow the profile's instructions to discover and apply any repo-local agents or skills it references. For example, the hypershift profile points to `.gemini/extensions/agents/` — read the agents, pick the relevant ones based on changed files, and use their guidance.
+- **If a profile is loaded**, follow the profile's instructions to discover and apply any repo-local agents or skills it references. For example, the hypershift profile points to `.claude/agents/` — read the agents, pick the relevant ones based on changed files, and use their guidance.
 - Return findings as structured text.
 
 #### Sub-agent: DRY Principle
