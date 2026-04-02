@@ -71,7 +71,7 @@ This command uses the `bigquery:analyze-usage` skill to perform the analysis.
 - **Success**: Comprehensive usage analysis report
 - **Error**: Authentication errors, missing permissions, invalid project, or bq tool not found
 
-**Important**:
+**Important for Gemini**:
 1. **REQUIRED**: You MUST invoke the `bigquery:analyze-usage` skill using the Skill tool
 2. Always validate both arguments before proceeding
 3. If arguments are missing, use AskUserQuestion to collect them
