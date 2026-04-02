@@ -51,11 +51,11 @@ If you haven't already installed the Jira plugin, see the [Jira Plugin README](.
 - Processing hundreds of tickets through MCP commands creates excessive context usage
 - Direct API calls allow us to stream data to disk without intermediate processing
 
-**Solution:** This command uses `curl` to fetch data directly from JIRA and save to disk, then processes it with Python. It reads JIRA credentials from `~/.config/gemini-cli/mcp.json` - the same file used by the MCP server.
+**Solution:** This command uses `curl` to fetch data directly from JIRA and save to disk, then processes it with Python. It reads JIRA credentials from `~/.config/claude-code/mcp.json` - the same file used by the MCP server.
 
 **Required Configuration File Format:**
 
-Create or edit `~/.config/gemini-cli/mcp.json`:
+Create or edit `~/.config/claude-code/mcp.json`:
 
 ```json
 {
@@ -64,10 +64,9 @@ Create or edit `~/.config/gemini-cli/mcp.json`:
       "command": "npx",
       "args": ["mcp-atlassian"],
       "env": {
-        "JIRA_URL": "https://issues.redhat.com",
+        "JIRA_URL": "https://redhat.atlassian.net",
         "JIRA_USERNAME": "your-email@redhat.com",
-        "JIRA_API_TOKEN": "your-atlassian-api-token-here",
-        "JIRA_PERSONAL_TOKEN": "your-redhat-jira-personal-token-here"
+        "JIRA_API_TOKEN": "your-atlassian-api-token-here"
       }
     }
   }
@@ -75,12 +74,9 @@ Create or edit `~/.config/gemini-cli/mcp.json`:
 ```
 
 **Field Descriptions:**
-- `JIRA_URL`: Your JIRA instance URL (e.g., `https://issues.redhat.com` for Red Hat JIRA)
-- `JIRA_USERNAME`: Your JIRA username/email address
+- `JIRA_URL`: Your JIRA instance URL (e.g., `https://redhat.atlassian.net`)
+- `JIRA_USERNAME`: Your Atlassian account email address
 - `JIRA_API_TOKEN`: Atlassian API token from [Atlassian API Token Management Page](https://id.atlassian.com/manage-profile/security/api-tokens)
-- `JIRA_PERSONAL_TOKEN`: Red Hat JIRA Personal Access Token from [Red Hat Jira PAT Management Page](https://issues.redhat.com/secure/ViewProfile.jspa?selectedTab=com.atlassian.pats.pats-plugin:jira-user-personal-access-tokens)
-
-**Note:** The command will use `JIRA_PERSONAL_TOKEN` if available (preferred for Red Hat JIRA), otherwise falls back to `JIRA_API_TOKEN`.
 
 ### 3. Start Local MCP Server with Podman
 
@@ -88,24 +84,21 @@ Create or edit `~/.config/gemini-cli/mcp.json`:
 
 **Steps:**
 
-1. **First, ensure your `~/.config/gemini-cli/mcp.json` is created with credentials** (see example above)
+1. **First, ensure your `~/.config/claude-code/mcp.json` is created with credentials** (see example above)
 
 2. **Start the MCP server container using credentials from mcp.json:**
 
    ```bash
    # Extract credentials from your mcp.json file
-   JIRA_URL=$(jq -r '.mcpServers.atlassian.env.JIRA_URL' ~/.config/gemini-cli/mcp.json)
-   JIRA_USERNAME=$(jq -r '.mcpServers.atlassian.env.JIRA_USERNAME' ~/.config/gemini-cli/mcp.json)
-   JIRA_API_TOKEN=$(jq -r '.mcpServers.atlassian.env.JIRA_API_TOKEN' ~/.config/gemini-cli/mcp.json)
-   JIRA_PERSONAL_TOKEN=$(jq -r '.mcpServers.atlassian.env.JIRA_PERSONAL_TOKEN' ~/.config/gemini-cli/mcp.json)
+   JIRA_URL=$(jq -r '.mcpServers.atlassian.env.JIRA_URL' ~/.config/claude-code/mcp.json)
+   JIRA_USERNAME=$(jq -r '.mcpServers.atlassian.env.JIRA_USERNAME' ~/.config/claude-code/mcp.json)
+   JIRA_API_TOKEN=$(jq -r '.mcpServers.atlassian.env.JIRA_API_TOKEN' ~/.config/claude-code/mcp.json)
 
    # Start the container
    podman run -d --name mcp-atlassian -p 8080:8080 \
      -e "JIRA_URL=${JIRA_URL}" \
      -e "JIRA_USERNAME=${JIRA_USERNAME}" \
      -e "JIRA_API_TOKEN=${JIRA_API_TOKEN}" \
-     -e "JIRA_PERSONAL_TOKEN=${JIRA_PERSONAL_TOKEN}" \
-     -e "JIRA_SSL_VERIFY=true" \
      ghcr.io/sooperset/mcp-atlassian:latest --transport sse --port 8080 -vv
    ```
 
@@ -143,8 +136,8 @@ Ask Gemini CLI to run: "Use the mcp__atlassian__jira_get_issue tool to fetch OCP
 ```
 
 If the MCP server is properly configured, you should see issue details returned. If you see an error:
-- **"Tool not found"**: The MCP server is not properly registered with Gemini CLI. Re-run the `gemini mcp add` command.
-- **"Authentication failed"** or **401/403 errors**: Check your `JIRA_PERSONAL_TOKEN` and `JIRA_USERNAME` are correct.
+- **"Tool not found"**: The MCP server is not properly registered with Gemini CLI. Re-run the `claude mcp add` command.
+- **"Authentication failed"** or **401/403 errors**: Check your `JIRA_API_TOKEN` and `JIRA_USERNAME` are correct.
 - **"Connection refused"**: If using a local MCP server, ensure the podman container is running (`podman ps`).
 - **"Could not find issue"**: Your authentication works! This just means the specific issue doesn't exist or you don't have access.
 
@@ -155,25 +148,23 @@ See the [full JIRA Plugin README](../README.md) for complete setup instructions 
 The command executes the following workflow:
 
 1. **Extract Credentials from MCP Configuration File**
-   - Read credentials from `~/.config/gemini-cli/mcp.json`
+   - Read credentials from `~/.config/claude-code/mcp.json`
    - Extract from the `atlassian` MCP server configuration:
      ```bash
-     MCP_CONFIG="$HOME/.config/gemini-cli/mcp.json"
+     MCP_CONFIG="$HOME/.config/claude-code/mcp.json"
 
      JIRA_URL=$(jq -r '.mcpServers.atlassian.env.JIRA_URL' "$MCP_CONFIG")
-     JIRA_EMAIL=$(jq -r '.mcpServers.atlassian.env.JIRA_USERNAME // .mcpServers.atlassian.env.JIRA_EMAIL' "$MCP_CONFIG")
-     JIRA_PERSONAL_TOKEN=$(jq -r '.mcpServers.atlassian.env.JIRA_PERSONAL_TOKEN' "$MCP_CONFIG")
+     JIRA_USERNAME=$(jq -r '.mcpServers.atlassian.env.JIRA_USERNAME' "$MCP_CONFIG")
      JIRA_API_TOKEN=$(jq -r '.mcpServers.atlassian.env.JIRA_API_TOKEN' "$MCP_CONFIG")
 
-     # Use JIRA_PERSONAL_TOKEN if available, otherwise fall back to JIRA_API_TOKEN
-     AUTH_TOKEN="${JIRA_PERSONAL_TOKEN:-$JIRA_API_TOKEN}"
+     AUTH_TOKEN="$JIRA_API_TOKEN"
      ```
    - If any required credentials are missing or the file doesn't exist, display error:
      ```bash
      Error: JIRA credentials not configured.
 
      This command requires JIRA credentials from the MCP server configuration file.
-     Please create or edit ~/.config/gemini-cli/mcp.json with your JIRA credentials.
+     Please create or edit ~/.config/claude-code/mcp.json with your JIRA credentials.
 
      See Prerequisites section for the required mcp.json format and setup instructions.
      ```
@@ -208,12 +199,11 @@ The command executes the following workflow:
    - Continue until all tickets are fetched
 
    **Authentication:**
-   - For Red Hat JIRA (Data Center): Use Bearer token with `JIRA_PERSONAL_TOKEN` (recommended)
-   - For JIRA Cloud: Can use Basic Auth with `email:api_token`, but Bearer token also works
+   - Use Basic Auth with `JIRA_USERNAME:JIRA_API_TOKEN` (base64-encoded) for Atlassian Cloud
 
    **Important API Details:**
-   - Use `/rest/api/2/search` endpoint (API v2 works reliably with Red Hat JIRA)
-   - Use `Authorization: Bearer ${JIRA_PERSONAL_TOKEN}` header for authentication
+   - Use POST `/rest/api/3/search/jql` endpoint with a JSON body containing `jql`, `fields`, and `maxResults`
+   - Use `Authorization: Basic <base64(username:token)>` header for authentication
    - Check HTTP response code to detect authentication failures
 
    **Batch Processing Loop:**
@@ -223,18 +213,25 @@ The command executes the following workflow:
    TOTAL_FETCHED=0
 
    while true; do
-     # Construct API URL with pagination
-     API_URL="${JIRA_URL}/rest/api/2/search?\
-      jql=${ENCODED_JQL}&\
-      startAt=${START_AT}&\
-      maxResults=1000&\
-      fields=summary,status,priority,assignee,reporter,created,updated,description,labels,components,watches,comment"
+     # Construct API URL for POST search
+     API_URL="${JIRA_URL}/rest/api/3/search/jql"
 
-     # Fetch batch using curl with Bearer token authentication
+     # Build JSON body for POST request
+     JSON_BODY=$(jq -n \
+       --arg jql "$JQL" \
+       --argjson startAt "$START_AT" \
+       --argjson maxResults 1000 \
+       '{jql: $jql, startAt: $startAt, maxResults: $maxResults, fields: ["summary","status","priority","assignee","reporter","created","updated","description","labels","components","watches","comment"]}')
+
+     # Fetch batch using curl with Basic authentication (POST)
+     AUTH_HEADER=$(printf '%s:%s' "$JIRA_USERNAME" "$AUTH_TOKEN" | base64 | tr -d '\n')
      HTTP_CODE=$(curl -s -w "%{http_code}" \
+       -X POST \
        -o "batch-${BATCH_NUM}.json" \
-       -H "Authorization: Bearer ${AUTH_TOKEN}" \
+       -H "Authorization: Basic ${AUTH_HEADER}" \
+       -H "Content-Type: application/json" \
        -H "Accept: application/json" \
+       -d "$JSON_BODY" \
        "${API_URL}")
 
      # Check HTTP response code
@@ -479,24 +476,24 @@ The command executes the following workflow:
    - Useful for tracking backlog trends over time
 
 **Error Handling:**
-- **Missing credentials file**: If `~/.config/gemini-cli/mcp.json` doesn't exist, display:
+- **Missing credentials file**: If `~/.config/claude-code/mcp.json` doesn't exist, display:
   ```bash
   Error: JIRA credentials not configured.
 
   This command requires JIRA credentials from the MCP server configuration file.
-  File not found: ~/.config/gemini-cli/mcp.json
+  File not found: ~/.config/claude-code/mcp.json
 
   Please create this file with your JIRA credentials.
   See Prerequisites section for the required mcp.json format and setup instructions.
   ```
 - **Invalid credentials in file**: If credentials are missing from mcp.json, display:
   ```bash
-  Error: JIRA credentials incomplete in ~/.config/gemini-cli/mcp.json
+  Error: JIRA credentials incomplete in ~/.config/claude-code/mcp.json
 
   Required fields in .mcpServers.atlassian.env:
-  - JIRA_URL (e.g., https://issues.redhat.com)
-  - JIRA_USERNAME (your JIRA email/username)
-  - JIRA_PERSONAL_TOKEN (preferred) or JIRA_API_TOKEN
+  - JIRA_URL (e.g., https://redhat.atlassian.net)
+  - JIRA_USERNAME (your Atlassian account email)
+  - JIRA_API_TOKEN
 
   See Prerequisites section for the required mcp.json format.
   ```
@@ -504,14 +501,14 @@ The command executes the following workflow:
   ```bash
   Error: JIRA authentication failed (HTTP 401/403)
 
-  Please verify your JIRA credentials in ~/.config/gemini-cli/mcp.json:
-  1. Check that JIRA_PERSONAL_TOKEN is correct and not expired
-  2. Verify JIRA_USERNAME matches your JIRA account
-  3. Ensure JIRA_URL is correct (e.g., https://issues.redhat.com)
-  4. Test authentication: curl -H "Authorization: Bearer YOUR_TOKEN" YOUR_JIRA_URL/rest/api/2/myself
+  Please verify your JIRA credentials in ~/.config/claude-code/mcp.json:
+  1. Check that JIRA_API_TOKEN is correct and not expired
+  2. Verify JIRA_USERNAME matches your Atlassian account email
+  3. Ensure JIRA_URL is correct (e.g., https://redhat.atlassian.net)
+  4. Test authentication: curl -H "Authorization: Basic $(printf '%s:%s' "$JIRA_USERNAME" "$JIRA_API_TOKEN" | base64 | tr -d '\n')" YOUR_JIRA_URL/rest/api/3/myself
 
   To regenerate your token, visit:
-  https://issues.redhat.com/secure/ViewProfile.jspa?selectedTab=com.atlassian.pats.pats-plugin:jira-user-personal-access-tokens
+  https://id.atlassian.com/manage-profile/security/api-tokens
   ```
 - **Invalid project key**: Display error with example format (e.g., "OCPBUGS", "JIRA", "HYPE")
 - **No tickets found**:
@@ -544,7 +541,7 @@ The command executes the following workflow:
 
 ## Examples
 
-**Note:** All examples require JIRA credentials to be configured in `~/.config/gemini-cli/mcp.json` (see Prerequisites section). The command uses curl to fetch data directly from JIRA's REST API, bypassing MCP commands to avoid 413 errors with large datasets.
+**Note:** All examples require JIRA credentials to be configured in `~/.config/claude-code/mcp.json` (see Prerequisites section). The command uses curl to fetch data directly from JIRA's REST API, bypassing MCP commands to avoid 413 errors with large datasets.
 
 1. **Find unassigned tickets in OCPBUGS project**:
    ```bash

@@ -35,7 +35,7 @@ Key capabilities:
 - Batch processing with selective skip options
 - Formatted status summaries with color-coded health indicators (Red/Yellow/Green)
 
-This command uses the **Status Analysis Engine** skill for core analysis logic. See `plugins/jira/skills/status-analysis/SKILL.md` for detailed implementation.
+This command uses the **Status Analysis Engine** skill for core analysis logic. See `extensions/jira/skills/status-analysis/SKILL.md` for detailed implementation.
 
 [Extended thinking: This command streamlines weekly status update workflows by first gathering all data efficiently using an async Python script, then processing each issue with focused LLM context. This two-phase approach minimizes API calls and ensures consistent, high-quality analysis.]
 
@@ -106,7 +106,7 @@ python3 {plugins-dir}/jira/skills/status-analysis/scripts/gather_status_data.py 
   --verbose
 ```
 
-**Script location**: `plugins/jira/skills/status-analysis/scripts/gather_status_data.py`
+**Script location**: `extensions/jira/skills/status-analysis/scripts/gather_status_data.py`
 
 **Script output**:
 
@@ -279,7 +279,7 @@ Use `mcp__atlassian-mcp__jira_update_issue`:
 {
   "issue_key": "{ISSUE-KEY}",
   "fields": {
-    "customfield_12320841": "{formatted-status-text}"
+    "customfield_10814": "{formatted-status-text}"
   }
 }
 ```
@@ -328,7 +328,8 @@ The Python script (`gather_status_data.py`) handles efficient batch data collect
 
 ### Environment Variables
 
-- `JIRA_TOKEN` or `JIRA_PERSONAL_TOKEN`: Jira API bearer token
+- `JIRA_API_TOKEN`: Atlassian API token (create at https://id.atlassian.com/manage-profile/security/api-tokens)
+  - `JIRA_USERNAME`: Atlassian account email
 - `GITHUB_TOKEN` or `gh auth token`: GitHub access token
 
 ### Output Structure
@@ -507,7 +508,8 @@ The Python script (`gather_status_data.py`) handles efficient batch data collect
 - **Python 3.8+** with `aiohttp` package installed
 - **Jira MCP server** configured and accessible
 - **Environment variables**:
-  - `JIRA_TOKEN` or `JIRA_PERSONAL_TOKEN`: Jira API bearer token
+  - `JIRA_API_TOKEN`: Atlassian API token (create at https://id.atlassian.com/manage-profile/security/api-tokens)
+  - `JIRA_USERNAME`: Atlassian account email
   - `GITHUB_TOKEN` or authenticated `gh` CLI
 
 Check for required tools:
@@ -516,8 +518,8 @@ Check for required tools:
 # Check Python and aiohttp
 python3 -c "import aiohttp; print('aiohttp OK')"
 
-# Check if the Jira token is defined
-test -n "$JIRA_TOKEN"
+# Check if the Jira credentials are defined
+test -n "$JIRA_API_TOKEN" && test -n "$JIRA_USERNAME"
 
 # Check GitHub token (via gh CLI)
 gh auth token &> /dev/null
@@ -542,6 +544,6 @@ See the Jira plugin's skills directory for examples of project-specific customiz
 
 ## Related
 
-- **Shared skill**: `plugins/jira/skills/status-analysis/SKILL.md`
-- **Data gatherer script**: `plugins/jira/skills/status-analysis/scripts/gather_status_data.py`
+- **Shared skill**: `extensions/jira/skills/status-analysis/SKILL.md`
+- **Data gatherer script**: `extensions/jira/skills/status-analysis/scripts/gather_status_data.py`
 - **Single-issue rollup**: `/jira:status-rollup` - Generate comprehensive status comment for one issue

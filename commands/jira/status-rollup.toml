@@ -26,7 +26,7 @@ Key capabilities:
 - Caches all data in a temp file for fast iterative refinement
 - Allows review and modification before posting to Jira
 
-This command uses the **Status Analysis Engine** skill for core analysis logic. See `plugins/jira/skills/status-analysis/SKILL.md` for detailed implementation.
+This command uses the **Status Analysis Engine** skill for core analysis logic. See `extensions/jira/skills/status-analysis/SKILL.md` for detailed implementation.
 
 **IMPORTANT - Skill Loading Requirement:**
 Before processing any issues, you MUST invoke `Skill(jira:status-analysis)` to load the Status Analysis Engine skill. This ensures proper use of `childIssuesOf()` for hierarchy traversal and consistent analysis methodology. Do NOT rely on conversation summaries or memory - always load the skill explicitly at the start of execution.
@@ -79,7 +79,7 @@ Build the configuration for the Status Analysis Engine:
 
 ### 3. Execute Status Analysis Engine
 
-Follow the skill documentation in `plugins/jira/skills/status-analysis/`:
+Follow the skill documentation in `extensions/jira/skills/status-analysis/`:
 
 1. **Data Collection** (`data-collection.md`):
    - Fetch the root issue with `mcp__atlassian-mcp__jira_get_issue`
@@ -126,7 +126,7 @@ Regenerate only affected sections and present again.
 Once approved:
 
 1. Use `mcp__atlassian-mcp__jira_add_comment` to post to the root issue
-2. Comment includes footer: `_Generated with [Gemini CLI|https://gemini.google.com] via {{/jira:status-rollup {issue-id} --start-date {date} --end-date {date}}}_`
+2. Comment includes footer: `_Generated with [Gemini CLI|https://claude.com/claude-code] via {{/jira:status-rollup {issue-id} --start-date {date} --end-date {date}}}_`
 3. Confirm success and provide issue URL
 
 ### 7. Temp File Cleanup
@@ -179,15 +179,15 @@ h2. Status Rollup: 2025-01-06 to 2025-01-13
 h3. This Period
 
 *Completed:*
-*# [AUTH-101|https://issues.redhat.com/browse/AUTH-101] - OAuth2 implementation (PR #456 merged, all review feedback addressed)
-*# [AUTH-102|https://issues.redhat.com/browse/AUTH-102] - Token validation with comprehensive unit tests
+*# [AUTH-101|https://redhat.atlassian.net/browse/AUTH-101] - OAuth2 implementation (PR #456 merged, all review feedback addressed)
+*# [AUTH-102|https://redhat.atlassian.net/browse/AUTH-102] - Token validation with comprehensive unit tests
 
 *In Progress:*
-*# [UI-201|https://issues.redhat.com/browse/UI-201] - Login UI components (design review completed, implementing responsive layout)
-*# [AUTH-103|https://issues.redhat.com/browse/AUTH-103] - Session handling refactor (draft PR submitted)
+*# [UI-201|https://redhat.atlassian.net/browse/UI-201] - Login UI components (design review completed, implementing responsive layout)
+*# [AUTH-103|https://redhat.atlassian.net/browse/AUTH-103] - Session handling refactor (draft PR submitted)
 
 *Blocked:*
-*# [AUTH-104|https://issues.redhat.com/browse/AUTH-104] - Azure AD integration (waiting on subscription approval)
+*# [AUTH-104|https://redhat.atlassian.net/browse/AUTH-104] - Azure AD integration (waiting on subscription approval)
 {quote}Need Azure subscription approved before proceeding - submitted ticket #12345{quote}
 
 h3. Next Steps
@@ -210,7 +210,7 @@ h3. Metrics
 
 ----
 
-_Generated with [Gemini CLI|https://gemini.google.com] via {{/jira:status-rollup FEATURE-123 --start-date 2025-01-06 --end-date 2025-01-13}}_
+_Generated with [Gemini CLI|https://claude.com/claude-code] via {{/jira:status-rollup FEATURE-123 --start-date 2025-01-06 --end-date 2025-01-13}}_
 ```
 
 ## Arguments
@@ -230,6 +230,6 @@ _Generated with [Gemini CLI|https://gemini.google.com] via {{/jira:status-rollup
 
 ## Related
 
-- **Shared skill**: `plugins/jira/skills/status-analysis/SKILL.md`
+- **Shared skill**: `extensions/jira/skills/status-analysis/SKILL.md`
 - **Batch updates**: `/jira:update-weekly-status` - Update Status Summary field for multiple issues
 '''

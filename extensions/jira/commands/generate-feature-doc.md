@@ -51,8 +51,8 @@ This command orchestrates two skills in sequence to generate comprehensive featu
    - Outputs to `.work/jira/feature-doc/<feature-key>/feature-doc.md`
 
 For detailed implementation, see:
-- `plugins/jira/skills/extract-prs/SKILL.md`
-- `plugins/jira/skills/jira-doc-generator/SKILL.md`
+- `extensions/jira/skills/extract-prs/SKILL.md`
+- `extensions/jira/skills/jira-doc-generator/SKILL.md`
 
 ## Arguments
 
@@ -184,7 +184,7 @@ See `jira-doc-generator` SKILL.md Section "Error Handling" for detailed guidance
    - Verify: `gh auth status`
 
 3. **JIRA Access** - Read permissions for issues
-   - Network access to `https://issues.redhat.com`
+   - Network access to `https://redhat.atlassian.net`
 
 4. **GitHub Access** - Read access to repositories where PRs are located
    - PRs in private repos require appropriate GitHub permissions
@@ -226,7 +226,7 @@ See SKILL.md Step 2 for complete algorithm details.
 ### GitHub PR Extraction Strategy
 
 **Dual-source approach** (implemented in SKILL.md Step 3):
-1. **Primary**: JIRA Remote Links API (`/rest/api/2/issue/{key}/remotelink`)
+1. **Primary**: JIRA Remote Links API (`/rest/api/3/issue/{key}/remotelink`)
    - Authoritative source for PRs added via "Link Issue" UI
    - NOT included in main issue API response
 2. **Backup**: Text extraction from descriptions and comments

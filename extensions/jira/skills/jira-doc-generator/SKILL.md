@@ -15,7 +15,7 @@ This skill is automatically invoked by the `/jira:generate-feature-doc` command 
 
 ## Prerequisites
 
-- **MCP Jira server configured and running** (required - see `plugins/jira/README.md` for setup)
+- **MCP Jira server configured and running** (required - see `extensions/jira/README.md` for setup)
 - GitHub CLI (`gh`) installed and authenticated (for analyzing PRs)
 - User has read access to Jira issues (including private issues via MCP authentication)
 - User has read access to linked GitHub repositories
@@ -40,7 +40,7 @@ This skill is automatically invoked by the `/jira:generate-feature-doc` command 
    ```
    mcp__atlassian__jira_get_issue(issue_key=<feature-key>, fields="*all")
    ```
-   - If MCP unavailable, display error pointing to `plugins/jira/README.md`
+   - If MCP unavailable, display error pointing to `extensions/jira/README.md`
 
 5. **Parse response**: Extract `key`, `summary`, `description`, `issuetype`, `status`
    - If fetch fails, display error and exit
