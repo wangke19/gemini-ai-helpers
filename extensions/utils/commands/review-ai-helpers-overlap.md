@@ -1,5 +1,5 @@
 ---
-description: Review potential overlaps with existing ai-helpers (Gemini CLI Extensions, Commands, Skills, Sub-agents, or Hooks) and open PRs
+description: Review potential overlaps with existing ai-helpers (Gemini CLI Plugins, Commands, Skills, Sub-agents, or Hooks) and open PRs
 argument-hint: "[--idea TEXT] [--pr NUMBER] [--verbose]"
 ---
 
@@ -12,13 +12,13 @@ utils:review-ai-helpers-overlap
 ```
 
 ## Description
-Review potential overlaps between your planned or implemented work and existing **Gemini CLI Extensions, Commands, Skills, Sub-agents, or Hooks** in the `openshift-eng/ai-helpers` repository to avoid duplicating effort and find collaboration opportunity.
+Review potential overlaps between your planned or implemented work and existing **Gemini CLI Plugins, Commands, Skills, Sub-agents, or Hooks** in the `openshift-eng/ai-helpers` repository to avoid duplicating effort and find collaboration opportunity.
 
 This command is specifically designed for contributors and reviewers to the `openshift-eng/ai-helpers` repository. It checks for overlaps in:
 - Plugin commands (`plugins/*/commands/*.md`)
 - Skills (`plugins/*/skills/*/SKILL.md` and helper scripts)
 - Sub-agents (`agents/*.md`)
-- Hooks (`.gemini/hooks/*.sh` and `.gemini/hooks/*.py`)
+- Hooks (`.claude/hooks/*.sh` and `.claude/hooks/*.py`)
 
 **Modes**:
 - **Idea check** (`--idea "TEXT"`): Check if your idea already exists before writing code
@@ -68,7 +68,7 @@ REPO="openshift-eng/ai-helpers"
 - Get changed files from ai-helpers structure:
   ```bash
   # Get all ai-helpers changes in one pass (commands, skills, agents, hooks)
-  CHANGED_FILES=$(git diff --name-only main...HEAD | grep -E '(^plugins/.*/commands/.*\.md$|^plugins/.*/skills/.*/SKILL\.md$|^plugins/.*/skills/.*\.py$|^agents/.*\.md$|^\.gemini/hooks/.*\.(sh|py)$)')
+  CHANGED_FILES=$(git diff --name-only main...HEAD | grep -E '(^plugins/.*/commands/.*\.md$|^plugins/.*/skills/.*/SKILL\.md$|^plugins/.*/skills/.*\.py$|^agents/.*\.md$|^\.claude/hooks/.*\.(sh|py)$)')
   ```
 - If no ai-helpers-specific files changed: Show message "No ai-helpers changes detected (commands, skills, agents, or hooks). This tool is designed for ai-helpers repository contributions." and exit
 - For each file, use Read to extract: plugin name, command/skill/agent name, description (first 500 chars)
@@ -99,7 +99,7 @@ For flagged PRs:
    - Commands: `gh pr diff <PR_NUMBER> --repo "$REPO" -- plugins/<plugin>/commands/<command>.md`
    - Skills: `gh pr diff <PR_NUMBER> --repo "$REPO" -- plugins/<plugin>/skills/<skill>/SKILL.md`
    - Agents: `gh pr diff <PR_NUMBER> --repo "$REPO" -- agents/<agent>.md`
-   - Hooks: `gh pr diff <PR_NUMBER> --repo "$REPO" -- .gemini/hooks/<hook>.(sh|py)`
+   - Hooks: `gh pr diff <PR_NUMBER> --repo "$REPO" -- .claude/hooks/<hook>.(sh|py)`
 2. Parse diff to extract Description and Implementation sections
 3. Gemini compares purposes, workflows, functionality and assesses overlap:
    - **HIGH (85-100%)**: Near-identical → Strong warning to collaborate
@@ -112,7 +112,7 @@ For flagged PRs:
 - Commands: `find plugins/*/commands/*.md`
 - Skills: `find plugins/*/skills/*/SKILL.md`
 - Agents: `find agents/*.md`
-- Hooks: `find .gemini/hooks/*.{sh,py}`
+- Hooks: `find .claude/hooks/*.{sh,py}`
 
 Use Read for frontmatter descriptions, flag if 3+ keyword overlap or semantic similarity
 
@@ -120,7 +120,7 @@ Use Read for frontmatter descriptions, flag if 3+ keyword overlap or semantic si
 - Commands: `ls plugins/<plugin>/commands/*.md`
 - Skills: `ls plugins/<plugin>/skills/*/SKILL.md`
 - Agents: `ls agents/*.md`
-- Hooks: `ls .gemini/hooks/*.{sh,py}`
+- Hooks: `ls .claude/hooks/*.{sh,py}`
 
 Check for duplicate names and description similarity
 

@@ -27,7 +27,7 @@ BOT_SIGNATURES = [
 ]
 
 # Text signature that appears in bot replies
-REPLY_SIGNATURE = "*AI-assisted response via Gemini CLI*"
+REPLY_SIGNATURE = "*AI-assisted response via Claude Code*"
 
 
 def run_gh(args: list[str]) -> Any:

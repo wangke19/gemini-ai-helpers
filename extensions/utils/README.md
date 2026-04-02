@@ -30,7 +30,7 @@ A placeholder command for testing and development.
 
 ### `/utils:review-ai-helpers-overlap`
 
-Review potential overlaps with existing ai-helpers (Gemini CLI Extensions, Commands, Skills, Sub-agents, or Hooks) and open PRs.
+Review potential overlaps with existing ai-helpers (Gemini CLI Plugins, Commands, Skills, Sub-agents, or Hooks) and open PRs.
 
 ## Purpose
 

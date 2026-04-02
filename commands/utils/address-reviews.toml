@@ -203,7 +203,7 @@ Before posting ANY reply, verify you haven't already responded:
 ```bash
 CHECK_REPLIED="${GEMINI_EXTENSION_ROOT}/scripts/check_replied.py"
 if [ ! -f "$CHECK_REPLIED" ]; then
-  CHECK_REPLIED=$(find ~/.gemini/extensions -type f -path "*/utils/scripts/check_replied.py" 2>/dev/null | sort | head -1)
+  CHECK_REPLIED=$(find ~/.claude/plugins -type f -path "*/utils/scripts/check_replied.py" 2>/dev/null | sort | head -1)
 fi
 if [ -z "$CHECK_REPLIED" ] || [ ! -f "$CHECK_REPLIED" ]; then echo "ERROR: check_replied.py not found" >&2; exit 2; fi
 python3 "$CHECK_REPLIED" <owner> <repo> <pr_number> <comment_id> --type <type>
