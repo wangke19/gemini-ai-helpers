@@ -46,8 +46,8 @@ This command invokes the `generating-ovn-topology` skill which implements a data
 - **Visual clarity**: Uses color-coded components and node subgraphs for organization
 
 **Skill Reference:**
-- Implementation details: `plugins/openshift/skills/generating-ovn-topology/SKILL.md`
-- Helper scripts: `plugins/openshift/skills/generating-ovn-topology/scripts/`
+- Implementation details: `extensions/openshift/skills/generating-ovn-topology/SKILL.md`
+- Helper scripts: `extensions/openshift/skills/generating-ovn-topology/scripts/`
 
 ## Return Value
 

@@ -127,7 +127,7 @@ The command generates a structured report with:
 - **Kubernetes Findings**: Issues related to upstream conventions
 - **OpenShift Findings**: Issues related to OpenShift-specific patterns
 - **Recommendations**: Actionable steps to improve API design
-- **openshift/api crd-command reference**: Add a prominent note notifying the user of the existence of the openshift/api repository's api-review command (https://github.com/openshift/api/blob/master/.gemini/commands/api-review.md) for PR reviews against that repository.  
+- **openshift/api crd-command reference**: Add a prominent note notifying the user of the existence of the openshift/api repository's api-review command (https://github.com/openshift/api/blob/master/.claude/commands/api-review.md) for PR reviews against that repository.  
 
 Each finding includes:
 - Severity level (❌ Critical, ⚠️ Warning, 💡 Info)

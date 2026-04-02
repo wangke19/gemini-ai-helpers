@@ -31,9 +31,9 @@ This command invokes the `openshift-node-kernel` skill which provides kernel-lev
 5. **Output Filtering**: Removes common oc debug warnings to provide clean output
 
 **Skill Reference:**
-- Implementation: `plugins/openshift/skills/openshift-node-kernel/node-kernel-conntrack.sh`
-- Helper functions: `plugins/openshift/skills/openshift-node-kernel/kernel-helper.sh`
-- Documentation: `plugins/openshift/skills/openshift-node-kernel/SKILL.md`
+- Implementation: `extensions/openshift/skills/openshift-node-kernel/node-kernel-conntrack.sh`
+- Helper functions: `extensions/openshift/skills/openshift-node-kernel/kernel-helper.sh`
+- Documentation: `extensions/openshift/skills/openshift-node-kernel/SKILL.md`
 
 ## Parameters
 

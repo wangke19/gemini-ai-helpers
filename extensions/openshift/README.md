@@ -49,7 +49,7 @@ See the [commands/](commands/) directory for full documentation of each command.
 
 ## Installation
 
-### From the Gemini CLI Extension Marketplace
+### From the Gemini CLI Plugin Marketplace
 
 1. **Add the marketplace** (if not already added):
    ```bash
@@ -268,7 +268,7 @@ To add a new command to this plugin:
 
 1. Create a new markdown file in `commands/`:
    ```bash
-   touch plugins/openshift/commands/your-command.md
+   touch extensions/openshift/commands/your-command.md
    ```
 
 2. Follow the structure from existing commands (see `commands/bump-deps.md` for reference)
@@ -292,9 +292,9 @@ To add a new command to this plugin:
 ### Plugin Structure
 
 ```
-plugins/openshift/
-├── .gemini-extension/
-│   └── plugin.json                    # Plugin metadata
+extensions/openshift/
+├── .claude-plugin/
+│   └── extension.json                    # Plugin metadata
 ├── commands/
 │   ├── bump-deps.md                   # Dependency bumping command
 │   ├── new-e2e-test.md                # E2E test generation
