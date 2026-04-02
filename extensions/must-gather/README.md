@@ -1,6 +1,6 @@
 # Must-Gather Analyzer Plugin
 
-Gemini CLI extension for analyzing OpenShift must-gather diagnostic data.
+Gemini CLI plugin for analyzing OpenShift must-gather diagnostic data.
 
 ## Overview
 
@@ -18,7 +18,7 @@ This plugin provides tools to analyze must-gather data collected from OpenShift 
 
 ### Analysis Scripts
 
-All scripts located in `plugins/must-gather/skills/must-gather-analyzer/scripts/`:
+All scripts located in `extensions/must-gather/skills/must-gather-analyzer/scripts/`:
 
 #### `analyze_clusterversion.py`
 Analyzes cluster version, update status, and capabilities.
@@ -390,17 +390,17 @@ Provides analysis of:
 
 If you're working in the must-gather repository:
 
-1. The plugin is already available in `.gemini-extension/`
-2. Gemini CLI will automatically detect project extensions
+1. The plugin is already available in `.claude-plugin/`
+2. Gemini CLI will automatically detect project plugins
 
 ### Manual Installation
 
 To use this plugin in other projects:
 
-1. Copy the `.gemini-extension/` directory to your desired location
+1. Copy the `.claude-plugin/` directory to your desired location
 2. Add to Gemini CLI:
    ```bash
-   /extension add /path/to/.gemini-extension
+   /plugin marketplace add /path/to/.claude-plugin
    /plugin install must-gather-analyzer
    ```
 

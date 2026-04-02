@@ -60,14 +60,14 @@ Analysis scripts are bundled with this plugin at:
 └── analyze_pvs.py
 ```
 
-Where `<plugin-root>` is the directory where this plugin is installed (typically `~/.cursor/commands/ai-helpers/plugins/must-gather/` or similar).
+Where `<plugin-root>` is the directory where this plugin is installed (typically `~/.cursor/commands/ai-helpers/extensions/must-gather/` or similar).
 
 ## Error Handling
 
 **CRITICAL: Script-Only Analysis**
 
 - **NEVER** attempt to analyze must-gather data directly using bash commands, grep, or manual file reading
-- **ONLY** use the provided Python scripts in `plugins/must-gather/skills/must-gather-analyzer/scripts/`
+- **ONLY** use the provided Python scripts in `extensions/must-gather/skills/must-gather-analyzer/scripts/`
 - If scripts are missing or not found:
   1. Stop immediately
   2. Inform the user that the analysis scripts are not available
@@ -94,7 +94,7 @@ Before running any analysis:
 
 2. If scripts cannot be found, STOP and report to the user:
    ```
-   The must-gather analysis scripts could not be located. Please ensure the must-gather plugin from openshift-eng/ai-helpers is properly installed in your Gemini CLI extensions directory.
+   The must-gather analysis scripts could not be located. Please ensure the must-gather plugin from openshift-eng/ai-helpers is properly installed in your Gemini CLI plugins directory.
    ```
 
 ## Implementation

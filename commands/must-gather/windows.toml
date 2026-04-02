@@ -61,7 +61,7 @@ must-gather/
 
 2. **Run Windows log analyzer**:
    ```bash
-   python3 plugins/must-gather/skills/must-gather-analyzer/scripts/analyze_windows_logs.py \
+   python3 extensions/must-gather/skills/must-gather-analyzer/scripts/analyze_windows_logs.py \
      <must-gather-path>
    ```
 

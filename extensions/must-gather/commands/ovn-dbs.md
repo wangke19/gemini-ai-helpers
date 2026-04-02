@@ -51,7 +51,7 @@ The script is bundled with this plugin:
 <plugin-root>/skills/must-gather-analyzer/scripts/analyze_ovn_dbs.py
 ```
 
-Where `<plugin-root>` is the directory where this plugin is installed (typically `~/.cursor/commands/ai-helpers/plugins/must-gather/` or similar).
+Where `<plugin-root>` is the directory where this plugin is installed (typically `~/.cursor/commands/ai-helpers/extensions/must-gather/` or similar).
 
 Gemini will automatically locate it by searching for the script in the plugin installation directory, regardless of your current working directory.
 

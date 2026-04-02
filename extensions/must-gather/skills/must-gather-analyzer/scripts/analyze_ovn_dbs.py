@@ -409,7 +409,7 @@ Examples:
   # Analyze specific node
   analyze_ovn_dbs.py ./must-gather.local.123456789 --node ip-10-0-26-145
 
-  # Run raw OVSDB query (Gemini can construct the JSON)
+  # Run raw OVSDB query (Claude can construct the JSON)
   analyze_ovn_dbs.py ./must-gather/ --query '["OVN_Northbound", {"op":"select", "table":"ACL", "where":[["priority", ">", 1000]], "columns":["priority","match","action"]}]'
 
   # Query specific node
