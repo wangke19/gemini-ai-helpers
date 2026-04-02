@@ -8,7 +8,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Source config directly (preflight.sh should only be called from gather.sh)
-CONFIG_FILE="${HOME}/.gemini/extensions/config/workspaces/config.env"
+CONFIG_FILE="${HOME}/.claude/plugins/config/workspaces/config.env"
 if [ ! -f "${CONFIG_FILE}" ]; then
     echo "ERROR: Configuration file not found: ${CONFIG_FILE}"
     echo "Please run gather.sh first to initialize configuration."
@@ -30,13 +30,13 @@ WORKSPACE_DIR="$1"
 
 # Handle both absolute paths and relative workspace names
 if [[ "$WORKSPACE_DIR" == /* ]]; then
-    # Absolute path provided - verify it's within GEMINI_WORKSPACES_ROOT
-    if [[ "$WORKSPACE_DIR" != "$GEMINI_WORKSPACES_ROOT"/* ]]; then
-        echo "ERROR: Absolute path must be within workspace root: $GEMINI_WORKSPACES_ROOT"
+    # Absolute path provided - verify it's within CLAUDE_WORKSPACES_ROOT
+    if [[ "$WORKSPACE_DIR" != "$CLAUDE_WORKSPACES_ROOT"/* ]]; then
+        echo "ERROR: Absolute path must be within workspace root: $CLAUDE_WORKSPACES_ROOT"
         exit 1
     fi
     # Extract workspace name from path
-    WORKSPACE_DIR="${WORKSPACE_DIR#$GEMINI_WORKSPACES_ROOT/}"
+    WORKSPACE_DIR="${WORKSPACE_DIR#$CLAUDE_WORKSPACES_ROOT/}"
 fi
 
 # Validate workspace directory name to prevent path traversal
@@ -60,14 +60,14 @@ echo ""
 set -e  # Exit on error
 
 echo "=== STEP 1: Copy template ==="
-cp -r "${GEMINI_WORKSPACES_ROOT}/.template" "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
-echo "  OK: Created ${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+cp -r "${CLAUDE_WORKSPACES_ROOT}/.template" "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+echo "  OK: Created ${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
 
 echo "=== STEP 2: Create worktrees ==="
 for repo in $REPOS; do
     echo "--- $repo ---"
 
-    cd "${GEMINI_GIT_REPOS_ROOT}/$repo"
+    cd "${CLAUDE_GIT_REPOS_ROOT}/$repo"
 
     REMOTE=$(get_remote)
     echo "  Fetching $REMOTE..."
@@ -78,7 +78,7 @@ for repo in $REPOS; do
     [ -z "$default" ] && default="main"
 
     echo "  Creating worktree from $REMOTE/$default..."
-    git worktree add "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" "$REMOTE/$default"
+    git worktree add "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" "$REMOTE/$default"
     echo "  OK"
 done
 
@@ -86,7 +86,7 @@ echo "=== STEP 3: Setup branches ==="
 for repo in $REPOS; do
     echo "--- $repo ---"
 
-    cd "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo"
+    cd "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo"
 
     REMOTE=$(get_remote)
 
@@ -106,9 +106,9 @@ for repo in $REPOS; do
 done
 
 echo "=== DONE ==="
-echo "Workspace: ${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+echo "Workspace: ${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
 echo "Repositories:"
 for repo in $REPOS; do
-    branch=$(cd "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" && git branch --show-current)
+    branch=$(cd "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" && git branch --show-current)
     echo "  - $repo: $branch"
 done

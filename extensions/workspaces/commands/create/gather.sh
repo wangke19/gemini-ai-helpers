@@ -17,11 +17,11 @@ echo "$PREFLIGHT_OUTPUT"
 source "${SCRIPT_DIR}/preflight.sh" > /dev/null 2>&1
 
 # Define CONFIG_DIR and CUSTOM_PROMPT_FILE
-CONFIG_DIR="${HOME}/.gemini/extensions/config/workspaces"
+CONFIG_DIR="${HOME}/.claude/plugins/config/workspaces"
 CUSTOM_PROMPT_FILE="${CONFIG_DIR}/custom-prompt.md"
 
 # Check template exists (silently)
-if [ ! -d "${GEMINI_WORKSPACES_ROOT}/.template" ]; then
+if [ ! -d "${CLAUDE_WORKSPACES_ROOT}/.template" ]; then
     echo "ERROR: Template directory missing"
     exit 1
 fi
@@ -29,7 +29,7 @@ fi
 echo ""
 echo "=== REPOS ==="
 # Use portable find syntax (GNU -printf not available on macOS/BSD)
-find "${GEMINI_GIT_REPOS_ROOT}/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ' ' | sed 's/ $/\n/'
+find "${CLAUDE_GIT_REPOS_ROOT}/" -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | tr '\n' ' ' | sed 's/ $/\n/'
 
 # Output custom prompt contents only if it has been customized by the user
 # Check if the file still contains the DISABLED marker

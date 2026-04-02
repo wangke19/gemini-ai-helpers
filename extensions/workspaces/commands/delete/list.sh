@@ -18,7 +18,7 @@ echo "$PREFLIGHT_OUTPUT"
 source "${SCRIPT_DIR}/../create/preflight.sh" > /dev/null 2>&1
 
 echo "=== WORKSPACES ==="
-for dir in "${GEMINI_WORKSPACES_ROOT}"/*/; do
+for dir in "${CLAUDE_WORKSPACES_ROOT}"/*/; do
     [ -d "$dir" ] || continue
     name=$(basename "$dir")
 

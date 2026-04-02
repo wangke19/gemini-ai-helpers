@@ -6,7 +6,7 @@
 set -euo pipefail
 
 # Source config directly (preflight.sh should only be called from list.sh)
-CONFIG_FILE="${HOME}/.gemini/extensions/config/workspaces/config.env"
+CONFIG_FILE="${HOME}/.claude/plugins/config/workspaces/config.env"
 if [ ! -f "${CONFIG_FILE}" ]; then
     echo "ERROR: Configuration file not found: ${CONFIG_FILE}"
     echo "Please run workspaces:create first to initialize configuration."
@@ -34,13 +34,13 @@ fi
 
 # Handle both absolute paths and relative workspace names
 if [[ "$WORKSPACE_DIR" == /* ]]; then
-    # Absolute path provided - verify it's within GEMINI_WORKSPACES_ROOT
-    if [[ "$WORKSPACE_DIR" != "$GEMINI_WORKSPACES_ROOT"/* ]]; then
-        echo "ERROR: Absolute path must be within workspace root: $GEMINI_WORKSPACES_ROOT"
+    # Absolute path provided - verify it's within CLAUDE_WORKSPACES_ROOT
+    if [[ "$WORKSPACE_DIR" != "$CLAUDE_WORKSPACES_ROOT"/* ]]; then
+        echo "ERROR: Absolute path must be within workspace root: $CLAUDE_WORKSPACES_ROOT"
         exit 1
     fi
     # Extract workspace name from path
-    WORKSPACE_DIR="${WORKSPACE_DIR#"$GEMINI_WORKSPACES_ROOT"/}"
+    WORKSPACE_DIR="${WORKSPACE_DIR#"$CLAUDE_WORKSPACES_ROOT"/}"
 fi
 
 # Validate workspace directory name to prevent path traversal
@@ -50,7 +50,7 @@ if [[ "$WORKSPACE_DIR" == *..* ]]; then
 fi
 
 # Construct full path
-FULL_PATH="${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+FULL_PATH="${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
 
 if [ ! -d "$FULL_PATH" ]; then
     echo "=== ERROR ==="

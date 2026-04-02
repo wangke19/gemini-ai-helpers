@@ -4,7 +4,7 @@
 set -euo pipefail
 
 # Determine config file location
-CONFIG_DIR="${HOME}/.gemini/extensions/config/workspaces"
+CONFIG_DIR="${HOME}/.claude/plugins/config/workspaces"
 CONFIG_FILE="${CONFIG_DIR}/config.env"
 
 # Parse command line arguments (only when executed directly, not when sourced)
@@ -72,8 +72,8 @@ if [ "$RECONFIGURE" = true ] || [ ! -f "${CONFIG_FILE}" ]; then
     # Save configuration
     mkdir -p "${CONFIG_DIR}"
     cat > "${CONFIG_FILE}" <<EOF
-export GEMINI_GIT_REPOS_ROOT="${REPOS_ROOT}"
-export GEMINI_WORKSPACES_ROOT="${WORKSPACES_ROOT}"
+export CLAUDE_GIT_REPOS_ROOT="${REPOS_ROOT}"
+export CLAUDE_WORKSPACES_ROOT="${WORKSPACES_ROOT}"
 EOF
     chmod 600 "${CONFIG_FILE}"
     echo "=== CONFIGURATION SAVED ==="
@@ -87,7 +87,7 @@ fi
 source "${CONFIG_FILE}"
 
 # Validate that required variables are set
-if [ -z "${GEMINI_GIT_REPOS_ROOT:-}" ] || [ -z "${GEMINI_WORKSPACES_ROOT:-}" ]; then
+if [ -z "${CLAUDE_GIT_REPOS_ROOT:-}" ] || [ -z "${CLAUDE_WORKSPACES_ROOT:-}" ]; then
     echo "ERROR: Configuration file exists but does not contain required variables"
     echo "Config file: ${CONFIG_FILE}"
     echo "Please delete the file and reconfigure:"
@@ -96,7 +96,7 @@ if [ -z "${GEMINI_GIT_REPOS_ROOT:-}" ] || [ -z "${GEMINI_WORKSPACES_ROOT:-}" ]; 
     exit 1
 fi
 
-export GEMINI_GIT_REPOS_ROOT GEMINI_WORKSPACES_ROOT
+export CLAUDE_GIT_REPOS_ROOT CLAUDE_WORKSPACES_ROOT
 
 # Create custom-prompt.md if it doesn't exist
 CUSTOM_PROMPT_FILE="${CONFIG_DIR}/custom-prompt.md"
@@ -107,7 +107,7 @@ if [ ! -f "${CUSTOM_PROMPT_FILE}" ]; then
 # Workspace Custom Rules
 
 This file contains organization-specific aliases and auto-detect rules.
-Gemini reads this file when parsing workspace descriptions during workspaces:create.
+Claude reads this file when parsing workspace descriptions during workspaces:create.
 
 ## Aliases
 
@@ -159,13 +159,13 @@ if grep -q "^# DISABLED" "${CUSTOM_PROMPT_FILE}"; then
 fi
 
 # Create .template if it doesn't exist
-TEMPLATE_DIR="${GEMINI_WORKSPACES_ROOT}/.template"
+TEMPLATE_DIR="${CLAUDE_WORKSPACES_ROOT}/.template"
 if [ ! -d "${TEMPLATE_DIR}" ]; then
     echo "=== CREATING DEFAULT TEMPLATE ==="
     mkdir -p "${TEMPLATE_DIR}"
 
-    # Create default GEMINI.md
-    cat > "${TEMPLATE_DIR}/GEMINI.md" <<TEMPLATE_EOF
+    # Create default CLAUDE.md
+    cat > "${TEMPLATE_DIR}/CLAUDE.md" <<TEMPLATE_EOF
 # Workspace Context
 
 This is a multi-repository workspace managed by git worktrees.
@@ -179,7 +179,7 @@ This is a multi-repository workspace managed by git worktrees.
 Each repository directory is a separate git worktree pointing to a specific branch.
 All repositories in this workspace are typically on the same feature branch or reviewing the same PR.
 
-You can customize this template at: ${GEMINI_WORKSPACES_ROOT}/.template/
+You can customize this template at: ${CLAUDE_WORKSPACES_ROOT}/.template/
 TEMPLATE_EOF
 
     echo "TEMPLATE_CREATED: ${TEMPLATE_DIR}"

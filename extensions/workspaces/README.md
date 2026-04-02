@@ -30,11 +30,11 @@ First run prompts for two paths:
 - **Git repos root**: Where your repos are cloned (e.g., `~/git`)
 - **Workspaces root**: Where workspaces are created (e.g., `~/workspaces`)
 
-Config stored in `~/.gemini/extensions/config/workspaces/config.env`.
+Config stored in `~/.claude/extensions/config/workspaces/config.env`.
 
 To reconfigure:
 ```bash
-rm ~/.gemini/extensions/config/workspaces/config.env
+rm ~/.claude/extensions/config/workspaces/config.env
 # Next command will prompt for new paths
 ```
 
@@ -44,15 +44,15 @@ rm ~/.gemini/extensions/config/workspaces/config.env
 
 1. Creates a dedicated directory for your task
 2. Adds worktrees for each repository (all on the same feature branch)
-3. Copies template files (customize in `${GEMINI_WORKSPACES_ROOT}/.template/`)
-4. Creates a `GEMINI.md` with workspace context
+3. Copies template files (customize in `${CLAUDE_WORKSPACES_ROOT}/.template/`)
+4. Creates a `CLAUDE.md` with workspace context
 
 **Workspace structure:**
 ```
-${GEMINI_WORKSPACES_ROOT}/
+${CLAUDE_WORKSPACES_ROOT}/
 ├── .template/              # Template copied to new workspaces
 └── TEAM-1234/              # Your workspace
-    ├── GEMINI.md           # Context for Gemini
+    ├── CLAUDE.md           # Context for Gemini
     ├── frontend/           # Git worktree (branch: TEAM-1234)
     └── backend/            # Git worktree (branch: TEAM-1234)
 ```
@@ -67,11 +67,11 @@ ${GEMINI_WORKSPACES_ROOT}/
 
 **Custom aliases and auto-detect rules:**
 
-A template file `~/.gemini/extensions/config/workspaces/custom-prompt.md.template` is created on first setup.
+A template file `~/.claude/extensions/config/workspaces/custom-prompt.md.template` is created on first setup.
 
 To customize for your team:
 ```bash
-cd ~/.gemini/extensions/config/workspaces
+cd ~/.claude/extensions/config/workspaces
 cp custom-prompt.md.template custom-prompt.md
 # Edit custom-prompt.md to add your team's aliases and auto-detect rules
 ```
@@ -84,7 +84,7 @@ Example customizations:
 
 Add files to all new workspaces:
 ```bash
-cd ${GEMINI_WORKSPACES_ROOT}/.template
+cd ${CLAUDE_WORKSPACES_ROOT}/.template
 # Add your .gitignore, scripts, etc.
 ```
 

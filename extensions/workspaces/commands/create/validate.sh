@@ -7,7 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Source config directly (preflight.sh should only be called from gather.sh)
-CONFIG_FILE="${HOME}/.gemini/extensions/config/workspaces/config.env"
+CONFIG_FILE="${HOME}/.claude/plugins/config/workspaces/config.env"
 if [ ! -f "${CONFIG_FILE}" ]; then
     echo "ERROR: Configuration file not found: ${CONFIG_FILE}"
     echo "Please run gather.sh first to initialize configuration."
@@ -32,13 +32,13 @@ REPOS="$*"
 
 # Handle both absolute paths and relative workspace names
 if [[ "$WORKSPACE_DIR" == /* ]]; then
-    # Absolute path provided - verify it's within GEMINI_WORKSPACES_ROOT
-    if [[ "$WORKSPACE_DIR" != "$GEMINI_WORKSPACES_ROOT"/* ]]; then
-        echo "ERROR: Absolute path must be within workspace root: $GEMINI_WORKSPACES_ROOT"
+    # Absolute path provided - verify it's within CLAUDE_WORKSPACES_ROOT
+    if [[ "$WORKSPACE_DIR" != "$CLAUDE_WORKSPACES_ROOT"/* ]]; then
+        echo "ERROR: Absolute path must be within workspace root: $CLAUDE_WORKSPACES_ROOT"
         exit 1
     fi
     # Extract workspace name from path
-    WORKSPACE_DIR="${WORKSPACE_DIR#$GEMINI_WORKSPACES_ROOT/}"
+    WORKSPACE_DIR="${WORKSPACE_DIR#$CLAUDE_WORKSPACES_ROOT/}"
 fi
 
 # Validate workspace directory name to prevent path traversal
@@ -52,7 +52,7 @@ ISSUES=""
 echo "=== VALIDATION ==="
 
 # Check workspace directory
-if [ -d "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR" ]; then
+if [ -d "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR" ]; then
     echo "WORKSPACEDIR:EXISTS"
     ISSUES="${ISSUES}WORKSPACEDIR "
 else
@@ -63,13 +63,13 @@ fi
 for repo in $REPOS; do
     echo "--- $repo ---"
 
-    if [ ! -d "${GEMINI_GIT_REPOS_ROOT}/$repo" ]; then
+    if [ ! -d "${CLAUDE_GIT_REPOS_ROOT}/$repo" ]; then
         echo "  REPO:MISSING"
         ISSUES="${ISSUES}REPO:$repo "
         continue
     fi
 
-    cd "${GEMINI_GIT_REPOS_ROOT}/$repo" || exit 1
+    cd "${CLAUDE_GIT_REPOS_ROOT}/$repo" || exit 1
     git worktree prune 2>/dev/null
 
     REMOTE=$(get_remote)
@@ -88,7 +88,7 @@ for repo in $REPOS; do
     fi
 
     # Check if worktree path exists
-    if [ -d "${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" ]; then
+    if [ -d "${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR/$repo" ]; then
         echo "  WORKTREE:EXISTS"
         ISSUES="${ISSUES}WORKTREE:$repo "
     else

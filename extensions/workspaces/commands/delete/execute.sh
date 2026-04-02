@@ -7,7 +7,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Source config directly (preflight.sh should only be called from list.sh)
-CONFIG_FILE="${HOME}/.gemini/extensions/config/workspaces/config.env"
+CONFIG_FILE="${HOME}/.claude/plugins/config/workspaces/config.env"
 if [ ! -f "${CONFIG_FILE}" ]; then
     echo "ERROR: Configuration file not found: ${CONFIG_FILE}"
     echo "Please run workspaces:create first to initialize configuration."
@@ -24,7 +24,7 @@ if [ -z "$WORKSPACE_DIR" ]; then
     exit 1
 fi
 
-FULL_PATH="${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+FULL_PATH="${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
 
 # Handle both absolute paths and relative workspace names
 if [[ "$WORKSPACE_DIR" == /* ]]; then
@@ -32,12 +32,12 @@ if [[ "$WORKSPACE_DIR" == /* ]]; then
     FULL_PATH="$WORKSPACE_DIR"
 else
     # Relative workspace name - construct full path
-    FULL_PATH="${GEMINI_WORKSPACES_ROOT}/$WORKSPACE_DIR"
+    FULL_PATH="${CLAUDE_WORKSPACES_ROOT}/$WORKSPACE_DIR"
 fi
 
 # Canonicalize paths to prevent symlink-based path traversal
-CANONICAL_WORKSPACES_ROOT=$(realpath "$GEMINI_WORKSPACES_ROOT" 2>/dev/null) || {
-    echo "ERROR: Failed to resolve workspace root: $GEMINI_WORKSPACES_ROOT"
+CANONICAL_WORKSPACES_ROOT=$(realpath "$CLAUDE_WORKSPACES_ROOT" 2>/dev/null) || {
+    echo "ERROR: Failed to resolve workspace root: $CLAUDE_WORKSPACES_ROOT"
     exit 1
 }
 
@@ -115,7 +115,7 @@ for repo_path in "$FULL_PATH"/*; do
     # Get branch name and main repo path before removing
     cd "$repo_path" 2>/dev/null || continue
     branch=$(git branch --show-current 2>/dev/null)
-    main_repo="${GEMINI_GIT_REPOS_ROOT}/$repo"
+    main_repo="${CLAUDE_GIT_REPOS_ROOT}/$repo"
 
     # Remove the worktree from git's tracking
     cd "$main_repo" 2>/dev/null || {
