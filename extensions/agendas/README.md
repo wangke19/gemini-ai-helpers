@@ -19,14 +19,14 @@ Generate structured meeting agendas to streamline team collaboration and decisio
 
 ```bash
 # Add the Atlassian MCP server
-gemini mcp add atlassian npx @modelcontextprotocol/server-atlassian
+claude mcp add atlassian npx @modelcontextprotocol/server-atlassian
 ```
 
 OR you can use an already running Jira MCP Server:
 
 ```bash
 # Add the Atlassian MCP server
-gemini mcp add --transport sse atlassian http https://localhost:8080/sse
+claude mcp add --transport sse atlassian http https://localhost:8080/sse
 ```
 
 Configure your Jira credentials according to the [Atlassian MCP documentation](https://github.com/modelcontextprotocol/servers/tree/main/src/atlassian).
@@ -35,14 +35,13 @@ Configure your Jira credentials according to the [Atlassian MCP documentation](h
 
 ```bash
 # Start the atlassian mcp server using podman
-podman run -i --rm -p 8080:8080 -e "JIRA_URL=https://issues.redhat.com" -e "JIRA_USERNAME" -e "JIRA_API_TOKEN" -e "JIRA_PERSONAL_TOKEN" -e "JIRA_SSL_VERIFY" ghcr.io/sooperset/mcp-atlassian:latest --transport sse --port 8080 -vv
+podman run -i --rm -p 8080:8080 -e "JIRA_URL=https://redhat.atlassian.net" -e "JIRA_USERNAME" -e "JIRA_API_TOKEN" ghcr.io/sooperset/mcp-atlassian:latest --transport sse --port 8080 -vv
 ```
 
 #### Getting Tokens
-You'll need to generate your own tokens:
+You'll need to generate your own API token:
 
-- For JIRA API TOKEN, use https://id.atlassian.com/manage-profile/security/api-tokens
-- For JIRA PERSONAL TOKEN, use https://issues.redhat.com/secure/ViewProfile.jspa?selectedTab=com.atlassian.pats.pats-plugin:jira-user-personal-access-tokens
+- For JIRA_API_TOKEN, use https://id.atlassian.com/manage-profile/security/api-tokens
 
 ## Installation
 
@@ -62,8 +61,8 @@ You'll need to generate your own tokens:
 # Clone the repository
 git clone https://github.com/openshift-eng/ai-helpers.git
 
-# Copy to Gemini CLI extensions directory
-cp -r gemini-ai-helpers/extensions/agendas ~/.gemini/extensions/
+# Copy to Gemini CLI plugins directory
+cp -r ai-helpers/extensions/agendas ~/.claude/plugins/
 
 # Enable the plugin
 /plugin enable agendas
