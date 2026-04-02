@@ -1,40 +1,106 @@
 {
   "name": "gemini-ai-helpers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A collection of Gemini CLI extensions to automate and assist with various development tasks.",
   "extensions": [
-    { "path": "extensions/agendas" },
-    { "path": "extensions/bigquery" },
-    { "path": "extensions/ci" },
-    { "path": "extensions/code-review" },
-    { "path": "extensions/compliance" },
-    { "path": "extensions/container-image" },
-    { "path": "extensions/doc" },
-    { "path": "extensions/etcd" },
-    { "path": "extensions/git" },
-    { "path": "extensions/golang" },
-    { "path": "extensions/gwapi" },
-    { "path": "extensions/hcp" },
-    { "path": "extensions/hello-world" },
-    { "path": "extensions/jira" },
-    { "path": "extensions/lvms" },
-    { "path": "extensions/macos-notifications" },
-    { "path": "extensions/metrics" },
-    { "path": "extensions/must-gather" },
-    { "path": "extensions/node" },
-    { "path": "extensions/node-tuning" },
-    { "path": "extensions/olm" },
-    { "path": "extensions/olm-team" },
-    { "path": "extensions/openshift" },
-    { "path": "extensions/origin" },
-    { "path": "extensions/ote-migration" },
-    { "path": "extensions/session" },
-    { "path": "extensions/sosreport" },
-    { "path": "extensions/teams" },
-    { "path": "extensions/test-coverage" },
-    { "path": "extensions/testing" },
-    { "path": "extensions/utils" },
-    { "path": "extensions/workspaces" },
-    { "path": "extensions/yaml" }
+    {
+      "path": "extensions/agendas"
+    },
+    {
+      "path": "extensions/bigquery"
+    },
+    {
+      "path": "extensions/ci"
+    },
+    {
+      "path": "extensions/code-review"
+    },
+    {
+      "path": "extensions/compliance"
+    },
+    {
+      "path": "extensions/container-image"
+    },
+    {
+      "path": "extensions/doc"
+    },
+    {
+      "path": "extensions/etcd"
+    },
+    {
+      "path": "extensions/git"
+    },
+    {
+      "path": "extensions/golang"
+    },
+    {
+      "path": "extensions/gwapi"
+    },
+    {
+      "path": "extensions/hcp"
+    },
+    {
+      "path": "extensions/hello-world"
+    },
+    {
+      "path": "extensions/jira"
+    },
+    {
+      "path": "extensions/lvms"
+    },
+    {
+      "path": "extensions/macos-notifications"
+    },
+    {
+      "path": "extensions/metrics"
+    },
+    {
+      "path": "extensions/must-gather"
+    },
+    {
+      "path": "extensions/node"
+    },
+    {
+      "path": "extensions/node-tuning"
+    },
+    {
+      "path": "extensions/olm"
+    },
+    {
+      "path": "extensions/olm-team"
+    },
+    {
+      "path": "extensions/openshift"
+    },
+    {
+      "path": "extensions/origin"
+    },
+    {
+      "path": "extensions/ote-migration"
+    },
+    {
+      "path": "extensions/session"
+    },
+    {
+      "path": "extensions/sosreport"
+    },
+    {
+      "path": "extensions/teams"
+    },
+    {
+      "path": "extensions/test-coverage"
+    },
+    {
+      "path": "extensions/testing"
+    },
+    {
+      "path": "extensions/utils"
+    },
+    {
+      "path": "extensions/workspaces"
+    },
+    {
+      "path": "extensions/yaml"
+    }
   ]
 }
