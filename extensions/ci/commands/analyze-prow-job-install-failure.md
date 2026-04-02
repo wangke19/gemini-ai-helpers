@@ -78,7 +78,7 @@ The skill handles all the implementation details including URL parsing, artifact
 - **Success**: Comprehensive analysis report saved to `.work/prow-job-analyze-install-failure/{build_id}/analysis/report.txt`
 - **Error**: Error message explaining the issue (invalid URL, gcloud not installed, artifacts not found, etc.)
 
-**Important**:
+**Important for Gemini**:
 1. Parse the Prow job URL to extract the build ID and job name
 2. Invoke the "ci:prow-job-analyze-install-failure" skill with the job details
 3. The skill will download all relevant artifacts and analyze them

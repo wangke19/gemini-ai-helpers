@@ -81,18 +81,6 @@ Job names contain important clues about the test environment and what to look fo
    - `metal`, `baremetal`: Bare metal environment (uses specialized metal install failure skill)
    - `ovn`: OVN-Kubernetes networking (standard)
 
-## File Download Policy
-
-All file downloads MUST follow this pattern — no exceptions:
-
-1. **First attempt**: `gsutil cp <src> <dst>`
-2. **Second attempt** (only if first fails): `gsutil cp <src> <dst>`
-3. **Fallback** (only if both gsutil attempts fail): `gcloud storage cp <src> <dst> --no-user-output-enabled`
-
-**STOP using `gsutil` after 2 failures for that file. Switch to `gcloud storage cp` immediately.**
-
-Apply this to every download: single files, recursive copies, and glob patterns. For listing operations, always use `gcloud storage ls -r` directly.
-
 ## Implementation Steps
 
 ### Step 1: Parse and Validate URL
@@ -133,7 +121,7 @@ Apply this to every download: single files, recursive copies, and glob patterns.
 
 ### Step 3: Download prowjob.json and Identify Target
 
-Use the `fetch-prowjob-json` skill to fetch the prowjob.json for this job. See `plugins/ci/skills/fetch-prowjob-json/SKILL.md` for complete implementation details.
+Use the `fetch-prowjob-json` skill to fetch the prowjob.json for this job. See `extensions/ci/skills/fetch-prowjob-json/SKILL.md` for complete implementation details.
 
 1. **Fetch prowjob.json** using the Prow job URL (convert to gcsweb URL per the `fetch-prowjob-json` skill)
 2. **Save locally** to `.work/prow-job-analyze-install-failure/{build_id}/logs/prowjob.json`

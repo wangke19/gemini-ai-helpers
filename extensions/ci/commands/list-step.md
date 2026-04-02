@@ -51,7 +51,7 @@ The command performs the following steps:
 - Success: Complete hierarchical structure of the OpenShift CI workflow or chain
 - Error: Workflow or Chain not found, analysis failure, or invalid workflow or chain name
 
-## Important:
+## Important for Gemini:
 1. REQUIRED: Always use the step-registry-analyzer agent for this analysis
 2. Use the Task tool with the specialized agent to ensure comprehensive analysis
 3. Maintain the proper directory structure and show the relationships between files

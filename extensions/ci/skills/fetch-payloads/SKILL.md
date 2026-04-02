@@ -27,7 +27,7 @@ If the user did not specify an architecture or stream, default to `amd64` and `n
 ```bash
 FETCH_PAYLOADS="${GEMINI_EXTENSION_ROOT}/skills/fetch-payloads/fetch_payloads.py"
 if [ ! -f "$FETCH_PAYLOADS" ]; then
-  FETCH_PAYLOADS=$(find ~/.gemini/extensions -type f -path "*/ci/skills/fetch-payloads/fetch_payloads.py" 2>/dev/null | sort | head -1)
+  FETCH_PAYLOADS=$(find ~/.claude/plugins -type f -path "*/ci/skills/fetch-payloads/fetch_payloads.py" 2>/dev/null | sort | head -1)
 fi
 if [ -z "$FETCH_PAYLOADS" ] || [ ! -f "$FETCH_PAYLOADS" ]; then echo "ERROR: fetch_payloads.py not found" >&2; exit 2; fi
 python3 "$FETCH_PAYLOADS" [architecture] [version] [stream]

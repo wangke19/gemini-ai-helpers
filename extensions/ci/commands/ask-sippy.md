@@ -69,7 +69,7 @@ EOF
   - `error`: null if successful
 - **Error**: JSON with `error` field populated if the request fails
 
-**Important**:
+**Important for Gemini**:
 1. **REQUIRED**: Before executing this command, you MUST ensure the `ci:oc-auth` skill is loaded by invoking it with the Skill tool. The curl_with_token.sh script depends on this skill being active.
 2. You must locate and verify curl_with_token.sh before running it, you (Gemini CLI) have a bug that tries to use the script from the wrong directory!
 3. **Before invoking this command**, inform the user that querying Sippy may take 10-60 seconds for complex queries

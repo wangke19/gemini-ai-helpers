@@ -27,7 +27,7 @@ This command is useful for:
 1. **Parse Arguments**: Extract the Jira key
 
    Accept either a full URL or a bare key:
-   - `https://issues.redhat.com/browse/OCPBUGS-74690` → `OCPBUGS-74690`
+   - `https://redhat.atlassian.net/browse/OCPBUGS-74690` → `OCPBUGS-74690`
    - `OCPBUGS-74690` → `OCPBUGS-74690`
 
    Strip the URL prefix if present:
@@ -40,11 +40,11 @@ This command is useful for:
    Use the `fetch-jira-issue` skill to retrieve the bug data:
 
    ```bash
-   jira_script="plugins/ci/skills/fetch-jira-issue/fetch_jira_issue.py"
+   jira_script="extensions/ci/skills/fetch-jira-issue/fetch_jira_issue.py"
    jira_data=$(python3 "$jira_script" "$jira_key" --format json)
    ```
 
-   See `plugins/ci/skills/fetch-jira-issue/SKILL.md` for complete implementation details including error handling.
+   See `extensions/ci/skills/fetch-jira-issue/SKILL.md` for complete implementation details including error handling.
 
    Extract and read from the JSON output:
    - `summary`: Bug title
@@ -74,7 +74,7 @@ This command is useful for:
    Check if the bug description or title mentions a release version (e.g., "4.22", "4.21"). If not, use the `fetch-releases` skill:
 
    ```bash
-   release=$(python3 plugins/ci/skills/fetch-releases/fetch_releases.py --latest)
+   release=$(python3 extensions/ci/skills/fetch-releases/fetch_releases.py --latest)
    ```
 
 5. **Check Regression IDs** (if found): Query each regression's current status
@@ -82,7 +82,7 @@ This command is useful for:
    For each regression ID extracted from the bug:
 
    ```bash
-   script_path="plugins/ci/skills/fetch-regression-details/fetch_regression_details.py"
+   script_path="extensions/ci/skills/fetch-regression-details/fetch_regression_details.py"
    regression_data=$(python3 "$script_path" <regression_id> --format json)
    ```
 
@@ -98,7 +98,7 @@ This command is useful for:
    Use the `list-regressions` skill with `--test-name` to fetch regressions matching this test:
 
    ```bash
-   script_path="plugins/teams/skills/list-regressions/list_regressions.py"
+   script_path="extensions/teams/skills/list-regressions/list_regressions.py"
    matching_regressions=$(python3 "$script_path" --release "$release" --test-name "$test_name")
    ```
 
@@ -120,7 +120,7 @@ This command is useful for:
 7. **Check Global Test Report**: Use `fetch-test-report` with `--no-collapse`
 
    ```bash
-   script_path="plugins/ci/skills/fetch-test-report/fetch_test_report.py"
+   script_path="extensions/ci/skills/fetch-test-report/fetch_test_report.py"
    test_report=$(python3 "$script_path" "$test_name" --release "$release" --no-collapse --format json)
    ```
 
@@ -134,7 +134,7 @@ This command is useful for:
 8. **Check Recent Test Runs**: Use `fetch-test-runs` to see current failure activity
 
    ```bash
-   script_path="plugins/ci/skills/fetch-test-runs/fetch_test_runs.py"
+   script_path="extensions/ci/skills/fetch-test-runs/fetch_test_runs.py"
    recent_runs=$(python3 "$script_path" "$test_id" --include-success --format json)
    ```
 
@@ -240,34 +240,35 @@ This command is useful for:
 
    ```bash
    # Add comment to the bug
+   JIRA_AUTH=$(printf '%s' "$JIRA_USERNAME:$JIRA_API_TOKEN" | base64 | tr -d '\r\n')
    curl -s -X POST \
-     -H "Authorization: Bearer $JIRA_TOKEN" \
+     -H "Authorization: Basic $JIRA_AUTH" \
      -H "Content-Type: application/json" \
      -d '{"body": "<comment text>"}' \
-     "https://issues.redhat.com/rest/api/2/issue/<jira_key>/comment"
+     "https://redhat.atlassian.net/rest/api/3/issue/<jira_key>/comment"
    ```
 
    **Transition the bug back to ASSIGNED**:
 
    First, fetch available transitions to find the correct transition ID:
    ```bash
-   transitions=$(curl -s -H "Authorization: Bearer $JIRA_TOKEN" \
-     "https://issues.redhat.com/rest/api/2/issue/<jira_key>/transitions")
+   transitions=$(curl -s -H "Authorization: Basic $JIRA_AUTH" \
+     "https://redhat.atlassian.net/rest/api/3/issue/<jira_key>/transitions")
    ```
 
    Look through the transitions for one that moves to "Assigned" status, then execute it:
    ```bash
    curl -s -X POST \
-     -H "Authorization: Bearer $JIRA_TOKEN" \
+     -H "Authorization: Basic $JIRA_AUTH" \
      -H "Content-Type: application/json" \
      -d '{"transition": {"id": "<transition_id>"}}' \
-     "https://issues.redhat.com/rest/api/2/issue/<jira_key>/transitions"
+     "https://redhat.atlassian.net/rest/api/3/issue/<jira_key>/transitions"
    ```
 
    Display confirmation:
-   ```
+   ```text
    Bug reopened:
-   - JIRA: https://issues.redhat.com/browse/<jira_key>
+   - JIRA: https://redhat.atlassian.net/browse/<jira_key>
    - Status: ASSIGNED
    - Comment added explaining regression is still active
    ```
@@ -286,7 +287,7 @@ This command is useful for:
 
 1. **Check a bug by URL**:
    ```
-   /ci:check-if-jira-regression-is-ongoing https://issues.redhat.com/browse/OCPBUGS-74690
+   /ci:check-if-jira-regression-is-ongoing https://redhat.atlassian.net/browse/OCPBUGS-74690
    ```
 
 2. **Check a bug by key**:
@@ -297,16 +298,20 @@ This command is useful for:
 ## Arguments
 
 - `$1` (required): Jira issue key or URL
-  - Format: Either a bare key (`OCPBUGS-74690`) or a full URL (`https://issues.redhat.com/browse/OCPBUGS-74690`)
+  - Format: Either a bare key (`OCPBUGS-74690`) or a full URL (`https://redhat.atlassian.net/browse/OCPBUGS-74690`)
 
 ## Prerequisites
 
-1. **JIRA_TOKEN**: Required to read the Jira issue
+1. **JIRA_USERNAME**: Required for Jira authentication
 
-   - Set environment variable: `export JIRA_TOKEN="your-jira-api-token"`
-   - Obtain from: https://issues.redhat.com (Profile → Personal Access Tokens)
+   - Set environment variable: `export JIRA_USERNAME="your-atlassian-email"`
 
-2. **Python 3**: Required for all skill scripts
+2. **JIRA_API_TOKEN**: Required to read the Jira issue
+
+   - Set environment variable: `export JIRA_API_TOKEN="your-jira-api-token"`
+   - Obtain from: https://id.atlassian.com/manage-profile/security/api-tokens
+
+3. **Python 3**: Required for all skill scripts
 
    - Version: 3.6 or later
 
@@ -322,9 +327,9 @@ This command is useful for:
 
 - Related Command: `/ci:analyze-regression` — Full regression analysis workflow
 - Related Command: `/ci:fetch-test-report` — Fetch test health report by name
-- Related Skill: `fetch-regression-details` (`plugins/ci/skills/fetch-regression-details/SKILL.md`)
-- Related Skill: `fetch-test-report` (`plugins/ci/skills/fetch-test-report/SKILL.md`)
-- Related Skill: `fetch-test-runs` (`plugins/ci/skills/fetch-test-runs/SKILL.md`)
-- Related Skill: `fetch-releases` (`plugins/ci/skills/fetch-releases/SKILL.md`)
-- Related Skill: `list-regressions` (`plugins/teams/skills/list-regressions/SKILL.md`)
+- Related Skill: `fetch-regression-details` (`extensions/ci/skills/fetch-regression-details/SKILL.md`)
+- Related Skill: `fetch-test-report` (`extensions/ci/skills/fetch-test-report/SKILL.md`)
+- Related Skill: `fetch-test-runs` (`extensions/ci/skills/fetch-test-runs/SKILL.md`)
+- Related Skill: `fetch-releases` (`extensions/ci/skills/fetch-releases/SKILL.md`)
+- Related Skill: `list-regressions` (`extensions/teams/skills/list-regressions/SKILL.md`)
 '''

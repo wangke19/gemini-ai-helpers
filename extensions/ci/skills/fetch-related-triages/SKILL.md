@@ -25,13 +25,13 @@ No authentication required (uses production Sippy URL).
 
 ```bash
 # Fetch all related triages (default: all confidence levels)
-python3 plugins/ci/skills/fetch-related-triages/fetch_related_triages.py 35479
+python3 extensions/ci/skills/fetch-related-triages/fetch_related_triages.py 35479
 
 # Filter to high confidence matches only
-python3 plugins/ci/skills/fetch-related-triages/fetch_related_triages.py 35479 --min-confidence 5
+python3 extensions/ci/skills/fetch-related-triages/fetch_related_triages.py 35479 --min-confidence 5
 
 # Human-readable summary
-python3 plugins/ci/skills/fetch-related-triages/fetch_related_triages.py 35479 --format summary
+python3 extensions/ci/skills/fetch-related-triages/fetch_related_triages.py 35479 --format summary
 ```
 
 ## Arguments
@@ -61,7 +61,7 @@ The API assigns a confidence level (1-10) to each match:
       "triage_id": 370,
       "triage_ui_url": "https://sippy-auth.dptools.openshift.org/sippy-ng/component_readiness/triages/370",
       "jira_key": "OCPBUGS-76612",
-      "jira_url": "https://issues.redhat.com/browse/OCPBUGS-76612",
+      "jira_url": "https://redhat.atlassian.net/browse/OCPBUGS-76612",
       "jira_status": "New",
       "jira_summary": "Component Readiness: [Networking / ovn-kubernetes] ...",
       "triage_type": "test",

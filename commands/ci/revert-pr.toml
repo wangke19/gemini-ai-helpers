@@ -41,7 +41,7 @@ This command is useful when:
 
 2. **Gather Context**: Use the JIRA ticket to automatically determine what broke and what needs verification
 
-   - **Look up the JIRA ticket** using the `fetch-jira-issue` skill (`plugins/ci/skills/fetch-jira-issue/fetch_jira_issue.py`) with `--format json`
+   - **Look up the JIRA ticket** using the `fetch-jira-issue` skill (`extensions/ci/skills/fetch-jira-issue/fetch_jira_issue.py`) with `--format json`
    - **Extract context from the JIRA issue**: Use the issue summary, description, and comments to determine:
      - **What broke**: Which CI jobs or payloads are failing (e.g., "e2e-aws jobs failing on 4.18 nightly payload")
      - **Verification jobs**: Which jobs should pass before the original change can be re-landed (e.g., "e2e-aws, e2e-gcp")
@@ -53,7 +53,7 @@ This command is useful when:
 
 3. **Perform the Revert**: Use the `revert-pr` skill
 
-   Follow the complete workflow in `plugins/ci/skills/revert-pr/SKILL.md`, which covers:
+   Follow the complete workflow in `extensions/ci/skills/revert-pr/SKILL.md`, which covers:
    - Extracting PR information (title, author, merge SHA, base branch) via `gh`
    - Validating the PR is in MERGED state
    - Ensuring the user has a fork of the repository
@@ -121,7 +121,7 @@ This command is useful when:
 
 ## See Also
 
-- Related Skill: `revert-pr` - Detailed git revert workflow and PR template (`plugins/ci/skills/revert-pr/SKILL.md`)
+- Related Skill: `revert-pr` - Detailed git revert workflow and PR template (`extensions/ci/skills/revert-pr/SKILL.md`)
 - OpenShift Quick Revert Policy: https://github.com/openshift/enhancements/blob/master/enhancements/release/improving-ci-signal.md#quick-revert
 - Revertomatic: https://github.com/stbenjam/revertomatic
 '''

@@ -51,7 +51,7 @@ The command performs the following steps:
 - **Success**: JSON response with job status details
 - **Error**: HTTP error, authentication failure, or invalid execution ID
 
-**Important**:
+**Important for Gemini**:
 1. **REQUIRED**: Before executing this command, you MUST ensure the `ci:oc-auth` skill is loaded by invoking it with the Skill tool. The curl_with_token.sh script depends on this skill being active.
 2. You must locate and verify curl_with_token.sh before running it, you (Gemini CLI) have a bug that tries to use the script from the wrong directory!
 3. Parse the JSON response and present it in a readable format

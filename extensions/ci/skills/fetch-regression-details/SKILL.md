@@ -36,7 +36,7 @@ The skill uses a Python script to fetch and parse regression data (including sam
 
 ```bash
 # Path to the Python script
-script_path="plugins/ci/skills/fetch-regression-details/fetch_regression_details.py"
+script_path="extensions/ci/skills/fetch-regression-details/fetch_regression_details.py"
 
 # Fetch regression data in JSON format (includes failed jobs)
 python3 "$script_path" <regression_id> --format json
@@ -90,7 +90,7 @@ The structured data includes all necessary regression details:
   "triages": [
     {
       "id": 344,
-      "url": "https://issues.redhat.com/browse/OCPBUGS-74651",
+      "url": "https://redhat.atlassian.net/browse/OCPBUGS-74651",
       "jira_key": "OCPBUGS-74651",
       "type": "product",
       "description": "RHCOS 10 metal ipv4 job permafailing on ipv6 network access",
@@ -207,7 +207,7 @@ The API returns a JSON object with the following structure:
       "id": 344,
       "created_at": "2026-01-29T17:58:20.858051Z",
       "updated_at": "2026-01-30T13:28:33.429963Z",
-      "url": "https://issues.redhat.com/browse/OCPBUGS-74651",
+      "url": "https://redhat.atlassian.net/browse/OCPBUGS-74651",
       "description": "Description of the triage",
       "type": "product",
       "bug_id": 17817794,
@@ -248,7 +248,7 @@ The API returns a JSON object with the following structure:
 
 ```bash
 # Fetch regression 34446 in JSON format (includes failed jobs)
-python3 plugins/ci/skills/fetch-regression-details/fetch_regression_details.py 34446 --format json
+python3 extensions/ci/skills/fetch-regression-details/fetch_regression_details.py 34446 --format json
 ```
 
 **Expected Output:**
@@ -294,7 +294,7 @@ python3 plugins/ci/skills/fetch-regression-details/fetch_regression_details.py 3
 
 ```bash
 # Fetch regression 34446 as formatted summary
-python3 plugins/ci/skills/fetch-regression-details/fetch_regression_details.py 34446 --format summary
+python3 extensions/ci/skills/fetch-regression-details/fetch_regression_details.py 34446 --format summary
 ```
 
 **Expected Output:**
@@ -323,7 +323,7 @@ Sample Failed Jobs (19 runs):
 
 ```bash
 # Get all failed job URLs for analysis
-script_path="plugins/ci/skills/fetch-regression-details/fetch_regression_details.py"
+script_path="extensions/ci/skills/fetch-regression-details/fetch_regression_details.py"
 data=$(python3 "$script_path" 34446 --format json)
 
 # Extract failed job URLs
