@@ -19,7 +19,13 @@ jobs:
           
           error_count=0
           
+          # Only process directories, not files
           for plugin_dir in plugins/*/; do
+            # Skip if directory is empty
+            if [ ! "$(ls -A "$plugin_dir")" ]; then
+              continue
+            fi
+            
             plugin_name=$(basename "$plugin_dir")
             
             # Check required files
