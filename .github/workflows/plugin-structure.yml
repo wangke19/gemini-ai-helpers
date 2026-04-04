@@ -1,0 +1,44 @@
+name: Validate Plugin Structure
+
+on:
+  pull_request:
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Check plugin directory structure
+        run: |
+          set -e
+          
+          error_count=0
+          
+          for plugin_dir in plugins/*/; do
+            plugin_name=$(basename "$plugin_dir")
+            
+            # Check required files
+            required_files=(
+              ".claude-plugin/plugin.json"
+              "README.md"
+            )
+            
+            for file in "${required_files[@]}"; do
+              if [ ! -f "$plugin_dir$file" ]; then
+                echo "::error file=$plugin_dir$file::Plugin '$plugin_name' missing required file: $file"
+                error_count=$((error_count + 1))
+              fi
+            done
+          done
+          
+          if [ $error_count -gt 0 ]; then
+            echo "::error::$error_count plugin(s) have structure issues"
+            exit 1
+          fi
+          
+          echo "✓ All plugins have valid structure"
