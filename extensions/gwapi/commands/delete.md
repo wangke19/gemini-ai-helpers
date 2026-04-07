@@ -71,13 +71,13 @@ The command uses `oc` (preferred) or `kubectl` to delete the resources safely. I
      - Delete Gateway resources from specified namespace
      - For each Gateway found: `oc delete gateway <name> -n <namespace>`
    - If no namespace argument:
-     - Delete the specific Gateway from the YAML: `oc delete -f plugins/gwapi/resources/gateway.yaml --ignore-not-found`
+     - Delete the specific Gateway from the YAML: `oc delete -f extensions/gwapi/resources/gateway.yaml --ignore-not-found`
      - Alternative: Delete by name if known: `oc delete gateway gateway -n openshift-ingress --ignore-not-found`
    - Display deletion status for each Gateway
    - Use `--ignore-not-found` flag to handle already-deleted resources gracefully
 
 7. **Delete GatewayClass Resources**
-   - Delete the GatewayClass resource: `oc delete -f plugins/gwapi/resources/gatewayclass.yaml --ignore-not-found`
+   - Delete the GatewayClass resource: `oc delete -f extensions/gwapi/resources/gatewayclass.yaml --ignore-not-found`
    - Alternative: Delete by name: `oc delete gatewayclass openshift-default --ignore-not-found`
    - Display deletion status
    - Note: GatewayClass is cluster-scoped, so namespace argument doesn't apply
@@ -137,7 +137,7 @@ The command uses `oc` (preferred) or `kubectl` to delete the resources safely. I
 - **No Cascade**: Deleting GatewayClass does not automatically delete associated Gateways
 - **Service Impact**: Deleting Gateway resources will stop routing traffic through the Gateway
 - **Confirmation Required**: User must explicitly confirm deletion to prevent accidental resource removal
-- **Resource Files**: The original YAML files in `plugins/gwapi/resources/` are not modified or deleted
+- **Resource Files**: The original YAML files in `extensions/gwapi/resources/` are not modified or deleted
 
 ## Safety Features
 - Requires explicit user confirmation before deletion
