@@ -137,8 +137,8 @@ def main():
     log_file = None
     anonymous_id = None
     try:
-        # Use CLAUDE_PLUGIN_ROOT for storing metrics
-        plugin_root = os.environ.get('CLAUDE_PLUGIN_ROOT')
+        # Use GEMINI_EXTENSION_ROOT for storing metrics
+        plugin_root = os.environ.get('GEMINI_EXTENSION_ROOT')
         if plugin_root:
             metrics_dir = pathlib.Path(plugin_root).resolve()  # Use absolute path
 
