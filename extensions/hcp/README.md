@@ -124,7 +124,7 @@ This design ensures:
 
 To add support for a new provider:
 
-1. Create a new skill directory: `plugins/hcp/skills/hcp-create-<provider>/`
+1. Create a new skill directory: `extensions/hcp/skills/hcp-create-<provider>/`
 2. Implement the `SKILL.md` file following the established pattern
 3. Update the main command to invoke the new skill
 4. Test the implementation and add examples
@@ -135,7 +135,7 @@ See existing skills as reference implementations.
 
 - **Issues**: [GitHub Issues](https://github.com/openshift-eng/ai-helpers/issues)
 - **Documentation**: [HyperShift Documentation](https://hypershift.openshift.io/)
-- **Skills**: View individual skill files in `plugins/hcp/skills/`
+- **Skills**: View individual skill files in `extensions/hcp/skills/`
 
 ## License
 

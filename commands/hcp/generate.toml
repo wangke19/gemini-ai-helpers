@@ -348,9 +348,9 @@ The following skills are automatically invoked by this command based on provider
 
 To view skill details:
 ```bash
-ls plugins/hypershift/skills/
-cat plugins/hypershift/skills/hcp-create-aws/SKILL.md
-cat plugins/hypershift/skills/hcp-create-kubevirt/SKILL.md
+ls extensions/hypershift/skills/
+cat extensions/hypershift/skills/hcp-create-aws/SKILL.md
+cat extensions/hypershift/skills/hcp-create-kubevirt/SKILL.md
 # ... etc for other providers
 ```
 '''
