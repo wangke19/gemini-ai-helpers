@@ -10,7 +10,7 @@ node-tuning:generate-tuned-profile
 ```
 
 ## Description
-The `node-tuning:generate-tuned-profile` command streamlines creation of `tuned.openshift.io/v1` manifests for the OpenShift Node Tuning Operator. It captures the desired Tuned profile metadata, tuned daemon configuration blocks (e.g. `[sysctl]`, `[variables]`, `[bootloader]`), and recommendation rules, then invokes the helper script at `plugins/node-tuning/skills/scripts/generate_tuned_profile.py` to render a ready-to-apply YAML file.
+The `node-tuning:generate-tuned-profile` command streamlines creation of `tuned.openshift.io/v1` manifests for the OpenShift Node Tuning Operator. It captures the desired Tuned profile metadata, tuned daemon configuration blocks (e.g. `[sysctl]`, `[variables]`, `[bootloader]`), and recommendation rules, then invokes the helper script at `extensions/node-tuning/skills/scripts/generate_tuned_profile.py` to render a ready-to-apply YAML file.
 
 Use this command whenever you need to:
 - Bootstrap a new Tuned custom profile targeting selected nodes or machine config pools
@@ -57,7 +57,7 @@ spec:
    - Run the helper with the collected switches:
      ```text
      bash
-     python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+     python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
        --profile-name "$PROFILE_NAME" \
        --summary "$SUMMARY" \
        --include openshift-node \
@@ -83,11 +83,11 @@ spec:
 Use this workflow when enabling huge pages or other kernel boot parameters that require coordinating the Node Tuning Operator with the Machine Config Operator while minimizing reboots.
 
 1. **Label target nodes**
-   - Preview candidates: `python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py --list-nodes --node-selector "node-role.kubernetes.io/worker" --skip-manifest`.
+   - Preview candidates: `python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py --list-nodes --node-selector "node-role.kubernetes.io/worker" --skip-manifest`.
    - Label workers with the helper (repeat per node):
      ```text
      bash
-     python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+     python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
        --label-node ip-10-0-1-23.ec2.internal:node-role.kubernetes.io/worker-hp= \
        --overwrite-labels \
        --skip-manifest
@@ -98,7 +98,7 @@ Use this workflow when enabling huge pages or other kernel boot parameters that 
    - Include bootloader arguments via the helper script:
      ```text
      bash
-     python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+     python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
        --profile-name "openshift-node-hugepages" \
        --summary "Boot time configuration for hugepages" \
        --include openshift-node \

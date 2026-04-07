@@ -16,7 +16,7 @@ Detailed instructions for invoking the helper utilities that back `/node-tuning`
 
 ## Prerequisites
 - Python 3.8 or newer (`python3 --version`).
-- Repository checkout so the scripts under `plugins/node-tuning/skills/scripts/` are accessible.
+- Repository checkout so the scripts under `extensions/node-tuning/skills/scripts/` are accessible.
 - Optional: `oc` CLI when validating or applying manifests.
 - Optional: Extracted sosreport directory when running the analysis script offline.
 - Optional (remote analysis): `oc` CLI access plus a valid `KUBECONFIG` when capturing `/proc`/`/sys` or sosreport via `oc debug node/<name>`. The sosreport workflow pulls the `registry.redhat.io/rhel9/support-tools` image (override with `--toolbox-image` or `TOOLBOX_IMAGE`) and requires registry access. HTTP(S) proxy env vars from the host are forwarded automatically when present, but using a proxy is optional.
@@ -37,10 +37,10 @@ Detailed instructions for invoking the helper utilities that back `/node-tuning`
 2. **Inspect or Label Nodes (optional)**
    ```bash
    # List all worker nodes
-   python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py --list-nodes --node-selector "node-role.kubernetes.io/worker" --skip-manifest
+   python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py --list-nodes --node-selector "node-role.kubernetes.io/worker" --skip-manifest
 
    # Label a specific node for the worker-hp pool
-   python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+   python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
      --label-node ip-10-0-1-23.ec2.internal:node-role.kubernetes.io/worker-hp= \
      --overwrite-labels \
      --skip-manifest
@@ -48,7 +48,7 @@ Detailed instructions for invoking the helper utilities that back `/node-tuning`
 
 3. **Render the Manifest**
    ```bash
-   python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+   python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
      --profile-name "$PROFILE" \
      --summary "$SUMMARY" \
      --sysctl net.core.netdev_max_backlog=16384 \
@@ -73,7 +73,7 @@ Detailed instructions for invoking the helper utilities that back `/node-tuning`
 
 ### Examples
 ```bash
-python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
   --profile-name realtime-worker \
   --summary "Realtime tuned profile" \
   --include openshift-node --include realtime \
@@ -84,7 +84,7 @@ python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
   --output .work/node-tuning/realtime-worker/tuned.yaml
 ```
 ```bash
-python3 plugins/node-tuning/skills/scripts/generate_tuned_profile.py \
+python3 extensions/node-tuning/skills/scripts/generate_tuned_profile.py \
   --profile-name openshift-node-hugepages \
   --summary "Boot time configuration for hugepages" \
   --include openshift-node \
@@ -104,18 +104,18 @@ Inspect either a live node (`/proc`, `/sys`) or an extracted sosreport snapshot 
 ### Usage Patterns
 - **Live node analysis**
   ```bash
-  python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py --format markdown
+  python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py --format markdown
   ```
 - **Remote analysis via oc debug**
   ```bash
-  python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py \
+  python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py \
     --node worker-rt-0 \
     --kubeconfig ~/.kube/prod \
     --format markdown
   ```
 - **Collect sosreport via oc debug and analyze locally**
   ```bash
-  python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py \
+  python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py \
     --node worker-rt-0 \
     --toolbox-image registry.example.com/support-tools:latest \
     --sosreport-arg "--case-id=01234567" \
@@ -124,12 +124,12 @@ Inspect either a live node (`/proc`, `/sys`) or an extracted sosreport snapshot 
   ```
 - **Offline sosreport analysis**
   ```bash
-  python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py \
+  python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py \
     --sosreport /path/to/sosreport-2025-10-20
   ```
 - **Automation-friendly JSON**
   ```bash
-  python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py \
+  python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py \
     --sosreport /path/to/sosreport \
     --format json --output .work/node-tuning/node-analysis.json
   ```

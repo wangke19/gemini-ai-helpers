@@ -48,17 +48,17 @@ The command automatically retrieves the cluster's ingress domain and substitutes
      - Set context to use this namespace for subsequent commands
 
 5. **Install GatewayClass**
-   - Locate `plugins/gwapi/resources/gatewayclass.yaml`
+   - Locate `extensions/gwapi/resources/gatewayclass.yaml`
    - Display: "Installing GatewayClass..."
-   - Apply the resource: `oc apply -f plugins/gwapi/resources/gatewayclass.yaml` or `kubectl apply -f plugins/gwapi/resources/gatewayclass.yaml`
+   - Apply the resource: `oc apply -f extensions/gwapi/resources/gatewayclass.yaml` or `kubectl apply -f extensions/gwapi/resources/gatewayclass.yaml`
    - Note: GatewayClass is cluster-scoped, so it does not require a namespace flag
    - Capture and display any errors or warnings
 
 6. **Install Gateway with Domain Substitution**
-   - Locate `plugins/gwapi/resources/gateway.yaml`
+   - Locate `extensions/gwapi/resources/gateway.yaml`
    - Display: "Installing Gateway with domain: $DOMAIN"
    - Export the domain as an environment variable: `export DOMAIN="<cluster-domain>"`
-   - Substitute the domain in the YAML file using envsubst: `envsubst < plugins/gwapi/resources/gateway.yaml | oc apply -f -`
+   - Substitute the domain in the YAML file using envsubst: `envsubst < extensions/gwapi/resources/gateway.yaml | oc apply -f -`
    - If namespace argument was provided, add `-n <namespace>` flag
    - Capture and display any errors or warnings
 
@@ -187,7 +187,7 @@ The command automatically retrieves the cluster's ingress domain and substitutes
    Installs both resources to the `gateway-system` namespace with domain substitution, then waits for resources to be ready.
 
 ## Notes
-- YAML files should be placed in `plugins/gwapi/resources/` directory:
+- YAML files should be placed in `extensions/gwapi/resources/` directory:
   - `gatewayclass.yaml` - GatewayClass definition
   - `gateway.yaml` - Gateway definition with `${DOMAIN}` placeholder
 - The `gateway.yaml` file should use `${DOMAIN}` as a placeholder for the cluster's ingress domain

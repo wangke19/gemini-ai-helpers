@@ -30,7 +30,7 @@ Use this command when you need to:
 
 3. **Invoke the analysis helper**
    ```bash
-   python3 plugins/node-tuning/skills/scripts/analyze_node_tuning.py \
+   python3 extensions/node-tuning/skills/scripts/analyze_node_tuning.py \
      --sosreport "$SOS_DIR" \
      --format markdown \
      --max-irq-samples 10 \
@@ -110,5 +110,5 @@ Use this command when you need to:
 - **--sosreport-output**: Directory where downloaded sosreport archives and their extraction should be placed (defaults to a temporary directory).
 - **--toolbox-image**: Override the container image that toolbox pulls when collecting sosreport (defaults to `registry.redhat.io/rhel9/support-tools:latest` or `TOOLBOX_IMAGE` env).
 - **--sosreport-arg**: Append an additional argument to the sosreport command (repeatable).
-- **--skip-default-sosreport-flags**: Do not include the default OpenShift-focused sosreport plugins/collectors; only use values supplied via `--sosreport-arg`.
+- **--skip-default-sosreport-flags**: Do not include the default OpenShift-focused sosreport extensions/collectors; only use values supplied via `--sosreport-arg`.
 '''
