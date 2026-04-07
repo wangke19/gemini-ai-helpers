@@ -1,8 +1,0 @@
-{
-  "name": "ci",
-  "description": "Tools for working with OpenShift CI and analyzing Prow job results",
-  "version": "0.0.35",
-  "author": {
-    "name": "openshift"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "name": "git",
-  "description": "Git workflow automation and utilities",
-  "version": "0.0.5",
-  "author": {
-    "name": "github.com/openshift-eng"
-  }
-}
