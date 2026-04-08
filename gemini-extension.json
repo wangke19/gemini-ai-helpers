@@ -1,6 +1,6 @@
 {
   "name": "gemini-ai-helpers",
-  "version": "1.3.3",
+  "version": "1.3.5",
   "description": "A collection of Gemini CLI extensions to automate and assist with various development tasks.",
   "extensions": [
     {
